@@ -12,13 +12,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.PuspaMobile">
         <activity
-            android:name=".auth.BoardingActivity"
+            android:name=".ui.auth.BoardingActivity"
             android:exported="false" />
         <activity
-            android:name=".error.GeneralError"
+            android:name=".ui.error.GeneralError"
             android:exported="false" />
         <activity
-            android:name=".error.NoInternet"
+            android:name=".ui.error.NoInternet"
             android:exported="false" />
         <activity
             android:name=".Splash"

@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:paddingHorizontal="30dp"
     android:paddingVertical="100dp"
-    tools:context=".auth.BoardingActivity"
+    tools:context=".ui.auth.BoardingActivity"
     android:background="@drawable/background_gradient">
 
     <ImageView

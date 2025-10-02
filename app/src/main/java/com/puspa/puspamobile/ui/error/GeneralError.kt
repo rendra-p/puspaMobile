@@ -1,4 +1,4 @@
-package com.puspa.puspamobile.error
+package com.puspa.puspamobile.ui.error
 
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
