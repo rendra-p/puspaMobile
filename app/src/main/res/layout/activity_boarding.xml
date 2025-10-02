@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingHorizontal="30dp"
+    android:paddingVertical="100dp"
+    tools:context=".auth.BoardingActivity"
+    android:background="@drawable/background_gradient">
+
+    <ImageView
+        android:id="@+id/imgPuspa"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/logo_puspa" />
+
+    <TextView
+        android:id="@+id/tvDisplayBoarding"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="90dp"
+        android:text="@string/display_onboarding"
+        android:textColor="@color/onGradient"
+        android:textAppearance="@style/Playpen.Display"
+        android:textAlignment="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.484"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imgPuspa" />
+
+    <TextView
+        android:id="@+id/tvBodyBoarding"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="@string/body_onboarding"
+        android:textColor="@color/onGradient"
+        android:textAppearance="@style/Playpen.Body"
+        android:textAlignment="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvDisplayBoarding" />
+
+    <Button
+        android:id="@+id/btnMasukBoarding"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginBottom="15dp"
+        android:background="@drawable/background_button_12dp"
+        android:text="Masuk"
+        android:textColor="@color/onSecondaryContainer"
+        android:textAppearance="@style/Playpen.Label"
+        app:backgroundTint="@color/secondaryContainer"
+        app:layout_constraintBottom_toTopOf="@+id/btnDaftarBoarding"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/btnDaftarBoarding"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        app:backgroundTint="@color/onSecondaryContainer"
+        android:background="@drawable/background_button_12dp"
+        android:text="Daftar"
+        android:textColor="@color/secondaryContainer"
+        android:textAppearance="@style/Playpen.Label"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>

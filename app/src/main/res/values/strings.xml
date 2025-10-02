@@ -7,4 +7,6 @@
     <string name="body_general_error">Maaf atas ketidaknyamanannya, silahkan kembali ke halaman awal</string>
     <string name="button_general_error">Kembali</string>
 
+    <string name="display_onboarding">Selamat Datang di Puspa</string>
+    <string name="body_onboarding">Kami sangat senang bisa menjadi bagian tumbuh kembang anak anda.</string>
 </resources>

@@ -48,7 +48,7 @@
         android:layout_height="40dp"
         android:padding="0dp"
         app:backgroundTint="@color/onGradient"
-        android:background="@drawable/background_button_error"
+        android:background="@drawable/background_button_12dp"
         android:text="@string/button_no_internet"
         android:textAppearance="@style/Playpen.Label"
         android:layout_marginTop="100dp"

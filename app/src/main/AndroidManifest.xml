@@ -12,6 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.PuspaMobile">
         <activity
+            android:name=".auth.BoardingActivity"
+            android:exported="false" />
+        <activity
             android:name=".error.GeneralError"
             android:exported="false" />
         <activity
