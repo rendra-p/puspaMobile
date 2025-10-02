@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Playpen.Display">
+        <item name="android:textSize">24sp</item>
+        <item name="android:fontFamily">@font/playpensans_extrabold</item>
+    </style>
+    <style name="Playpen.Headline">
+        <item name="android:textSize">22sp</item>
+        <item name="android:fontFamily">@font/playpensans_semibold</item>
+    </style>
+    <style name="Playpen.Title">
+        <item name="android:textSize">20sp</item>
+        <item name="android:fontFamily">@font/playpensans_medium</item>
+    </style>
+    <style name="Playpen.Body">
+        <item name="android:textSize">12sp</item>
+        <item name="android:fontFamily">@font/playpensans_regular</item>
+    </style>
+    <style name="Playpen.Label">
+        <item name="android:textSize">16sp</item>
+        <item name="android:fontFamily">@font/playpensans_medium</item>
+    </style>
+</resources>

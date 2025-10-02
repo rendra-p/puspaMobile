@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="primary">#62DACA</color>
+    <color name="onPrimary">#EAFDFA</color>
+    <color name="primaryContainer">#9DE3D9</color>
+    <color name="onPrimaryContainer">#EAFFFC</color>
+    <color name="onPrimaryContainerVariant">#241D55</color>
+
+    <color name="secondary">#382B94</color>
+    <color name="onSecondary">#EFEDFF</color>
+    <color name="secondaryContainer">#7261EF</color>
+    <color name="onSecondaryContainer">#F6F5FF</color>
+    <color name="onSecondaryContainerVariant">#241D55</color>
+
+    <color name="whiteBackground">#F4F4F4</color>
+    <color name="white">#FFFFFF</color>
+    <color name="black">#313131</color>
+    <color name="grey">#AFAFAF</color>
+    <color name="redDanger">#D90000</color>
+    <color name="onRedDanger">#FE9494</color>
+    <color name="hyperlink">#000FFF</color>
+
+    <color name="onGradient">#241D55</color>
+    <color name="onGradientVariant">#78A8A6</color>
+</resources>

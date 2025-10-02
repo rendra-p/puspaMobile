@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".error.NoInternet"
+    android:background="@drawable/background_gradient">
+
+    <ImageView
+        android:id="@+id/imageNoInternet"
+        android:layout_width="360dp"
+        android:layout_height="360dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="100dp"
+        app:srcCompat="@drawable/picture_error_connection" />
+
+    <TextView
+        android:id="@+id/textDisplayNointernet"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/onGradient"
+        android:text="@string/display_no_internet"
+        android:textAppearance="@style/Playpen.Display"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageNoInternet" />
+
+    <TextView
+        android:id="@+id/textBodyNoInternet"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:textColor="@color/onGradient"
+        android:text="@string/body_no_internet"
+        android:textAlignment="center"
+        android:textAppearance="@style/Playpen.Body"
+        android:layout_marginTop="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textDisplayNointernet" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnNoInternet"
+        android:layout_width="200dp"
+        android:layout_height="40dp"
+        android:padding="0dp"
+        app:backgroundTint="@color/onGradient"
+        android:background="@drawable/background_button_error"
+        android:text="@string/button_no_internet"
+        android:textAppearance="@style/Playpen.Label"
+        android:layout_marginTop="100dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textBodyNoInternet" />
+</androidx.constraintlayout.widget.ConstraintLayout>
