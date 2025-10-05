@@ -17,4 +17,32 @@
     </style>
 
     <style name="Theme.PuspaMobile" parent="Base.Theme.PuspaMobile" />
+
+    <style name="PuspaTextInputLayoutStyle" parent="Widget.Material3.TextInputLayout.OutlinedBox">
+        <!-- Warna garis (outline) -->
+        <item name="boxStrokeColor">@color/onGradientVariant</item>
+
+        <!-- Warna background dalam box (pakai transparan biar tidak block area) -->
+        <item name="boxBackgroundColor">@android:color/transparent</item>
+
+        <!-- Warna hint & teks -->
+        <item name="hintTextColor">@color/onGradientVariant</item>
+        <item name="android:textColorHint">@color/onGradient</item>
+        <item name="android:textColor">@color/onGradient</item>
+
+        <!-- Font -->
+        <item name="android:textAppearance">@style/Playpen.Label</item>
+
+        <!-- Radius sudut -->
+        <item name="boxCornerRadiusTopStart">8dp</item>
+        <item name="boxCornerRadiusTopEnd">8dp</item>
+        <item name="boxCornerRadiusBottomStart">8dp</item>
+        <item name="boxCornerRadiusBottomEnd">8dp</item>
+
+        <!-- Tambahan agar border tegas -->
+        <item name="boxStrokeWidth">1dp</item>
+        <item name="boxStrokeWidthFocused">2dp</item>
+    </style>
+
+
 </resources>
