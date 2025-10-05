@@ -3,7 +3,9 @@ package com.puspa.puspamobile.ui.customview
 import android.content.Context
 import android.text.Editable
 import android.text.TextWatcher
+import android.text.method.PasswordTransformationMethod
 import android.util.AttributeSet
+import com.puspa.puspamobile.R
 
 class PasswordInputLayout @JvmOverloads constructor(
     context: Context,
@@ -11,10 +13,32 @@ class PasswordInputLayout @JvmOverloads constructor(
     defStyleAttr: Int = 0
 ) : BaseInputLayout(context, attrs, defStyleAttr) {
 
+    private var isPasswordVisible = false
+
     init {
         hint = "Password"
-        isEndIconVisible = true
-        endIconMode = END_ICON_PASSWORD_TOGGLE
+        endIconMode = END_ICON_CUSTOM
+        setEndIconDrawable(R.drawable.ic_visibility_off)
+        endIconContentDescription = "Tampilkan Password"
+
+        editText?.transformationMethod = PasswordTransformationMethod.getInstance()
+
+        setEndIconOnClickListener {
+            val editText = editText ?: return@setEndIconOnClickListener
+            isPasswordVisible = !isPasswordVisible
+
+            if (isPasswordVisible) {
+                editText.transformationMethod = null
+                setEndIconDrawable(R.drawable.ic_visibility)
+                endIconContentDescription = "Sembunyikan Password"
+            } else {
+                editText.transformationMethod = PasswordTransformationMethod.getInstance()
+                setEndIconDrawable(R.drawable.ic_visibility_off)
+                endIconContentDescription = "Tampilkan Password"
+            }
+
+            editText.setSelection(editText.text?.length ?: 0)
+        }
 
         post {
             editText?.addTextChangedListener(object : TextWatcher {

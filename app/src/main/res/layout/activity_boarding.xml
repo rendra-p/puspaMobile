@@ -5,7 +5,6 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingVertical="100dp"
     tools:context=".ui.auth.BoardingActivity"
     android:background="@drawable/background_gradient">
 
@@ -13,6 +12,7 @@
         android:id="@+id/imgPuspa"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="100dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -20,9 +20,10 @@
 
     <TextView
         android:id="@+id/tvDisplayBoarding"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="90dp"
+        android:layout_marginHorizontal="30dp"
         android:text="@string/display_onboarding"
         android:textColor="@color/onGradient"
         android:textAppearance="@style/Playpen.Display"
@@ -48,7 +49,7 @@
     <Button
         android:id="@+id/btnMasukBoarding"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="wrap_content"
         android:layout_marginBottom="15dp"
         android:layout_marginHorizontal="30dp"
         android:background="@drawable/background_button_12dp"
@@ -63,8 +64,9 @@
     <Button
         android:id="@+id/btnDaftarBoarding"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="wrap_content"
         android:layout_marginHorizontal="30dp"
+        android:layout_marginBottom="100dp"
         app:backgroundTint="@color/onSecondaryContainer"
         android:background="@drawable/background_button_12dp"
         android:text="Daftar"
@@ -73,23 +75,5 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
-
-    <com.puspa.puspamobile.ui.customview.NameEmailInputLayout
-        style="@style/PuspaTextInputLayoutStyle"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="40dp"
-        app:layout_constraintBottom_toTopOf="@+id/btnMasukBoarding"
-        tools:layout_editor_absoluteX="30dp">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/playpensans_medium"
-            android:hint="username or email"
-            android:inputType="textEmailAddress"
-            android:textColor="@color/onGradientVariant"
-            android:textColorHint="@color/onGradientVariant" />
-    </com.puspa.puspamobile.ui.customview.NameEmailInputLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
