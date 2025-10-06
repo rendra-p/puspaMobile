@@ -12,16 +12,21 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.PuspaMobile">
         <activity
-            android:name=".ui.auth.LoginActivity"
-            android:exported="false" />
-        <activity
-            android:name=".ui.auth.BoardingActivity"
+            android:name=".ui.auth.RegisterActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity
+            android:name=".ui.auth.LoginActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.auth.BoardingActivity"
+            android:exported="true">
+
         </activity>
         <activity
             android:name=".ui.error.GeneralError"
@@ -31,7 +36,7 @@
             android:exported="false" />
         <activity
             android:name=".Splash"
-            android:exported="true"></activity>
+            android:exported="true" />
         <activity
             android:name=".MainActivity"
             android:exported="true" />
