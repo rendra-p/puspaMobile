@@ -16,6 +16,8 @@ class ResetPasswordActivity : AppCompatActivity() {
         binding = ActivityResetPasswordBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-
+        binding.imgbtnBack.setOnClickListener {
+            finish()
+        }
     }
 }
