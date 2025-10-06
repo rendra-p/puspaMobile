@@ -13,7 +13,7 @@ open class BaseInputLayout @JvmOverloads constructor(
 
     init {
         setBoxBackgroundMode(BOX_BACKGROUND_OUTLINE)
-        setBoxCornerRadii(8F,8F,8F,8F)
+        setBoxCornerRadii(16F,16F,16F,16F)
         setHintTextColor(resources.getColorStateList(R.color.onGradientVariant, context.theme))
         setBoxStrokeColorStateList(resources.getColorStateList(R.color.onGradientVariant, context.theme))
         setHintTextAppearance(R.style.Playpen_Label)

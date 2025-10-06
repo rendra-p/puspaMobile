@@ -16,10 +16,12 @@ class PasswordInputLayout @JvmOverloads constructor(
     private var isPasswordVisible = false
 
     init {
-        hint = "Password"
+        hint = "enter password"
         endIconMode = END_ICON_CUSTOM
         setEndIconDrawable(R.drawable.ic_visibility_off)
         endIconContentDescription = "Tampilkan Password"
+
+        setEndIconTintList(null)
 
         editText?.transformationMethod = PasswordTransformationMethod.getInstance()
 
@@ -38,6 +40,7 @@ class PasswordInputLayout @JvmOverloads constructor(
             }
 
             editText.setSelection(editText.text?.length ?: 0)
+            setEndIconTintList(null)
         }
 
         post {

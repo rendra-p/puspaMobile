@@ -13,7 +13,7 @@ class EmailInputLayout @JvmOverloads constructor(
 ) : BaseInputLayout(context, attrs, defStyleAttr) {
 
     init {
-        hint = "Email"
+        hint = "enter email"
         post {
             editText?.addTextChangedListener(object : TextWatcher {
                 override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
