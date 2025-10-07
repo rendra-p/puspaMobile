@@ -12,6 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.PuspaMobile">
         <activity
+            android:name=".ui.auth.GmailActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.auth.ResetPasswordActivity"
             android:exported="false" />
         <activity
