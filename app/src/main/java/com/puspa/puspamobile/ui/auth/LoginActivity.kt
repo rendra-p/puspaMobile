@@ -21,8 +21,7 @@ class LoginActivity : AppCompatActivity() {
             finish()
         }
         binding.toResetPassword.setOnClickListener {
-            val intent = Intent(this, ResetPasswordActivity::class.java)
-            startActivity(intent)
+            startActivity(Intent(this@LoginActivity, ResetPasswordActivity::class.java))
         }
     }
 }

@@ -19,12 +19,10 @@ class BoardingActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.btnMasukBoarding.setOnClickListener {
-            val intent = Intent(this, LoginActivity::class.java)
-            startActivity(intent)
+            startActivity(Intent(this@BoardingActivity, LoginActivity::class.java))
         }
         binding.btnDaftarBoarding.setOnClickListener {
-            val intent = Intent(this, RegisterActivity::class.java)
-            startActivity(intent)
+            startActivity(Intent(this@BoardingActivity, RegisterActivity::class.java))
         }
     }
 }
