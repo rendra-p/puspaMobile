@@ -12,7 +12,7 @@ class NameInputLayout @JvmOverloads constructor(
 ) : BaseInputLayout(context, attrs, defStyleAttr) {
 
     init {
-        hint = "enter username"
+        hint = "Nama"
         post {
             editText?.addTextChangedListener(object : TextWatcher {
                 override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}

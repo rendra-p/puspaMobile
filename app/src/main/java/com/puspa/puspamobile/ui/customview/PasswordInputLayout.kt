@@ -16,7 +16,7 @@ class PasswordInputLayout @JvmOverloads constructor(
     private var isPasswordVisible = false
 
     init {
-        hint = "enter password"
+        hint = "Password"
         endIconMode = END_ICON_CUSTOM
         setEndIconDrawable(R.drawable.ic_visibility_off)
         endIconContentDescription = "Tampilkan Password"

@@ -14,7 +14,7 @@ class NameEmailInputLayout @JvmOverloads constructor(
 
     init {
         boxBackgroundMode = BOX_BACKGROUND_OUTLINE
-        hint = "enter username or email"
+        hint = "Nama atau Email"
         post {
             editText?.addTextChangedListener(object : TextWatcher {
                 override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
