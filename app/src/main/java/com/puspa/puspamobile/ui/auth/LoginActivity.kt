@@ -22,6 +22,7 @@ class LoginActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        enableEdgeToEdge()
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
@@ -38,6 +39,10 @@ class LoginActivity : AppCompatActivity() {
         }
         binding.toResetPassword.setOnClickListener {
             startActivity(Intent(this@LoginActivity, ResetPasswordActivity::class.java))
+        }
+        binding.toDaftar.setOnClickListener {
+            startActivity(Intent(this@LoginActivity, RegisterActivity::class.java))
+            finish()
         }
         binding.btnMasukLogin.setOnClickListener {
             val identifier = binding.nameEmailInputLayout.editText?.text.toString()
