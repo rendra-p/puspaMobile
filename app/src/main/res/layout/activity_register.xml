@@ -44,8 +44,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
 
-    <com.puspa.puspamobile.ui.customview.EmailInputLayout
-        android:id="@+id/emailInputLayout"
+    <com.puspa.puspamobile.ui.customview.NameInputLayout
+        android:id="@+id/nameInputLayout"
         style="@style/PuspaTextInputLayoutStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -61,10 +61,10 @@
             android:textAppearance="@style/Playpen.Label"
             android:textColor="@color/onGradientVariant"
             android:textColorHint="@color/onGradientVariant" />
-    </com.puspa.puspamobile.ui.customview.EmailInputLayout>
+    </com.puspa.puspamobile.ui.customview.NameInputLayout>
 
-    <com.puspa.puspamobile.ui.customview.NameInputLayout
-        android:id="@+id/nameInputLayout"
+    <com.puspa.puspamobile.ui.customview.EmailInputLayout
+        android:id="@+id/emailInputLayout"
         style="@style/PuspaTextInputLayoutStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -72,7 +72,7 @@
         android:layout_marginHorizontal="30dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/emailInputLayout">
+        app:layout_constraintTop_toBottomOf="@+id/nameInputLayout">
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
@@ -80,7 +80,7 @@
             android:textAppearance="@style/Playpen.Label"
             android:textColor="@color/onGradientVariant"
             android:textColorHint="@color/onGradientVariant" />
-    </com.puspa.puspamobile.ui.customview.NameInputLayout>
+    </com.puspa.puspamobile.ui.customview.EmailInputLayout>
 
     <com.puspa.puspamobile.ui.customview.PasswordInputLayout
         android:id="@+id/passwordInputLayout"
@@ -91,7 +91,7 @@
         android:layout_marginTop="18dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/nameInputLayout">
+        app:layout_constraintTop_toBottomOf="@+id/emailInputLayout">
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"

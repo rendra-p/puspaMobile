@@ -5,6 +5,7 @@ import android.text.Editable
 import android.text.TextWatcher
 import android.util.AttributeSet
 import android.util.Patterns
+import android.view.inputmethod.EditorInfo
 
 class NameEmailInputLayout @JvmOverloads constructor(
     context: Context,
@@ -30,6 +31,9 @@ class NameEmailInputLayout @JvmOverloads constructor(
                 }
                 override fun afterTextChanged(s: Editable?) {}
             })
+            editText?.apply {
+                imeOptions = EditorInfo.IME_ACTION_NEXT
+            }
         }
     }
 }

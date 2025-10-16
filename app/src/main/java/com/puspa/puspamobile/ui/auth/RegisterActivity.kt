@@ -1,7 +1,10 @@
 package com.puspa.puspamobile.ui.auth
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.view.inputmethod.EditorInfo
+import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -28,8 +31,25 @@ class RegisterActivity : AppCompatActivity() {
         val viewModelFactory = Injection.provideViewModelFactory()
         viewModel = ViewModelProvider(this, viewModelFactory)[RegisterViewModel::class.java]
 
+        setupImeOptions()
         setupAction()
         setupObserver()
+    }
+
+    private fun setupImeOptions() {
+        binding.nameInputLayout.editText?.nextFocusForwardId = binding.emailInputLayout.id
+        binding.emailInputLayout.editText?.nextFocusForwardId = binding.passwordInputLayout.id
+
+        binding.passwordInputLayout.editText?.setOnEditorActionListener { v, actionId, _ ->
+            if (actionId == EditorInfo.IME_ACTION_DONE) {
+                val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+                imm.hideSoftInputFromWindow(v.windowToken, 0)
+
+                binding.btnDaftarRegister.performClick()
+                return@setOnEditorActionListener true
+            }
+            return@setOnEditorActionListener false
+        }
     }
 
     private fun setupAction() {
@@ -41,15 +61,15 @@ class RegisterActivity : AppCompatActivity() {
             finish()
         }
         binding.btnDaftarRegister.setOnClickListener {
-            val email = binding.emailInputLayout.editText?.text.toString()
             val username = binding.nameInputLayout.editText?.text.toString()
+            val email = binding.emailInputLayout.editText?.text.toString()
             val password = binding.passwordInputLayout.editText?.text.toString()
 
-            if (email.isNotEmpty() && username.isNotEmpty() && password.isNotEmpty()) {
+            if ( username.isNotEmpty() && email.isNotEmpty() && password.isNotEmpty()) {
                 val registerRequest = RegisterRequest(username, email, password)
                 viewModel.register(registerRequest)
             } else {
-                Toast.makeText(this, "Email, Username, dan Password tidak boleh kosong.", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Username, Email, dan Password tidak boleh kosong.", Toast.LENGTH_SHORT).show()
             }
         }
     }

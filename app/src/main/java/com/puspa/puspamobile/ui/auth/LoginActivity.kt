@@ -1,7 +1,10 @@
 package com.puspa.puspamobile.ui.auth
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.view.inputmethod.EditorInfo
+import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -29,8 +32,24 @@ class LoginActivity : AppCompatActivity() {
         val viewModelFactory = Injection.provideViewModelFactory()
         viewModel = ViewModelProvider(this, viewModelFactory)[LoginViewModel::class.java]
 
+        setupImeOptions()
         setupAction()
         setupObserver()
+    }
+
+    private fun setupImeOptions() {
+        binding.nameEmailInputLayout.editText?.nextFocusForwardId = binding.passwordInputLayout.id
+
+        binding.passwordInputLayout.editText?.setOnEditorActionListener { v, actionId, _ ->
+            if (actionId == EditorInfo.IME_ACTION_DONE) {
+                val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+                imm.hideSoftInputFromWindow(v.windowToken, 0)
+
+                binding.btnMasukLogin.performClick()
+                return@setOnEditorActionListener true
+            }
+            return@setOnEditorActionListener false
+        }
     }
 
     private fun setupAction() {
