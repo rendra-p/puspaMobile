@@ -18,6 +18,14 @@
 
     <style name="Theme.PuspaMobile" parent="Base.Theme.PuspaMobile" />
 
+    <style name="Theme.App.Starting" parent="Theme.PuspaMobile">
+        <!-- Set latar belakang jendela ke drawable yang baru dibuat -->
+        <item name="android:windowBackground">@drawable/background_splash</item>
+
+        <!-- Arahkan ke tema aplikasi utama setelah splash screen selesai -->
+        <item name="android:statusBarColor">@android:color/transparent</item>
+    </style>
+
     <style name="PuspaTextInputLayoutStyle" parent="Widget.Material3.TextInputLayout.OutlinedBox">
         <!-- Warna garis (outline) -->
         <item name="boxStrokeColor">@color/onGradientVariant</item>
