@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/menu_home"
+        android:icon="@drawable/outline_home_24"
+        android:title="Home"
+        app:cnb_iconColor="@color/onPrimary"
+        app:cnb_textColor="@color/onPrimary"
+        app:cnb_backgroundColor="@color/primary"/>
+
+    <item
+        android:id="@+id/menu_jadwal"
+        android:icon="@drawable/outline_calendar_month_24"
+        android:title="Jadwal"
+        app:cnb_iconColor="@color/onPrimary"
+        app:cnb_textColor="@color/onPrimary"
+        app:cnb_backgroundColor="@color/primary"/>
+
+    <item
+        android:id="@+id/menu_artikel"
+        android:icon="@drawable/outline_newsmode_24"
+        android:title="Artikel"
+        app:cnb_iconColor="@color/onPrimary"
+        app:cnb_textColor="@color/onPrimary"
+        app:cnb_backgroundColor="@color/primary"/>
+
+    <item
+        android:id="@+id/menu_akun"
+        android:icon="@drawable/outline_person_24"
+        android:title="Akun"
+        app:cnb_iconColor="@color/onPrimary"
+        app:cnb_textColor="@color/onPrimary"
+        app:cnb_backgroundColor="@color/primary"/>
+
+</menu>
