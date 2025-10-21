@@ -2,12 +2,16 @@ package com.puspa.puspamobile.ui
 
 import android.animation.ObjectAnimator
 import android.content.Intent
+import android.graphics.Color
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.view.animation.LinearInterpolator
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.WindowCompat
+import androidx.core.view.WindowInsetsCompat
+import androidx.core.view.WindowInsetsControllerCompat
 import com.puspa.puspamobile.databinding.ActivitySplashBinding
 import com.puspa.puspamobile.ui.auth.BoardingActivity
 import com.puspa.puspamobile.ui.error.NetworkUtils
@@ -22,6 +26,17 @@ class Splash : AppCompatActivity() {
         enableEdgeToEdge()
         binding = ActivitySplashBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        window.apply {
+            navigationBarColor = Color.TRANSPARENT
+            statusBarColor = Color.TRANSPARENT
+            WindowCompat.setDecorFitsSystemWindows(this, false)
+            WindowInsetsControllerCompat(this, decorView).apply {
+                isAppearanceLightStatusBars = false
+                isAppearanceLightNavigationBars = false
+                hide(WindowInsetsCompat.Type.navigationBars() or WindowInsetsCompat.Type.statusBars())
+            }
+        }
 
         val progressAnimation = ObjectAnimator.ofInt(binding.progressBar, "progress", 0, 100)
         progressAnimation.duration = SPLASH_TIME_OUT
