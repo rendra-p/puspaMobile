@@ -3,6 +3,7 @@ package com.puspa.puspamobile.ui.auth
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import android.view.inputmethod.EditorInfo
 import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
@@ -65,18 +66,25 @@ class RegisterActivity : AppCompatActivity() {
             val email = binding.emailInputLayout.editText?.text.toString()
             val password = binding.passwordInputLayout.editText?.text.toString()
 
-            if ( username.isNotEmpty() && email.isNotEmpty() && password.isNotEmpty()) {
+            val isUsernameValid = binding.nameInputLayout.isValid()
+            val isEmailValid = binding.emailInputLayout.isValid()
+            val isPasswordValid = binding.passwordInputLayout.isValid()
+
+            if (isUsernameValid && isEmailValid && isPasswordValid) {
                 val registerRequest = RegisterRequest(username, email, password)
                 viewModel.register(registerRequest)
-            } else {
-                Toast.makeText(this, "Username, Email, dan Password tidak boleh kosong.", Toast.LENGTH_SHORT).show()
             }
         }
     }
 
     private fun setupObserver() {
         viewModel.isLoading.observe(this) { isLoading ->
-            showLoading(isLoading)
+            binding.btnDaftarRegister.isEnabled = !isLoading
+            if (isLoading) {
+                binding.progressBar.visibility = View.VISIBLE
+            } else {
+                binding.progressBar.visibility = View.GONE
+            }
         }
 
         viewModel.registerResult.observe(this) { result ->
@@ -117,10 +125,5 @@ class RegisterActivity : AppCompatActivity() {
                 ).show()
             }
         }
-    }
-
-    private fun showLoading(isLoading: Boolean) {
-        binding.btnDaftarRegister.isEnabled = !isLoading
-        binding.btnDaftarRegister.alpha = if (isLoading) 0.6f else 1f
     }
 }

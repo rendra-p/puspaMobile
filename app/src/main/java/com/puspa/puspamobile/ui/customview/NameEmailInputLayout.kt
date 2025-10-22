@@ -20,19 +20,43 @@ class NameEmailInputLayout @JvmOverloads constructor(
             editText?.addTextChangedListener(object : TextWatcher {
                 override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
                 override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                    val input = s?.toString()?.trim().orEmpty()
-                    if (input.isEmpty()) {
-                        error = "Field tidak boleh kosong"
-                    } else if (!Patterns.EMAIL_ADDRESS.matcher(input).matches() && input.contains("@")) {
-                        error = "Format email tidak valid"
-                    } else {
-                        error = null
-                    }
+                    validateInput()
                 }
                 override fun afterTextChanged(s: Editable?) {}
             })
-            editText?.apply {
-                imeOptions = EditorInfo.IME_ACTION_NEXT
+            editText?.imeOptions = EditorInfo.IME_ACTION_NEXT
+        }
+    }
+
+    fun isValid(): Boolean {
+        return validateInput()
+    }
+
+    private fun validateInput(): Boolean {
+        val input = editText?.text?.toString()?.trim().orEmpty()
+        val isPotentiallyEmail = input.contains("@")
+        val isEmail = Patterns.EMAIL_ADDRESS.matcher(input).matches()
+
+        return when {
+            input.isEmpty() -> {
+                isErrorEnabled = true
+                error = "Field tidak boleh kosong"
+                false
+            }
+            !isEmail && input.length < 3 -> {
+                isErrorEnabled = true
+                error = "Input minimal 3 karakter"
+                false
+            }
+            isPotentiallyEmail && !isEmail -> {
+                isErrorEnabled = true
+                error = "Format email tidak valid"
+                false
+            }
+            else -> {
+                isErrorEnabled = false
+                error = null
+                true
             }
         }
     }

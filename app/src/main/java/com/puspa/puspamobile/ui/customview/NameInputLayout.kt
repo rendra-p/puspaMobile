@@ -18,17 +18,35 @@ class NameInputLayout @JvmOverloads constructor(
             editText?.addTextChangedListener(object : TextWatcher {
                 override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
                 override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                    val name = s?.toString()?.trim().orEmpty()
-                    if (name.isEmpty()) {
-                        error = "Nama tidak boleh kosong"
-                    } else {
-                        error = null
-                    }
+                    validateInput()
                 }
                 override fun afterTextChanged(s: Editable?) {}
             })
-            editText?.apply {
-                imeOptions = EditorInfo.IME_ACTION_NEXT
+            editText?.imeOptions = EditorInfo.IME_ACTION_NEXT
+        }
+    }
+
+    fun isValid(): Boolean {
+        return validateInput()
+    }
+
+    private fun validateInput(): Boolean {
+        val name = editText?.text?.toString().orEmpty()
+        return when {
+            name.isEmpty() -> {
+                isErrorEnabled = true
+                error = "Nama tidak boleh kosong"
+                false
+            }
+            name.length < 3 -> {
+                isErrorEnabled = true
+                error = "Nama minimal 3 karakter"
+                false
+            }
+            else -> {
+                isErrorEnabled = false
+                error = null
+                true
             }
         }
     }

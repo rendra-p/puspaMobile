@@ -19,17 +19,37 @@ class EmailInputLayout @JvmOverloads constructor(
             editText?.addTextChangedListener(object : TextWatcher {
                 override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
                 override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                    val email = s?.toString()?.trim().orEmpty()
-                    if (email.isNotEmpty() && !Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
-                        error = "Format email tidak valid"
-                    } else {
-                        error = null
-                    }
+                    validateInput()
                 }
                 override fun afterTextChanged(s: Editable?) {}
             })
-            editText?.apply {
-                imeOptions = EditorInfo.IME_ACTION_NEXT
+            editText?.imeOptions = EditorInfo.IME_ACTION_NEXT
+        }
+    }
+
+    fun isValid(): Boolean {
+        return validateInput()
+    }
+
+    private fun validateInput(): Boolean {
+        val email = editText?.text?.toString().orEmpty()
+        val isEmail = Patterns.EMAIL_ADDRESS.matcher(email).matches()
+
+        return when {
+            email.isEmpty() -> {
+                isErrorEnabled = true
+                error = "Email tidak boleh kosong"
+                false
+            }
+            !isEmail -> {
+                isErrorEnabled = true
+                error = "Format email tidak valid"
+                false
+            }
+            else -> {
+                isErrorEnabled = false
+                error = null
+                true
             }
         }
     }

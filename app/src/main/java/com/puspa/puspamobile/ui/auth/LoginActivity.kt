@@ -3,6 +3,7 @@ package com.puspa.puspamobile.ui.auth
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import android.view.inputmethod.EditorInfo
 import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
@@ -67,18 +68,24 @@ class LoginActivity : AppCompatActivity() {
             val identifier = binding.nameEmailInputLayout.editText?.text.toString()
             val password = binding.passwordInputLayout.editText?.text.toString()
 
-            if (identifier.isNotEmpty() && password.isNotEmpty()) {
+            val isIdentifierValid = binding.nameEmailInputLayout.isValid()
+            val isPasswordValid = binding.passwordInputLayout.isValid()
+
+            if (isIdentifierValid && isPasswordValid) {
                 val loginRequest = LoginRequest(identifier, password)
                 viewModel.login(loginRequest)
-            } else {
-                Toast.makeText(this, "Email/Username dan Password tidak boleh kosong.", Toast.LENGTH_SHORT).show()
             }
         }
     }
 
     private fun setupObserver() {
         viewModel.isLoading.observe(this) { isLoading ->
-            showLoading(isLoading)
+            binding.btnMasukLogin.isEnabled = !isLoading
+            if (isLoading) {
+                binding.progressBar.visibility = View.VISIBLE
+            } else {
+                binding.progressBar.visibility = View.GONE
+            }
         }
 
         viewModel.loginResult.observe(this) { result ->
@@ -97,9 +104,5 @@ class LoginActivity : AppCompatActivity() {
                 Toast.makeText(this, "Terjadi kesalahan: ${exception.message}", Toast.LENGTH_LONG).show()
             }
         }
-    }
-
-    private fun showLoading(isLoading: Boolean) {
-        binding.btnMasukLogin.isEnabled = !isLoading
     }
 }
