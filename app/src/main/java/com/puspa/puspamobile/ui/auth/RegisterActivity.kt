@@ -29,7 +29,7 @@ class RegisterActivity : AppCompatActivity() {
         binding = ActivityRegisterBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val viewModelFactory = Injection.provideViewModelFactory()
+        val viewModelFactory = Injection.provideViewModelFactory(this)
         viewModel = ViewModelProvider(this, viewModelFactory)[RegisterViewModel::class.java]
 
         setupImeOptions()
@@ -96,22 +96,14 @@ class RegisterActivity : AppCompatActivity() {
                         Toast.LENGTH_SHORT
                     ).show()
 
-                    // Arahkan ke login setelah pendaftaran sukses
                     startActivity(Intent(this, LoginActivity::class.java).apply {
                         flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
                     })
                     finish()
                 } else {
-                    // Tampilkan pesan error validasi dari API
-                    val emailError = response.errors?.email?.joinToString("\n")
-                    val usernameError = response.errors?.username?.joinToString("\n")
-
-                    binding.emailInputLayout.error = emailError
-                    binding.nameInputLayout.error = usernameError
-
                     Toast.makeText(
                         this,
-                        response.message ?: "Registrasi gagal. Periksa input Anda.",
+                        response.message ?: "Registrasi gagal. Coba lagi nanti.",
                         Toast.LENGTH_LONG
                     ).show()
                 }

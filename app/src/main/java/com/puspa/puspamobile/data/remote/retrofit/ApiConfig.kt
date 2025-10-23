@@ -1,17 +1,32 @@
 package com.puspa.puspamobile.data.remote.retrofit
 
+import android.util.Log
 import com.puspa.puspamobile.BuildConfig
+import com.puspa.puspamobile.data.local.TokenDataStore
+import kotlinx.coroutines.flow.first
+import kotlinx.coroutines.runBlocking
+import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 object ApiConfig {
-    fun getApiService(): ApiService {
+    fun getApiService(tokenDataStore: TokenDataStore): ApiService {
         val loggingInterceptor = HttpLoggingInterceptor()
             .setLevel(HttpLoggingInterceptor.Level.BODY)
+        val authInterceptor = Interceptor { chain ->
+            val originalRequest = chain.request()
+            val token = runBlocking { tokenDataStore.token.first() }
+            Log.d("AuthInterceptor", "Token: $token")
+            val authRequest = originalRequest.newBuilder()
+                .addHeader("Authorization", "Bearer $token")
+                .build()
+            chain.proceed(authRequest)
+        }
         val client: OkHttpClient = OkHttpClient.Builder()
             .addInterceptor(loggingInterceptor)
+            .addInterceptor(authInterceptor)
             .build()
         val retrofit = Retrofit.Builder()
             .baseUrl(BuildConfig.API_URL)

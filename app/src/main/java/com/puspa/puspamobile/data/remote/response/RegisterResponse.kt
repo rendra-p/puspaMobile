@@ -14,10 +14,7 @@ data class RegisterResponse(
     val success: Boolean? = null,
 
     @field:SerializedName("message")
-    val message: String? = null,
-
-    @field:SerializedName("errors")
-    val errors: Errors? = null
+    val message: String? = null
 ) : Parcelable
 
 @Parcelize
@@ -25,16 +22,6 @@ data class RegisterData(
 
     @field:SerializedName("user_id")
     val userId: Int? = null
-) : Parcelable
-
-@Parcelize
-data class Errors(
-
-    @field:SerializedName("username")
-    val username: List<String>? = null,
-
-    @field:SerializedName("email")
-    val email: List<String>? = null
 ) : Parcelable
 
 data class RegisterRequest(
