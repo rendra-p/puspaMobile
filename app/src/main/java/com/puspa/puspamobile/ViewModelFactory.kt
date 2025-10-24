@@ -6,6 +6,7 @@ import com.puspa.puspamobile.data.DataRepository
 import com.puspa.puspamobile.data.local.TokenDataStore
 import com.puspa.puspamobile.ui.auth.LoginViewModel
 import com.puspa.puspamobile.ui.auth.RegisterViewModel
+import com.puspa.puspamobile.ui.mainmenu.AccountViewModel
 
 @Suppress("UNCHECKED_CAST")
 class ViewModelFactory(
@@ -19,6 +20,9 @@ class ViewModelFactory(
             }
             modelClass.isAssignableFrom(RegisterViewModel::class.java) -> {
                 RegisterViewModel(repository) as T
+            }
+            modelClass.isAssignableFrom(AccountViewModel::class.java) -> {
+                AccountViewModel(repository) as T
             }
             else -> throw IllegalArgumentException("Unknown ViewModel class")
         }
