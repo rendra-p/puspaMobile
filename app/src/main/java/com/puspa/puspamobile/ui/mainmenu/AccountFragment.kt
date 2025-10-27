@@ -37,6 +37,18 @@ class AccountFragment : Fragment() {
         val factory = Injection.provideViewModelFactory(requireContext())
         viewModel = ViewModelProvider(this, factory)[AccountViewModel::class.java]
 
+        viewModel.getProfile()
+
+        viewModel.profileResult.observe(viewLifecycleOwner) { result ->
+            val profileResult = result.getOrNull()
+            profileResult?.let { response ->
+                response.data?.let { profileData ->
+                    binding.tvName.text = profileData.guardianName
+                    binding.tvNumber.text = profileData.guardianPhone
+                }
+            }
+        }
+
         binding.btnLogout.setOnClickListener {
             viewModel.logoutUser()
         }

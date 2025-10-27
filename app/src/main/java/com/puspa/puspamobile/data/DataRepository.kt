@@ -4,6 +4,7 @@ import android.content.Context
 import com.puspa.puspamobile.data.remote.response.LoginRequest
 import com.puspa.puspamobile.data.remote.response.LoginResponse
 import com.puspa.puspamobile.data.remote.response.LogoutResponse
+import com.puspa.puspamobile.data.remote.response.ProfileResponse
 import com.puspa.puspamobile.data.remote.response.RegisterRequest
 import com.puspa.puspamobile.data.remote.response.RegisterResponse
 import com.puspa.puspamobile.data.remote.response.TokenResponse
@@ -38,6 +39,14 @@ class DataRepository(private val apiService: ApiService) {
     suspend fun registerUser (registerRequest: RegisterRequest): Result<RegisterResponse> {
         return try {
             val response = apiService.register(registerRequest)
+            Result.success(response)
+        } catch (e: Exception) {
+            Result.failure(e)
+        }
+    }
+    suspend fun getProfile (): Result<ProfileResponse> {
+        return try {
+            val response = apiService.getProfile()
             Result.success(response)
         } catch (e: Exception) {
             Result.failure(e)
