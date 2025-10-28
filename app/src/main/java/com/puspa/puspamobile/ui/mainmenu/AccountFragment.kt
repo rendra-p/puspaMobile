@@ -85,15 +85,15 @@ class AccountFragment : Fragment() {
             }
 
             result.onFailure { e ->
-                Toast.makeText(requireContext(), "Logout gagal: ${e.message}", Toast.LENGTH_SHORT).show()
+                Toast.makeText(requireContext(), e.message, Toast.LENGTH_SHORT).show()
             }
         }
         viewModel.changePasswordResult.observe(viewLifecycleOwner) { result ->
             result.onSuccess { response ->
-                Toast.makeText(requireContext(), response.message ?: "Password berhasil diubah!", Toast.LENGTH_SHORT).show()
+                Toast.makeText(requireContext(), "Password berhasil diubah!", Toast.LENGTH_SHORT).show()
             }
             result.onFailure { e ->
-                Toast.makeText(requireContext(), "Gagal mengubah password: ${e.message}", Toast.LENGTH_SHORT).show()
+                Toast.makeText(requireContext(), e.message, Toast.LENGTH_SHORT).show()
             }
         }
     }

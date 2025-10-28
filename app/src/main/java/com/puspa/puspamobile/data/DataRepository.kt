@@ -1,23 +1,25 @@
 package com.puspa.puspamobile.data
 
 import android.content.Context
+import com.puspa.puspamobile.data.remote.ApiErrorHandler
 import com.puspa.puspamobile.data.remote.response.ChangePasswordRequest
-import com.puspa.puspamobile.data.remote.response.ChangePasswordResponse
 import com.puspa.puspamobile.data.remote.response.LoginRequest
 import com.puspa.puspamobile.data.remote.response.LoginResponse
-import com.puspa.puspamobile.data.remote.response.LogoutResponse
 import com.puspa.puspamobile.data.remote.response.ProfileResponse
 import com.puspa.puspamobile.data.remote.response.RegisterRequest
 import com.puspa.puspamobile.data.remote.response.RegisterResponse
-import com.puspa.puspamobile.data.remote.response.TokenResponse
 import com.puspa.puspamobile.data.remote.retrofit.ApiConfig
 import com.puspa.puspamobile.data.remote.retrofit.ApiService
 
 class DataRepository(private val apiService: ApiService) {
-    suspend fun validateToken (): Result<TokenResponse> {
+    suspend fun validateToken (): Result<Void?> {
         return try {
             val response = apiService.validateToken()
-            Result.success(response)
+            if (response.isSuccessful) {
+                Result.success(response.body())
+            } else {
+                Result.failure(Exception(ApiErrorHandler.getErrorMessage(response)))
+            }
         } catch (e: Exception) {
             Result.failure(e)
         }
@@ -30,10 +32,15 @@ class DataRepository(private val apiService: ApiService) {
             Result.failure(e)
         }
     }
-    suspend fun logoutUser (): Result<LogoutResponse> {
+    suspend fun logoutUser (): Result<Void?> {
         return try {
             val response = apiService.logout()
-            Result.success(response)
+            if (response.isSuccessful) {
+                Result.success(response.body())
+            } else {
+                val errorMessage = ApiErrorHandler.getErrorMessage(response)
+                Result.failure(Exception(errorMessage))
+            }
         } catch (e: Exception) {
             Result.failure(e)
         }
@@ -54,10 +61,15 @@ class DataRepository(private val apiService: ApiService) {
             Result.failure(e)
         }
     }
-    suspend fun changePassword(changePasswordRequest: ChangePasswordRequest): Result<ChangePasswordResponse> {
+    suspend fun changePassword(changePasswordRequest: ChangePasswordRequest): Result<Void?> {
         return try {
             val response = apiService.changePassword(changePasswordRequest)
-            Result.success(response)
+            if (response.isSuccessful) {
+                Result.success(response.body())
+            } else {
+                val errorMessage = ApiErrorHandler.getErrorMessage(response)
+                Result.failure(Exception(errorMessage))
+            }
         } catch (e: Exception) {
             Result.failure(e)
         }

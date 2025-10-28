@@ -1,15 +1,15 @@
 package com.puspa.puspamobile.ui.mainmenu
 
+import android.widget.Toast
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.puspa.puspamobile.data.DataRepository
 import com.puspa.puspamobile.data.remote.response.ChangePasswordRequest
-import com.puspa.puspamobile.data.remote.response.ChangePasswordResponse
-import com.puspa.puspamobile.data.remote.response.LogoutResponse
 import com.puspa.puspamobile.data.remote.response.ProfileResponse
 import kotlinx.coroutines.launch
+import org.json.JSONObject
 
 class AccountViewModel(
     private val repository: DataRepository
@@ -17,11 +17,11 @@ class AccountViewModel(
     private val _profileResult = MutableLiveData<Result<ProfileResponse>>()
     val profileResult: LiveData<Result<ProfileResponse>> = _profileResult
 
-    private val _changePasswordResult = MutableLiveData<Result<ChangePasswordResponse>>()
-    val changePasswordResult: LiveData<Result<ChangePasswordResponse>> = _changePasswordResult
+    private val _changePasswordResult = MutableLiveData<Result<Void?>>()
+    val changePasswordResult: LiveData<Result<Void?>> = _changePasswordResult
 
-    private val _logoutResult = MutableLiveData<Result<LogoutResponse>>()
-    val logoutResult: LiveData<Result<LogoutResponse>> = _logoutResult
+    private val _logoutResult = MutableLiveData<Result<Void?>>()
+    val logoutResult: LiveData<Result<Void?>> = _logoutResult
 
     fun getProfile() {
         viewModelScope.launch {
