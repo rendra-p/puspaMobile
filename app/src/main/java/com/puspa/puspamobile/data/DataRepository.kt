@@ -1,6 +1,8 @@
 package com.puspa.puspamobile.data
 
 import android.content.Context
+import com.puspa.puspamobile.data.remote.response.ChangePasswordRequest
+import com.puspa.puspamobile.data.remote.response.ChangePasswordResponse
 import com.puspa.puspamobile.data.remote.response.LoginRequest
 import com.puspa.puspamobile.data.remote.response.LoginResponse
 import com.puspa.puspamobile.data.remote.response.LogoutResponse
@@ -47,6 +49,14 @@ class DataRepository(private val apiService: ApiService) {
     suspend fun getProfile (): Result<ProfileResponse> {
         return try {
             val response = apiService.getProfile()
+            Result.success(response)
+        } catch (e: Exception) {
+            Result.failure(e)
+        }
+    }
+    suspend fun changePassword(changePasswordRequest: ChangePasswordRequest): Result<ChangePasswordResponse> {
+        return try {
+            val response = apiService.changePassword(changePasswordRequest)
             Result.success(response)
         } catch (e: Exception) {
             Result.failure(e)

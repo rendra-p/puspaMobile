@@ -1,5 +1,7 @@
 package com.puspa.puspamobile.data.remote.retrofit
 
+import com.puspa.puspamobile.data.remote.response.ChangePasswordRequest
+import com.puspa.puspamobile.data.remote.response.ChangePasswordResponse
 import com.puspa.puspamobile.data.remote.response.LoginRequest
 import com.puspa.puspamobile.data.remote.response.LoginResponse
 import com.puspa.puspamobile.data.remote.response.LogoutResponse
@@ -27,4 +29,8 @@ interface ApiService {
     ): RegisterResponse
     @GET("my/profile")
     suspend fun getProfile(): ProfileResponse
+    @POST("my/update-password")
+    suspend fun changePassword(
+        @Body changePasswordRequest: ChangePasswordRequest
+    ): ChangePasswordResponse
 }

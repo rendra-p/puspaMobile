@@ -5,6 +5,8 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.puspa.puspamobile.data.DataRepository
+import com.puspa.puspamobile.data.remote.response.ChangePasswordRequest
+import com.puspa.puspamobile.data.remote.response.ChangePasswordResponse
 import com.puspa.puspamobile.data.remote.response.LogoutResponse
 import com.puspa.puspamobile.data.remote.response.ProfileResponse
 import kotlinx.coroutines.launch
@@ -14,6 +16,9 @@ class AccountViewModel(
 ) : ViewModel() {
     private val _profileResult = MutableLiveData<Result<ProfileResponse>>()
     val profileResult: LiveData<Result<ProfileResponse>> = _profileResult
+
+    private val _changePasswordResult = MutableLiveData<Result<ChangePasswordResponse>>()
+    val changePasswordResult: LiveData<Result<ChangePasswordResponse>> = _changePasswordResult
 
     private val _logoutResult = MutableLiveData<Result<LogoutResponse>>()
     val logoutResult: LiveData<Result<LogoutResponse>> = _logoutResult
@@ -25,6 +30,17 @@ class AccountViewModel(
                 _profileResult.value = result
             } catch (e: Exception) {
                 _profileResult.value = Result.failure(e)
+            }
+        }
+    }
+
+    fun changePassword(changePasswordRequest: ChangePasswordRequest) {
+        viewModelScope.launch {
+            try {
+                val result = repository.changePassword(changePasswordRequest)
+                _changePasswordResult.value = result
+            } catch (e: Exception) {
+                _changePasswordResult.value = Result.failure(e)
             }
         }
     }
