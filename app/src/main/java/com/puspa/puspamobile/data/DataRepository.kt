@@ -1,6 +1,5 @@
 package com.puspa.puspamobile.data
 
-import android.content.Context
 import com.puspa.puspamobile.data.remote.ApiErrorHandler
 import com.puspa.puspamobile.data.remote.response.ChangePasswordRequest
 import com.puspa.puspamobile.data.remote.response.LoginRequest
@@ -8,7 +7,6 @@ import com.puspa.puspamobile.data.remote.response.LoginResponse
 import com.puspa.puspamobile.data.remote.response.ProfileResponse
 import com.puspa.puspamobile.data.remote.response.RegisterRequest
 import com.puspa.puspamobile.data.remote.response.RegisterResponse
-import com.puspa.puspamobile.data.remote.retrofit.ApiConfig
 import com.puspa.puspamobile.data.remote.retrofit.ApiService
 
 class DataRepository(private val apiService: ApiService) {
@@ -18,7 +16,8 @@ class DataRepository(private val apiService: ApiService) {
             if (response.isSuccessful) {
                 Result.success(response.body())
             } else {
-                Result.failure(Exception(ApiErrorHandler.getErrorMessage(response)))
+                val errorMessage = ApiErrorHandler.getErrorMessage(response)
+                Result.failure(Exception(errorMessage))
             }
         } catch (e: Exception) {
             Result.failure(e)
@@ -27,7 +26,12 @@ class DataRepository(private val apiService: ApiService) {
     suspend fun loginUser (loginRequest: LoginRequest): Result<LoginResponse> {
         return try {
             val response = apiService.login(loginRequest)
-            Result.success(response)
+            if (response.isSuccessful) {
+                Result.success(response.body()!!)
+            } else {
+                val errorMessage = ApiErrorHandler.getErrorMessage(response)
+                Result.failure(Exception(errorMessage))
+            }
         } catch (e: Exception) {
             Result.failure(e)
         }
@@ -48,7 +52,12 @@ class DataRepository(private val apiService: ApiService) {
     suspend fun registerUser (registerRequest: RegisterRequest): Result<RegisterResponse> {
         return try {
             val response = apiService.register(registerRequest)
-            Result.success(response)
+            if (response.isSuccessful) {
+                Result.success(response.body()!!)
+            } else {
+                val errorMessage = ApiErrorHandler.getErrorMessage(response)
+                Result.failure(Exception(errorMessage))
+            }
         } catch (e: Exception) {
             Result.failure(e)
         }
@@ -56,7 +65,12 @@ class DataRepository(private val apiService: ApiService) {
     suspend fun getProfile (): Result<ProfileResponse> {
         return try {
             val response = apiService.getProfile()
-            Result.success(response)
+            if (response.isSuccessful) {
+                Result.success(response.body()!!)
+            } else {
+                val errorMessage = ApiErrorHandler.getErrorMessage(response)
+                Result.failure(Exception(errorMessage))
+            }
         } catch (e: Exception) {
             Result.failure(e)
         }

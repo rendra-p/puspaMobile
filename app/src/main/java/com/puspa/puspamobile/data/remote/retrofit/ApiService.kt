@@ -17,15 +17,15 @@ interface ApiService {
     @POST("auth/login")
     suspend fun login(
         @Body loginRequest: LoginRequest
-    ): LoginResponse
+    ): Response<LoginResponse>
     @POST("auth/logout")
     suspend fun logout(): Response<Void>
     @POST("auth/register")
     suspend fun register(
         @Body registerRequest: RegisterRequest
-    ): RegisterResponse
+    ): Response<RegisterResponse>
     @GET("my/profile")
-    suspend fun getProfile(): ProfileResponse
+    suspend fun getProfile(): Response<ProfileResponse>
     @POST("my/update-password")
     suspend fun changePassword(
         @Body changePasswordRequest: ChangePasswordRequest
