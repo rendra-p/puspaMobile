@@ -69,7 +69,7 @@ dependencies {
     //datastore
     implementation (libs.androidx.datastore.preferences)
 
-    // Lifecycle
+    //lifecycle
     implementation(libs.androidx.lifecycle.viewmodel.ktx)
     implementation(libs.androidx.lifecycle.livedata.ktx)
 

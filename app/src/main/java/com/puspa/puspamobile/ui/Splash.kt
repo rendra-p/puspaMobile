@@ -26,6 +26,7 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import com.puspa.puspamobile.data.DataRepository
 import com.puspa.puspamobile.data.remote.retrofit.ApiConfig
+import com.puspa.puspamobile.ui.error.GeneralError
 import kotlinx.coroutines.delay
 
 class Splash : AppCompatActivity() {
@@ -35,7 +36,6 @@ class Splash : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
         binding = ActivitySplashBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
@@ -61,7 +61,17 @@ class Splash : AppCompatActivity() {
                 val result = withContext(Dispatchers.IO) {
                     repository.validateToken()
                 }
-                if (result.isSuccess) MainActivity::class.java else BoardingActivity::class.java
+                if (result.isSuccess) {
+                    MainActivity::class.java
+                } else {
+                    val errorMsg = result.exceptionOrNull()?.message ?: "Terjadi kesalahan"
+                    if (errorMsg.contains("Server tidak dapat dijangkau", ignoreCase = true)) {
+                        goTo(GeneralError::class.java)
+                        return@launch
+                    } else {
+                        BoardingActivity::class.java
+                    }
+                }
             }
 
             val elapsed = System.currentTimeMillis() - splashStartTime
@@ -87,10 +97,9 @@ class Splash : AppCompatActivity() {
             navigationBarColor = Color.TRANSPARENT
             statusBarColor = Color.TRANSPARENT
             WindowCompat.setDecorFitsSystemWindows(this, false)
-            WindowInsetsControllerCompat(this, decorView).apply {
-                isAppearanceLightStatusBars = false
-                isAppearanceLightNavigationBars = false
-                hide(WindowInsetsCompat.Type.navigationBars() or WindowInsetsCompat.Type.statusBars())
+            WindowInsetsControllerCompat(window, window.decorView).apply {
+                isAppearanceLightStatusBars = true
+                isAppearanceLightNavigationBars = true
             }
         }
     }

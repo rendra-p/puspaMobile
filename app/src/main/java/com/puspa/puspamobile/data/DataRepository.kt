@@ -20,7 +20,12 @@ class DataRepository(private val apiService: ApiService) {
                 Result.failure(Exception(errorMessage))
             }
         } catch (e: Exception) {
-            Result.failure(e)
+            when (e) {
+                is java.net.UnknownHostException -> { Result.failure(Exception("Server tidak dapat dijangkau.")) }
+                is java.net.SocketTimeoutException -> { Result.failure(Exception("Koneksi timeout.")) }
+                is retrofit2.HttpException -> { Result.failure(Exception("Kesalahan server (${e.code()})")) }
+                else -> { Result.failure(Exception("Terjadi kesalahan: ${e.localizedMessage}")) }
+            }
         }
     }
     suspend fun loginUser (loginRequest: LoginRequest): Result<LoginResponse> {
