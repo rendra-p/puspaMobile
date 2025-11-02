@@ -23,6 +23,7 @@ import com.puspa.puspamobile.data.remote.response.ChangePasswordRequest
 import com.puspa.puspamobile.databinding.FragmentAccountBinding
 import com.puspa.puspamobile.ui.auth.BoardingActivity
 import com.puspa.puspamobile.ui.auth.LoginActivity
+import com.puspa.puspamobile.ui.submenu.EditProfileActivity
 
 class AccountFragment : Fragment() {
 
@@ -66,6 +67,9 @@ class AccountFragment : Fragment() {
     }
 
     private fun setAction() {
+        binding.btnUpdateProfile.setOnClickListener {
+            startActivity(Intent(requireContext(), EditProfileActivity::class.java))
+        }
         binding.btnChangePassword.setOnClickListener {
             showChangePasswordDialog()
         }

@@ -6,10 +6,12 @@ import com.puspa.puspamobile.data.remote.response.LoginResponse
 import com.puspa.puspamobile.data.remote.response.ProfileResponse
 import com.puspa.puspamobile.data.remote.response.RegisterRequest
 import com.puspa.puspamobile.data.remote.response.RegisterResponse
+import com.puspa.puspamobile.data.remote.response.UpdateProfileRequest
 import retrofit2.Response
 import retrofit2.http.Body
 import retrofit2.http.GET
 import retrofit2.http.POST
+import retrofit2.http.Path
 
 interface ApiService {
     @GET("auth/protected")
@@ -31,5 +33,8 @@ interface ApiService {
         @Body changePasswordRequest: ChangePasswordRequest
     ): Response<Void>
     @POST("my/profile/{guardian_id}")
-    suspend fun updateProfile(): Response<Void>
+    suspend fun updateProfile(
+        @Path("guardian_id") guardianId: String,
+        @Body updateProfileRequest: UpdateProfileRequest
+    ): Response<Void>
 }

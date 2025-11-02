@@ -7,6 +7,7 @@ import com.puspa.puspamobile.data.remote.response.LoginResponse
 import com.puspa.puspamobile.data.remote.response.ProfileResponse
 import com.puspa.puspamobile.data.remote.response.RegisterRequest
 import com.puspa.puspamobile.data.remote.response.RegisterResponse
+import com.puspa.puspamobile.data.remote.response.UpdateProfileRequest
 import com.puspa.puspamobile.data.remote.retrofit.ApiService
 
 class DataRepository(private val apiService: ApiService) {
@@ -83,6 +84,19 @@ class DataRepository(private val apiService: ApiService) {
     suspend fun changePassword(changePasswordRequest: ChangePasswordRequest): Result<Void?> {
         return try {
             val response = apiService.changePassword(changePasswordRequest)
+            if (response.isSuccessful) {
+                Result.success(response.body())
+            } else {
+                val errorMessage = ApiErrorHandler.getErrorMessage(response)
+                Result.failure(Exception(errorMessage))
+            }
+        } catch (e: Exception) {
+            Result.failure(e)
+        }
+    }
+    suspend fun updateProfile(guardianId: String, updateProfileRequest: UpdateProfileRequest): Result<Void?> {
+        return try {
+            val response = apiService.updateProfile(guardianId, updateProfileRequest)
             if (response.isSuccessful) {
                 Result.success(response.body())
             } else {
