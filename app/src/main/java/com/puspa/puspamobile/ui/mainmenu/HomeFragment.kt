@@ -13,6 +13,7 @@ import com.puspa.puspamobile.R
 import com.puspa.puspamobile.data.Injection
 import com.puspa.puspamobile.databinding.FragmentHomeBinding
 import com.puspa.puspamobile.ui.auth.BoardingActivity
+import com.puspa.puspamobile.ui.submenu.ChildActivity
 
 class HomeFragment : Fragment() {
     private var _binding: FragmentHomeBinding? = null
@@ -42,6 +43,9 @@ class HomeFragment : Fragment() {
     private fun setAction() {
         binding.btnLogout.setOnClickListener {
             viewModel.logoutUser()
+        }
+        binding.btnChild.setOnClickListener {
+            startActivity(Intent(requireContext(), ChildActivity::class.java))
         }
     }
 

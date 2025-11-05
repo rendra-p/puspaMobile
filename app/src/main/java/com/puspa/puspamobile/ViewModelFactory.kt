@@ -8,6 +8,7 @@ import com.puspa.puspamobile.ui.auth.LoginViewModel
 import com.puspa.puspamobile.ui.auth.RegisterViewModel
 import com.puspa.puspamobile.ui.mainmenu.AccountViewModel
 import com.puspa.puspamobile.ui.mainmenu.HomeViewModel
+import com.puspa.puspamobile.ui.submenu.ChildViewModel
 import com.puspa.puspamobile.ui.submenu.EditProfileViewModel
 
 @Suppress("UNCHECKED_CAST")
@@ -28,6 +29,9 @@ class ViewModelFactory(
             }
             modelClass.isAssignableFrom(HomeViewModel::class.java) -> {
                 HomeViewModel(repository) as T
+            }
+            modelClass.isAssignableFrom(ChildViewModel::class.java) -> {
+                ChildViewModel(repository) as T
             }
             modelClass.isAssignableFrom(EditProfileViewModel::class.java) -> {
                 EditProfileViewModel(repository) as T
