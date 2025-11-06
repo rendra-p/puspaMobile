@@ -1,15 +1,11 @@
-package com.puspa.puspamobile.ui.submenu
+package com.puspa.puspamobile.ui.submenu.editprofile
 
 import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
-import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import androidx.lifecycle.ViewModelProvider
 import com.google.android.material.datepicker.MaterialDatePicker
-import com.puspa.puspamobile.R
 import com.puspa.puspamobile.data.Injection
 import com.puspa.puspamobile.data.remote.response.UpdateProfileRequest
 import com.puspa.puspamobile.databinding.ActivityEditProfileBinding

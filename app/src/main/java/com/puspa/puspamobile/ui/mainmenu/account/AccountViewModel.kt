@@ -1,6 +1,5 @@
-package com.puspa.puspamobile.ui.mainmenu
+package com.puspa.puspamobile.ui.mainmenu.account
 
-import android.widget.Toast
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -9,7 +8,6 @@ import com.puspa.puspamobile.data.DataRepository
 import com.puspa.puspamobile.data.remote.response.ChangePasswordRequest
 import com.puspa.puspamobile.data.remote.response.ProfileResponse
 import kotlinx.coroutines.launch
-import org.json.JSONObject
 
 class AccountViewModel(
     private val repository: DataRepository

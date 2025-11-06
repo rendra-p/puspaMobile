@@ -1,7 +1,6 @@
-package com.puspa.puspamobile.ui.mainmenu
+package com.puspa.puspamobile.ui.mainmenu.account
 
 import android.content.Intent
-import androidx.fragment.app.viewModels
 import android.os.Bundle
 import android.text.Editable
 import android.text.InputType
@@ -16,14 +15,11 @@ import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.textfield.TextInputLayout
-import com.puspa.puspamobile.R
-import com.puspa.puspamobile.ViewModelFactory
 import com.puspa.puspamobile.data.Injection
 import com.puspa.puspamobile.data.remote.response.ChangePasswordRequest
 import com.puspa.puspamobile.databinding.FragmentAccountBinding
 import com.puspa.puspamobile.ui.auth.BoardingActivity
-import com.puspa.puspamobile.ui.auth.LoginActivity
-import com.puspa.puspamobile.ui.submenu.EditProfileActivity
+import com.puspa.puspamobile.ui.submenu.editprofile.EditProfileActivity
 
 class AccountFragment : Fragment() {
 

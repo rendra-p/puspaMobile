@@ -7,25 +7,25 @@
 
     <fragment
         android:id="@+id/navigation_home"
-        android:name="com.puspa.puspamobile.ui.mainmenu.HomeFragment"
+        android:name="com.puspa.puspamobile.ui.mainmenu.home.HomeFragment"
         android:label="Home"
         tools:layout="@layout/fragment_home" />
 
     <fragment
         android:id="@+id/navigation_jadwal"
-        android:name="com.puspa.puspamobile.ui.mainmenu.ScheduleFragment"
+        android:name="com.puspa.puspamobile.ui.mainmenu.schedule.ScheduleFragment"
         android:label="Jadwal"
         tools:layout="@layout/fragment_schedule" />
 
     <fragment
         android:id="@+id/navigation_artikel"
-        android:name="com.puspa.puspamobile.ui.mainmenu.ArticleFragment"
+        android:name="com.puspa.puspamobile.ui.mainmenu.article.ArticleFragment"
         android:label="Artikel"
         tools:layout="@layout/fragment_article" />
 
     <fragment
         android:id="@+id/navigation_akun"
-        android:name="com.puspa.puspamobile.ui.mainmenu.AccountFragment"
+        android:name="com.puspa.puspamobile.ui.mainmenu.account.AccountFragment"
         android:label="Akun"
         tools:layout="@layout/fragment_account" />
 </navigation>

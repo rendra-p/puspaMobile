@@ -1,4 +1,4 @@
-package com.puspa.puspamobile.ui.mainmenu
+package com.puspa.puspamobile.ui.mainmenu.schedule
 
 import androidx.lifecycle.ViewModel
 

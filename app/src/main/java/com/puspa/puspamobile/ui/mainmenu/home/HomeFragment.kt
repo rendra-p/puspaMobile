@@ -1,7 +1,6 @@
-package com.puspa.puspamobile.ui.mainmenu
+package com.puspa.puspamobile.ui.mainmenu.home
 
 import android.content.Intent
-import androidx.fragment.app.viewModels
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -9,11 +8,10 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
-import com.puspa.puspamobile.R
 import com.puspa.puspamobile.data.Injection
 import com.puspa.puspamobile.databinding.FragmentHomeBinding
 import com.puspa.puspamobile.ui.auth.BoardingActivity
-import com.puspa.puspamobile.ui.submenu.ChildActivity
+import com.puspa.puspamobile.ui.submenu.managechild.ChildActivity
 
 class HomeFragment : Fragment() {
     private var _binding: FragmentHomeBinding? = null

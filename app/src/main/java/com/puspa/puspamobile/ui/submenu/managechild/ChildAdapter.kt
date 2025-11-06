@@ -1,4 +1,4 @@
-package com.puspa.puspamobile.ui.submenu
+package com.puspa.puspamobile.ui.submenu.managechild
 
 import android.annotation.SuppressLint
 import android.view.LayoutInflater

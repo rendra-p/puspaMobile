@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:paddingVertical="36dp"
     android:paddingHorizontal="24dp"
-    tools:context=".ui.submenu.EditProfileActivity">
+    tools:context=".ui.submenu.editprofile.EditProfileActivity">
 
     <LinearLayout
         android:layout_width="match_parent"

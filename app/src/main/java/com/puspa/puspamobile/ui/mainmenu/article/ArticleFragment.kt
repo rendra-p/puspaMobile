@@ -1,4 +1,4 @@
-package com.puspa.puspamobile.ui.mainmenu
+package com.puspa.puspamobile.ui.mainmenu.article
 
 import androidx.fragment.app.viewModels
 import android.os.Bundle

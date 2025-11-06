@@ -1,4 +1,4 @@
-package com.puspa.puspamobile.ui.mainmenu
+package com.puspa.puspamobile.ui.mainmenu.home
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

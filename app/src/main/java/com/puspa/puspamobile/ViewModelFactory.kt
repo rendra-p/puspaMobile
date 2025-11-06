@@ -6,10 +6,10 @@ import com.puspa.puspamobile.data.DataRepository
 import com.puspa.puspamobile.data.local.TokenDataStore
 import com.puspa.puspamobile.ui.auth.LoginViewModel
 import com.puspa.puspamobile.ui.auth.RegisterViewModel
-import com.puspa.puspamobile.ui.mainmenu.AccountViewModel
-import com.puspa.puspamobile.ui.mainmenu.HomeViewModel
-import com.puspa.puspamobile.ui.submenu.ChildViewModel
-import com.puspa.puspamobile.ui.submenu.EditProfileViewModel
+import com.puspa.puspamobile.ui.mainmenu.account.AccountViewModel
+import com.puspa.puspamobile.ui.mainmenu.home.HomeViewModel
+import com.puspa.puspamobile.ui.submenu.managechild.ChildViewModel
+import com.puspa.puspamobile.ui.submenu.editprofile.EditProfileViewModel
 
 @Suppress("UNCHECKED_CAST")
 class ViewModelFactory(
