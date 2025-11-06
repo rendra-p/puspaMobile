@@ -1,6 +1,7 @@
 package com.puspa.puspamobile.data
 
 import com.puspa.puspamobile.data.remote.ApiErrorHandler
+import com.puspa.puspamobile.data.remote.response.AddChildRequest
 import com.puspa.puspamobile.data.remote.response.ChangePasswordRequest
 import com.puspa.puspamobile.data.remote.response.ChildResponse
 import com.puspa.puspamobile.data.remote.response.LoginRequest
@@ -95,7 +96,20 @@ class DataRepository(private val apiService: ApiService) {
             Result.failure(e)
         }
     }
-    suspend fun changePassword(changePasswordRequest: ChangePasswordRequest): Result<Void?> {
+    suspend fun addChild (addChildRequest: AddChildRequest): Result<Void?> {
+        return try {
+            val response = apiService.addChild(addChildRequest)
+            if (response.isSuccessful) {
+                Result.success(response.body())
+            } else {
+                val errorMessage = ApiErrorHandler.getErrorMessage(response)
+                Result.failure(Exception(errorMessage))
+            }
+        } catch (e: Exception) {
+            Result.failure(e)
+        }
+    }
+    suspend fun changePassword (changePasswordRequest: ChangePasswordRequest): Result<Void?> {
         return try {
             val response = apiService.changePassword(changePasswordRequest)
             if (response.isSuccessful) {
@@ -108,7 +122,7 @@ class DataRepository(private val apiService: ApiService) {
             Result.failure(e)
         }
     }
-    suspend fun updateProfile(guardianId: String, updateProfileRequest: UpdateProfileRequest): Result<Void?> {
+    suspend fun updateProfile (guardianId: String, updateProfileRequest: UpdateProfileRequest): Result<Void?> {
         return try {
             val response = apiService.updateProfile(guardianId, updateProfileRequest)
             if (response.isSuccessful) {

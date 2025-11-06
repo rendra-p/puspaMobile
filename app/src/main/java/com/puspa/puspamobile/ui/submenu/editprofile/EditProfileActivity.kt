@@ -95,12 +95,12 @@ class EditProfileActivity : AppCompatActivity() {
             }
 
             val updateRequest = UpdateProfileRequest(
-                guardian_name = name,
-                relationship_with_child = relation,
-                guardian_birth_date = birthDate,
-                guardian_phone = phone,
+                guardianName = name,
+                relationshipWithChild = relation,
+                guardianBirthDate = birthDate,
+                guardianPhone = phone,
                 email = email,
-                guardian_occupation = occupation
+                guardianOccupation = occupation
             )
 
             viewModel.updateProfile(guardianId, updateRequest)

@@ -15,6 +15,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.PuspaMobile">
         <activity
+            android:name=".ui.submenu.managechild.AddChildActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.submenu.managechild.ChildActivity"
             android:exported="false" />
         <activity

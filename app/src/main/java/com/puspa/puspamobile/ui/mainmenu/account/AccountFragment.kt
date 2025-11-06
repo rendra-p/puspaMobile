@@ -201,9 +201,9 @@ class AccountFragment : Fragment() {
                 }
 
                 val request = ChangePasswordRequest(
-                    current_password = currentPassword,
+                    currentPassword = currentPassword,
                     password = newPassword,
-                    password_confirmation = confirmPassword
+                    passwordConfirmation = confirmPassword
                 )
                 viewModel.changePassword(request)
             }

@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.submenu.managechild.AddChildActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="20dp"
+        android:paddingVertical="50dp"
+        android:orientation="vertical"
+        android:gravity="center_horizontal">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageButton
+                android:id="@+id/btn_back"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:srcCompat="@drawable/baseline_arrow_back_24"
+                android:background="@null" />
+
+            <Space
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1" />
+        </LinearLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            android:hint="Nama Anak">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etChildName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.Material3.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:hint="Jenis Kelamin"
+            app:endIconMode="dropdown_menu">
+            <AutoCompleteTextView
+                android:id="@+id/etChildGender"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="none"
+                android:focusable="false"
+                android:clickable="true"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:hint="Tempat Lahir">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etChildBirthPlace"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:hint="Tanggal Lahir">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etChildBirthDate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:focusable="false"
+                android:clickable="true"
+                android:inputType="none" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:hint="Sekolah Anak">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etChildSchool"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:hint="Alamat Anak">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etChildAddress"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textMultiLine"
+                android:minLines="2" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:hint="Keluhan Anak">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etChildComplaint"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textMultiLine"
+                android:minLines="2" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Pilih Layanan (2 prioritas):"
+            android:textStyle="bold"
+            android:layout_marginTop="28dp" />
+
+        <LinearLayout
+            android:id="@+id/layoutServices"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="8dp">
+
+            <com.google.android.material.checkbox.MaterialCheckBox
+                android:id="@+id/cbAsesmenTumbuhKembang"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Asesmen Tumbuh Kembang" />
+
+            <com.google.android.material.checkbox.MaterialCheckBox
+                android:id="@+id/cbAsesmenTerpadu"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Asesmen Terpadu" />
+
+            <com.google.android.material.checkbox.MaterialCheckBox
+                android:id="@+id/cbKonsultasiDokter"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Konsultasi Dokter" />
+
+            <com.google.android.material.checkbox.MaterialCheckBox
+                android:id="@+id/cbKonsultasiPsikolog"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Konsultasi Psikolog" />
+
+            <com.google.android.material.checkbox.MaterialCheckBox
+                android:id="@+id/cbKonsultasiKeluarga"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Konsultasi Keluarga" />
+
+            <com.google.android.material.checkbox.MaterialCheckBox
+                android:id="@+id/cbTestPsikolog"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Test Psikolog" />
+
+            <com.google.android.material.checkbox.MaterialCheckBox
+                android:id="@+id/cbLayananMinatBakat"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Layanan Minat Bakat" />
+
+            <com.google.android.material.checkbox.MaterialCheckBox
+                android:id="@+id/cbDaycare"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Daycare" />
+
+            <com.google.android.material.checkbox.MaterialCheckBox
+                android:id="@+id/cbHomeCare"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Home Care" />
+
+            <com.google.android.material.checkbox.MaterialCheckBox
+                android:id="@+id/cbHydrotherapy"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Hydrotherapy" />
+
+            <com.google.android.material.checkbox.MaterialCheckBox
+                android:id="@+id/cbBabySpa"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Baby Spa" />
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btnSave"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Simpan Data Anak"
+            android:layout_marginTop="36dp" />
+    </LinearLayout>
+</ScrollView>
