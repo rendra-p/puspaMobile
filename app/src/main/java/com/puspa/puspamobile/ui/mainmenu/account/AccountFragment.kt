@@ -1,5 +1,6 @@
 package com.puspa.puspamobile.ui.mainmenu.account
 
+import android.app.Activity.RESULT_OK
 import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
@@ -12,6 +13,7 @@ import android.view.ViewGroup
 import android.widget.EditText
 import android.widget.LinearLayout
 import android.widget.Toast
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
@@ -29,6 +31,14 @@ class AccountFragment : Fragment() {
 
     private lateinit var viewModel: AccountViewModel
 
+    private val editProfileLauncher = registerForActivityResult(
+        ActivityResultContracts.StartActivityForResult()
+    ) { result ->
+        if (result.resultCode == RESULT_OK) (
+            viewModel.getProfile()
+        )
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -43,33 +53,17 @@ class AccountFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        binding.shimmerLayout.startShimmer()
 
-        fletchProfile()
+        viewModel.getProfile()
         setAction()
         setObserver()
     }
 
-    private fun fletchProfile() {
-        viewModel.getProfile()
-
-        viewModel.profileResult.observe(viewLifecycleOwner) { result ->
-            val profileResult = result.getOrNull()
-            profileResult?.let { response ->
-                response.data?.let { profileData ->
-                    val imageUrl = "https://puspa.sinus.ac.id" + profileData.profilePicture
-                    Glide.with(this)
-                        .load(imageUrl)
-                        .into(binding.imgProfile)
-                    binding.tvName.text = profileData.guardianName
-                    binding.tvNumber.text = profileData.guardianPhone
-                }
-            }
-        }
-    }
-
     private fun setAction() {
         binding.btnUpdateProfile.setOnClickListener {
-            startActivity(Intent(requireContext(), EditProfileActivity::class.java))
+            val intent = Intent(requireContext(), EditProfileActivity::class.java)
+            editProfileLauncher.launch(intent)
         }
         binding.btnChangePassword.setOnClickListener {
             showChangePasswordDialog()
@@ -80,6 +74,25 @@ class AccountFragment : Fragment() {
     }
 
     private fun setObserver() {
+        viewModel.profileResult.observe(viewLifecycleOwner) { result ->
+            val profileResult = result.getOrNull()
+            profileResult?.let { response ->
+                response.data?.let { profileData ->
+                    val imageUrl = "https://puspa.sinus.ac.id" + profileData.profilePicture
+                    Glide.with(this)
+                        .load(imageUrl)
+                        .into(binding.imgProfile)
+                    binding.apply {
+                        tvName.text = profileData.guardianName
+                        tvName.text = profileData.guardianName
+                        tvNumber.text = profileData.guardianPhone
+                        shimmerLayout.stopShimmer()
+                        realLayout.visibility = View.VISIBLE
+                        shimmerLayout.visibility = View.GONE
+                    }
+                }
+            }
+        }
         viewModel.logoutResult.observe(viewLifecycleOwner) { result ->
             result.onSuccess { response ->
                 Toast.makeText(requireContext(), "Logout berhasil!", Toast.LENGTH_SHORT).show()
@@ -99,6 +112,13 @@ class AccountFragment : Fragment() {
             }
             result.onFailure { e ->
                 Toast.makeText(requireContext(), e.message, Toast.LENGTH_SHORT).show()
+            }
+        }
+        viewModel.isLoading.observe(viewLifecycleOwner) { isLoading ->
+            if (isLoading) {
+                binding.progressBar.visibility = View.VISIBLE
+            } else {
+                binding.progressBar.visibility = View.GONE
             }
         }
     }

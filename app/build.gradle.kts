@@ -77,4 +77,7 @@ dependencies {
 
     //bottomnavigationbar
     implementation(libs.chip.navigation.bar)
+
+    //skeletonloader
+    implementation(libs.shimmer)
 }

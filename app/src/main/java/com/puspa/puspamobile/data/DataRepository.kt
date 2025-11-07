@@ -153,7 +153,6 @@ class DataRepository(private val apiService: ApiService) {
             Result.failure(e)
         }
     }
-
     suspend fun updateProfileWithImage(
         guardianId: String,
         request: UpdateProfileRequest,
@@ -177,8 +176,12 @@ class DataRepository(private val apiService: ApiService) {
                 guardianOccupation = request.guardianOccupation.asPlain()
             )
 
-            if (response.isSuccessful) Result.success(response.body())
-            else Result.failure(Exception("Gagal memperbarui profil"))
+            if (response.isSuccessful) {
+                Result.success(response.body())
+            } else {
+                val errorMessage = ApiErrorHandler.getErrorMessage(response)
+                Result.failure(Exception(errorMessage))
+            }
         } catch (e: Exception) {
             Result.failure(e)
         }

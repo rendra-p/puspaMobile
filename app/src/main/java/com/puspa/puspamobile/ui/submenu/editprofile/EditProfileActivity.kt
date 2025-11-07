@@ -1,8 +1,11 @@
 package com.puspa.puspamobile.ui.submenu.editprofile
 
+import android.app.Activity
 import android.content.Context
 import android.net.Uri
 import android.os.Bundle
+import android.view.MotionEvent
+import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.result.contract.ActivityResultContracts
@@ -75,6 +78,7 @@ class EditProfileActivity : AppCompatActivity() {
         viewModel.updateProfileResult.observe(this) { result ->
             result.onSuccess { response ->
                 Toast.makeText(this, "Profil berhasil diperbarui", Toast.LENGTH_SHORT).show()
+                setResult(Activity.RESULT_OK)
                 finish()
             }.onFailure { e ->
                 Toast.makeText(this, e.message, Toast.LENGTH_SHORT).show()
@@ -147,5 +151,14 @@ class EditProfileActivity : AppCompatActivity() {
         inputStream?.close()
         outputStream.close()
         return tempFile
+    }
+
+    override fun dispatchTouchEvent(ev: MotionEvent): Boolean {
+        if (currentFocus != null) {
+            val imm = getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager
+            imm.hideSoftInputFromWindow(currentFocus!!.windowToken, 0)
+            currentFocus!!.clearFocus()
+        }
+        return super.dispatchTouchEvent(ev)
     }
 }
