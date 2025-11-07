@@ -8,11 +8,14 @@ import com.puspa.puspamobile.data.remote.response.LoginResponse
 import com.puspa.puspamobile.data.remote.response.ProfileResponse
 import com.puspa.puspamobile.data.remote.response.RegisterRequest
 import com.puspa.puspamobile.data.remote.response.RegisterResponse
-import com.puspa.puspamobile.data.remote.response.UpdateProfileRequest
+import okhttp3.MultipartBody
+import okhttp3.RequestBody
 import retrofit2.Response
 import retrofit2.http.Body
 import retrofit2.http.GET
+import retrofit2.http.Multipart
 import retrofit2.http.POST
+import retrofit2.http.Part
 import retrofit2.http.Path
 
 interface ApiService {
@@ -40,9 +43,16 @@ interface ApiService {
     suspend fun changePassword(
         @Body changePasswordRequest: ChangePasswordRequest
     ): Response<Void>
+    @Multipart
     @POST("my/profile/{guardian_id}")
     suspend fun updateProfile(
         @Path("guardian_id") guardianId: String,
-        @Body updateProfileRequest: UpdateProfileRequest
+        @Part file: MultipartBody.Part?,
+        @Part("guardian_name") guardianName: RequestBody,
+        @Part("relationship_with_child") relationshipWithChild: RequestBody,
+        @Part("guardian_birth_date") guardianBirthDate: RequestBody,
+        @Part("guardian_phone") guardianPhone: RequestBody,
+        @Part("email") email: RequestBody,
+        @Part("guardian_occupation") guardianOccupation: RequestBody
     ): Response<Void>
 }

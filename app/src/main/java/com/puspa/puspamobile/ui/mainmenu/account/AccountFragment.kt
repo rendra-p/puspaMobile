@@ -13,6 +13,7 @@ import android.widget.EditText
 import android.widget.LinearLayout
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
+import com.bumptech.glide.Glide
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.textfield.TextInputLayout
 import com.puspa.puspamobile.data.Injection
@@ -55,6 +56,10 @@ class AccountFragment : Fragment() {
             val profileResult = result.getOrNull()
             profileResult?.let { response ->
                 response.data?.let { profileData ->
+                    val imageUrl = "https://puspa.sinus.ac.id" + profileData.profilePicture
+                    Glide.with(this)
+                        .load(imageUrl)
+                        .into(binding.imgProfile)
                     binding.tvName.text = profileData.guardianName
                     binding.tvNumber.text = profileData.guardianPhone
                 }

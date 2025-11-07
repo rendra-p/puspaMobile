@@ -11,6 +11,11 @@ import com.puspa.puspamobile.data.remote.response.RegisterRequest
 import com.puspa.puspamobile.data.remote.response.RegisterResponse
 import com.puspa.puspamobile.data.remote.response.UpdateProfileRequest
 import com.puspa.puspamobile.data.remote.retrofit.ApiService
+import okhttp3.MediaType.Companion.toMediaTypeOrNull
+import okhttp3.MultipartBody
+import okhttp3.RequestBody.Companion.asRequestBody
+import okhttp3.RequestBody.Companion.toRequestBody
+import java.io.File
 
 class DataRepository(private val apiService: ApiService) {
     suspend fun validateToken (): Result<Void?> {
@@ -122,9 +127,22 @@ class DataRepository(private val apiService: ApiService) {
             Result.failure(e)
         }
     }
-    suspend fun updateProfile (guardianId: String, updateProfileRequest: UpdateProfileRequest): Result<Void?> {
+    suspend fun updateProfile(
+        guardianId: String,
+        request: UpdateProfileRequest
+    ): Result<Void?> {
         return try {
-            val response = apiService.updateProfile(guardianId, updateProfileRequest)
+            val response = apiService.updateProfile(
+                guardianId = guardianId,
+                file = null,
+                guardianName = request.guardianName.asPlain(),
+                relationshipWithChild = request.relationshipWithChild.asPlain(),
+                guardianBirthDate = request.guardianBirthDate.asPlain(),
+                guardianPhone = request.guardianPhone.asPlain(),
+                email = request.email.asPlain(),
+                guardianOccupation = request.guardianOccupation.asPlain()
+            )
+
             if (response.isSuccessful) {
                 Result.success(response.body())
             } else {
@@ -135,6 +153,38 @@ class DataRepository(private val apiService: ApiService) {
             Result.failure(e)
         }
     }
+
+    suspend fun updateProfileWithImage(
+        guardianId: String,
+        request: UpdateProfileRequest,
+        imageFile: File
+    ): Result<Void?> {
+        return try {
+            val filePart = MultipartBody.Part.createFormData(
+                "file",
+                imageFile.name,
+                imageFile.asRequestBody("image/*".toMediaTypeOrNull())
+            )
+
+            val response = apiService.updateProfile(
+                guardianId = guardianId,
+                file = filePart,
+                guardianName = request.guardianName.asPlain(),
+                relationshipWithChild = request.relationshipWithChild.asPlain(),
+                guardianBirthDate = request.guardianBirthDate.asPlain(),
+                guardianPhone = request.guardianPhone.asPlain(),
+                email = request.email.asPlain(),
+                guardianOccupation = request.guardianOccupation.asPlain()
+            )
+
+            if (response.isSuccessful) Result.success(response.body())
+            else Result.failure(Exception("Gagal memperbarui profil"))
+        } catch (e: Exception) {
+            Result.failure(e)
+        }
+    }
+
+    fun String.asPlain() = this.toRequestBody("text/plain".toMediaTypeOrNull())
 
     companion object {
         @Volatile

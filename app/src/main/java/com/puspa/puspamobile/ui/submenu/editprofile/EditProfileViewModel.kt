@@ -8,6 +8,7 @@ import com.puspa.puspamobile.data.DataRepository
 import com.puspa.puspamobile.data.remote.response.ProfileResponse
 import com.puspa.puspamobile.data.remote.response.UpdateProfileRequest
 import kotlinx.coroutines.launch
+import java.io.File
 
 class EditProfileViewModel (
     private val repository: DataRepository
@@ -39,4 +40,16 @@ class EditProfileViewModel (
             }
         }
     }
+
+    fun updateProfileWithImage(guardianId: String, updateProfileRequest: UpdateProfileRequest, imageFile: File) {
+        viewModelScope.launch {
+            try {
+                val result = repository.updateProfileWithImage(guardianId, updateProfileRequest, imageFile)
+                _updateProfileResult.value = result
+            } catch (e: Exception) {
+                _updateProfileResult.value = Result.failure(e)
+            }
+        }
+    }
+
 }

@@ -1,14 +1,20 @@
 package com.puspa.puspamobile.ui.submenu.editprofile
 
+import android.content.Context
+import android.net.Uri
 import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
+import com.bumptech.glide.Glide
 import com.google.android.material.datepicker.MaterialDatePicker
 import com.puspa.puspamobile.data.Injection
 import com.puspa.puspamobile.data.remote.response.UpdateProfileRequest
 import com.puspa.puspamobile.databinding.ActivityEditProfileBinding
+import java.io.File
+import java.io.FileOutputStream
 import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
@@ -18,6 +24,17 @@ class EditProfileActivity : AppCompatActivity() {
     private lateinit var viewModel: EditProfileViewModel
 
     private var guardianId: String = ""
+
+    private var selectedImageUri: Uri? = null
+
+    private val imagePickerLauncher = registerForActivityResult(
+        ActivityResultContracts.GetContent()
+    ) { uri: Uri? ->
+        uri?.let {
+            selectedImageUri = it
+            binding.imgProfile.setImageURI(it)
+        }
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -38,6 +55,10 @@ class EditProfileActivity : AppCompatActivity() {
             result.onSuccess { response ->
                 val data = response.data ?: return@onSuccess
                 guardianId = data.guardianId.toString()
+                val imageUrl = "https://puspa.sinus.ac.id" + data.profilePicture
+                Glide.with(this)
+                    .load(imageUrl)
+                    .into(binding.imgProfile)
                 binding.apply {
                     etGuardianName.setText(data.guardianName ?: "")
                     etRelationshipWithChild.setText(data.relationshipWithChild ?: "")
@@ -64,6 +85,10 @@ class EditProfileActivity : AppCompatActivity() {
     private fun setupActions() {
         binding.btnBack.setOnClickListener {
             finish()
+        }
+
+        binding.btnSelectImage.setOnClickListener {
+            imagePickerLauncher.launch("image/*")
         }
 
         binding.etBirthDate.setOnClickListener {
@@ -103,7 +128,24 @@ class EditProfileActivity : AppCompatActivity() {
                 guardianOccupation = occupation
             )
 
-            viewModel.updateProfile(guardianId, updateRequest)
+            if (selectedImageUri != null) {
+                val file = uriToFile(selectedImageUri!!, this)
+                viewModel.updateProfileWithImage(guardianId, updateRequest, file)
+            } else {
+                viewModel.updateProfile(guardianId, updateRequest)
+            }
+
         }
+    }
+
+    private fun uriToFile(uri: Uri, context: Context): File {
+        val contentResolver = context.contentResolver
+        val tempFile = File.createTempFile("profile_", ".jpg", context.cacheDir)
+        val inputStream = contentResolver.openInputStream(uri)
+        val outputStream = FileOutputStream(tempFile)
+        inputStream?.copyTo(outputStream)
+        inputStream?.close()
+        outputStream.close()
+        return tempFile
     }
 }
