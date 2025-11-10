@@ -8,6 +8,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
+import com.bumptech.glide.Glide
+import com.puspa.puspamobile.R
 import com.puspa.puspamobile.data.Injection
 import com.puspa.puspamobile.databinding.FragmentHomeBinding
 import com.puspa.puspamobile.ui.auth.BoardingActivity
@@ -48,6 +50,26 @@ class HomeFragment : Fragment() {
     }
 
     private fun setObserver() {
+        viewModel.getProfile()
+        viewModel.profileResult.observe(viewLifecycleOwner) { result ->
+            result.onSuccess { response ->
+                response.data?.let { profileData ->
+                    val imageUrl = "https://puspa.sinus.ac.id" + profileData.profilePicture
+                    Glide.with(this)
+                        .load(imageUrl)
+                        .into(binding.imgProfile)
+                    binding.apply {
+                        tvHallo.text = getString(R.string.home_greeting,profileData.guardianName)
+                        shimmerLayout.stopShimmer()
+                        realLayout.visibility = View.VISIBLE
+                        shimmerLayout.visibility = View.GONE
+                    }
+                }
+            }
+            result.onFailure { exception ->
+                Toast.makeText(requireContext(), exception.message, Toast.LENGTH_SHORT).show()
+            }
+        }
         viewModel.logoutResult.observe(viewLifecycleOwner) { result ->
             result.onSuccess { response ->
                 Toast.makeText(requireContext(), "Logout berhasil!", Toast.LENGTH_SHORT).show()
@@ -56,7 +78,6 @@ class HomeFragment : Fragment() {
                 intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
                 startActivity(intent)
             }
-
             result.onFailure { e ->
                 Toast.makeText(requireContext(), e.message, Toast.LENGTH_SHORT).show()
             }

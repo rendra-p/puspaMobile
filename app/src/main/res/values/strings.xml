@@ -19,5 +19,6 @@
     <string name="error_password_uppercase">Password harus terdapat huruf kapital</string>
     <string name="error_password_digit">Password harus terdapat angka</string>
     <string name="error_password_symbol">Password harus terdapat simbol (!@#$%^*)</string>
+    <string name="home_greeting">Hallo %1$s</string>
 
 </resources>
