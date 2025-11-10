@@ -26,11 +26,19 @@ class MainActivity : AppCompatActivity() {
         chipNavigationBar.setItemSelected(R.id.menu_home, true)
 
         chipNavigationBar.setOnItemSelectedListener { id ->
+            val currentDestination = navController.currentDestination?.id
             when (id) {
-                R.id.menu_home -> navController.navigate(R.id.navigation_home)
-                R.id.menu_jadwal -> navController.navigate(R.id.navigation_jadwal)
-                R.id.menu_artikel -> navController.navigate(R.id.navigation_artikel)
-                R.id.menu_akun -> navController.navigate(R.id.navigation_akun)
+                R.id.menu_home -> if (currentDestination != R.id.navigation_home)
+                    navController.navigate(R.id.navigation_home)
+
+                R.id.menu_jadwal -> if (currentDestination != R.id.navigation_jadwal)
+                    navController.navigate(R.id.navigation_jadwal)
+
+                R.id.menu_artikel -> if (currentDestination != R.id.navigation_artikel)
+                    navController.navigate(R.id.navigation_artikel)
+
+                R.id.menu_akun -> if (currentDestination != R.id.navigation_akun)
+                    navController.navigate(R.id.navigation_akun)
             }
         }
 
