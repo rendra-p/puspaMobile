@@ -2,6 +2,7 @@ package com.puspa.puspamobile.ui.submenu.managechild
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.result.contract.ActivityResultContracts
@@ -29,6 +30,7 @@ class ChildActivity : AppCompatActivity() {
         enableEdgeToEdge()
         binding = ActivityChildBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        binding.shimmerLayout.startShimmer()
 
         val viewModelFactory = Injection.provideViewModelFactory(this)
         viewmodel = ViewModelProvider(this, viewModelFactory)[ChildViewModel::class]
@@ -62,6 +64,11 @@ class ChildActivity : AppCompatActivity() {
             result.onSuccess { response ->
                 val list = response.data?.filterNotNull() ?: emptyList()
                 childAdapter.updateData(list)
+                binding.apply {
+                    shimmerLayout.stopShimmer()
+                    recyclerView.visibility = View.VISIBLE
+                    shimmerLayout.visibility = View.GONE
+                }
             }
             result.onFailure { exception ->
                 Toast.makeText(this, exception.message ?: "Terjadi kesalahan saat memuat data", Toast.LENGTH_SHORT).show()
