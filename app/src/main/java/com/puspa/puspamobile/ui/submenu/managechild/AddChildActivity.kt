@@ -13,11 +13,13 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.lifecycle.ViewModelProvider
+import com.google.android.material.datepicker.MaterialDatePicker
 import com.puspa.puspamobile.R
 import com.puspa.puspamobile.data.Injection
 import com.puspa.puspamobile.data.remote.response.AddChildRequest
 import com.puspa.puspamobile.databinding.ActivityAddChildBinding
 import java.text.SimpleDateFormat
+import java.util.Date
 import java.util.Locale
 
 class AddChildActivity : AppCompatActivity() {
@@ -46,28 +48,29 @@ class AddChildActivity : AppCompatActivity() {
     }
 
     private fun setAction() {
+        binding.btnBack.setOnClickListener {
+            onBackPressedDispatcher.onBackPressed()
+        }
+
         binding.etChildGender.setOnClickListener {
             binding.etChildGender.showDropDown()
         }
+
         binding.etChildGender.setOnFocusChangeListener { v, hasFocus ->
             if (hasFocus) binding.etChildGender.showDropDown()
         }
 
-        val dateFormat = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
-
         binding.etChildBirthDate.setOnClickListener {
-            val year = calendar.get(Calendar.YEAR)
-            val month = calendar.get(Calendar.MONTH)
-            val day = calendar.get(Calendar.DAY_OF_MONTH)
+            val datePicker = MaterialDatePicker.Builder.datePicker()
+                .setTitleText("Pilih Tanggal Lahir")
+                .build()
 
-            DatePickerDialog(this, { _, y, m, d ->
-                calendar.set(y, m, d)
-                binding.etChildBirthDate.setText(dateFormat.format(calendar.time))
-            }, year, month, day).show()
-        }
-
-        binding.btnBack.setOnClickListener {
-            onBackPressedDispatcher.onBackPressed()
+            datePicker.addOnPositiveButtonClickListener { selection ->
+                val dateFormat = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
+                val date = dateFormat.format(Date(selection))
+                binding.etChildBirthDate.setText(date)
+            }
+            datePicker.show(supportFragmentManager,"datePicker")
         }
 
         binding.btnSave.setOnClickListener {
