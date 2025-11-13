@@ -39,7 +39,6 @@ class MainActivity : AppCompatActivity() {
             when (destination.id) {
                 R.id.navigation_home -> chipNavigationBar.setItemSelected(R.id.menu_home, true)
                 R.id.navigation_jadwal -> chipNavigationBar.setItemSelected(R.id.menu_jadwal, true)
-                R.id.navigation_artikel -> chipNavigationBar.setItemSelected(R.id.menu_artikel, true)
                 R.id.navigation_akun -> chipNavigationBar.setItemSelected(R.id.menu_akun, true)
             }
         }
@@ -60,10 +59,6 @@ class MainActivity : AppCompatActivity() {
                 R.id.menu_jadwal ->
                     if (currentDestination != R.id.navigation_jadwal)
                         navController.navigate(R.id.navigation_jadwal, null, navOptionsForTap)
-
-                R.id.menu_artikel ->
-                    if (currentDestination != R.id.navigation_artikel)
-                        navController.navigate(R.id.navigation_artikel, null, navOptionsForTap)
 
                 R.id.menu_akun ->
                     if (currentDestination != R.id.navigation_akun)

@@ -18,12 +18,6 @@
         tools:layout="@layout/fragment_schedule" />
 
     <fragment
-        android:id="@+id/navigation_artikel"
-        android:name="com.puspa.puspamobile.ui.mainmenu.article.ArticleFragment"
-        android:label="Artikel"
-        tools:layout="@layout/fragment_article" />
-
-    <fragment
         android:id="@+id/navigation_akun"
         android:name="com.puspa.puspamobile.ui.mainmenu.account.AccountFragment"
         android:label="Akun"

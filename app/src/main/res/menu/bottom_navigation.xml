@@ -18,14 +18,6 @@
         app:cnb_backgroundColor="@color/primary"/>
 
     <item
-        android:id="@+id/menu_artikel"
-        android:icon="@drawable/outline_newsmode_24"
-        android:title="Artikel"
-        app:cnb_iconColor="@color/onPrimary"
-        app:cnb_textColor="@color/onPrimary"
-        app:cnb_backgroundColor="@color/primary"/>
-
-    <item
         android:id="@+id/menu_akun"
         android:icon="@drawable/outline_person_24"
         android:title="Akun"

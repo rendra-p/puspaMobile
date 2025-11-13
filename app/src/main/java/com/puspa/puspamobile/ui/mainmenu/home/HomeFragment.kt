@@ -8,7 +8,10 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
+import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.ismaeldivita.chipnavigation.ChipNavigationBar
 import com.puspa.puspamobile.R
 import com.puspa.puspamobile.data.Injection
 import com.puspa.puspamobile.databinding.FragmentHomeBinding
@@ -47,6 +50,9 @@ class HomeFragment : Fragment() {
         }
         binding.btnChild.setOnClickListener {
             startActivity(Intent(requireContext(), ChildActivity::class.java))
+        }
+        binding.btnSchedule.setOnClickListener {
+            findNavController().navigate(R.id.navigation_jadwal)
         }
     }
 
