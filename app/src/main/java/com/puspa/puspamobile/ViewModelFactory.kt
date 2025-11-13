@@ -8,6 +8,7 @@ import com.puspa.puspamobile.ui.auth.LoginViewModel
 import com.puspa.puspamobile.ui.auth.RegisterViewModel
 import com.puspa.puspamobile.ui.mainmenu.account.AccountViewModel
 import com.puspa.puspamobile.ui.mainmenu.home.HomeViewModel
+import com.puspa.puspamobile.ui.mainmenu.schedule.ScheduleViewModel
 import com.puspa.puspamobile.ui.submenu.managechild.ChildViewModel
 import com.puspa.puspamobile.ui.submenu.editprofile.EditProfileViewModel
 import com.puspa.puspamobile.ui.submenu.managechild.AddChildViewModel
@@ -30,6 +31,9 @@ class ViewModelFactory(
             }
             modelClass.isAssignableFrom(HomeViewModel::class.java) -> {
                 HomeViewModel(repository) as T
+            }
+            modelClass.isAssignableFrom(ScheduleViewModel::class.java) -> {
+                ScheduleViewModel(repository) as T
             }
             modelClass.isAssignableFrom(ChildViewModel::class.java) -> {
                 ChildViewModel(repository) as T
