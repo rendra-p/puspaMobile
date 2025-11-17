@@ -5,6 +5,7 @@ import com.puspa.puspamobile.data.remote.response.AddChildRequest
 import com.puspa.puspamobile.data.remote.response.AssesmentsResponse
 import com.puspa.puspamobile.data.remote.response.ChangePasswordRequest
 import com.puspa.puspamobile.data.remote.response.ChildResponse
+import com.puspa.puspamobile.data.remote.response.ForgotPasswordRequest
 import com.puspa.puspamobile.data.remote.response.LoginRequest
 import com.puspa.puspamobile.data.remote.response.LoginResponse
 import com.puspa.puspamobile.data.remote.response.ProfileResponse
@@ -68,6 +69,19 @@ class DataRepository(private val apiService: ApiService) {
             val response = apiService.register(registerRequest)
             if (response.isSuccessful) {
                 Result.success(response.body()!!)
+            } else {
+                val errorMessage = ApiErrorHandler.getErrorMessage(response)
+                Result.failure(Exception(errorMessage))
+            }
+        } catch (e: Exception) {
+            Result.failure(e)
+        }
+    }
+    suspend fun forgotPassword (forgotPasswordRequest: ForgotPasswordRequest): Result<Void?> {
+        return try {
+            val response = apiService.forgotPassword(forgotPasswordRequest)
+            if (response.isSuccessful) {
+                Result.success(response.body())
             } else {
                 val errorMessage = ApiErrorHandler.getErrorMessage(response)
                 Result.failure(Exception(errorMessage))

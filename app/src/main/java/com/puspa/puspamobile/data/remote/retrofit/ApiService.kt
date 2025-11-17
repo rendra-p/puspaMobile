@@ -4,6 +4,7 @@ import com.puspa.puspamobile.data.remote.response.AddChildRequest
 import com.puspa.puspamobile.data.remote.response.AssesmentsResponse
 import com.puspa.puspamobile.data.remote.response.ChangePasswordRequest
 import com.puspa.puspamobile.data.remote.response.ChildResponse
+import com.puspa.puspamobile.data.remote.response.ForgotPasswordRequest
 import com.puspa.puspamobile.data.remote.response.LoginRequest
 import com.puspa.puspamobile.data.remote.response.LoginResponse
 import com.puspa.puspamobile.data.remote.response.ProfileResponse
@@ -32,6 +33,10 @@ interface ApiService {
     suspend fun register(
         @Body registerRequest: RegisterRequest
     ): Response<RegisterResponse>
+    @POST("auth/forgot-password")
+    suspend fun forgotPassword(
+        @Body forgotPasswordRequest: ForgotPasswordRequest
+    ): Response<Void>
     @GET("my/profile")
     suspend fun getProfile(): Response<ProfileResponse>
     @GET("my/children")

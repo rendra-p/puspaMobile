@@ -2,6 +2,12 @@ package com.puspa.puspamobile.data.remote.response
 
 import com.google.gson.annotations.SerializedName
 
+data class ForgotPasswordRequest(
+
+	@SerializedName("email")
+	val email: String
+)
+
 data class ChangePasswordRequest(
 
 	@SerializedName("current_password")
