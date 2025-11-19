@@ -1,4 +1,4 @@
-package com.puspa.puspamobile.ui.auth
+package com.puspa.puspamobile.ui.auth.forgotpassword
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -8,9 +8,7 @@ import com.puspa.puspamobile.data.DataRepository
 import com.puspa.puspamobile.data.remote.response.ForgotPasswordRequest
 import kotlinx.coroutines.launch
 
-class ResetPasswordViewModel(
-    private val repository: DataRepository
-) : ViewModel() {
+class ForgotPasswordViewModel(private val repository: DataRepository) : ViewModel() {
     private val _forgotPasswordResult = MutableLiveData<Result<Void?>>()
     val forgotPasswordResult: LiveData<Result<Void?>> = _forgotPasswordResult
 

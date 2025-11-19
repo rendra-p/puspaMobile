@@ -8,6 +8,15 @@ data class ForgotPasswordRequest(
 	val email: String
 )
 
+data class ResetPasswordRequest(
+
+	@SerializedName("password")
+	val password: String,
+
+	@SerializedName("password_confirmation")
+	val passwordConfirmation: String
+)
+
 data class ChangePasswordRequest(
 
 	@SerializedName("current_password")

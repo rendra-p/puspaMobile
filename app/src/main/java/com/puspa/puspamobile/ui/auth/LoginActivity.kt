@@ -9,16 +9,13 @@ import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.observe
 import com.puspa.puspamobile.MainActivity
-import com.puspa.puspamobile.R
-import com.puspa.puspamobile.ViewModelFactory
 import com.puspa.puspamobile.data.Injection
 import com.puspa.puspamobile.data.remote.response.LoginRequest
 import com.puspa.puspamobile.databinding.ActivityLoginBinding
+import com.puspa.puspamobile.ui.auth.forgotpassword.ForgotPasswordActivity
+import com.puspa.puspamobile.ui.auth.forgotpassword.ResetPasswordActivity
 
 class LoginActivity : AppCompatActivity() {
     private lateinit var binding: ActivityLoginBinding
@@ -58,7 +55,7 @@ class LoginActivity : AppCompatActivity() {
             finish()
         }
         binding.toResetPassword.setOnClickListener {
-            startActivity(Intent(this@LoginActivity, ResetPasswordActivity::class.java))
+            startActivity(Intent(this@LoginActivity, ForgotPasswordActivity::class.java))
         }
         binding.toDaftar.setOnClickListener {
             startActivity(Intent(this@LoginActivity, RegisterActivity::class.java))

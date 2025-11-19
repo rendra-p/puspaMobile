@@ -11,6 +11,7 @@ import com.puspa.puspamobile.data.remote.response.LoginResponse
 import com.puspa.puspamobile.data.remote.response.ProfileResponse
 import com.puspa.puspamobile.data.remote.response.RegisterRequest
 import com.puspa.puspamobile.data.remote.response.RegisterResponse
+import com.puspa.puspamobile.data.remote.response.ResetPasswordRequest
 import com.puspa.puspamobile.data.remote.response.UpdateProfileRequest
 import com.puspa.puspamobile.data.remote.retrofit.ApiService
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
@@ -80,6 +81,19 @@ class DataRepository(private val apiService: ApiService) {
     suspend fun forgotPassword (forgotPasswordRequest: ForgotPasswordRequest): Result<Void?> {
         return try {
             val response = apiService.forgotPassword(forgotPasswordRequest)
+            if (response.isSuccessful) {
+                Result.success(response.body())
+            } else {
+                val errorMessage = ApiErrorHandler.getErrorMessage(response)
+                Result.failure(Exception(errorMessage))
+            }
+        } catch (e: Exception) {
+            Result.failure(e)
+        }
+    }
+    suspend fun resetPassword (token: String, email: String, resetPasswordRequest: ResetPasswordRequest): Result<Void?> {
+        return try {
+            val response = apiService.resetPassword(token, email, resetPasswordRequest)
             if (response.isSuccessful) {
                 Result.success(response.body())
             } else {

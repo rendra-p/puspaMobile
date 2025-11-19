@@ -26,9 +26,7 @@ class NameInputLayout @JvmOverloads constructor(
         }
     }
 
-    fun isValid(): Boolean {
-        return validateInput()
-    }
+    fun isValid(): Boolean = validateInput()
 
     private fun validateInput(): Boolean {
         val name = editText?.text?.toString().orEmpty()

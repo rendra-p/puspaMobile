@@ -17,7 +17,11 @@ class PasswordInputLayout @JvmOverloads constructor(
     private var isPasswordVisible = false
 
     init {
-        hint = "Password"
+        val a = context.obtainStyledAttributes(attrs, R.styleable.PasswordInputLayout)
+        val customHint = a.getString(R.styleable.PasswordInputLayout_android_hint)
+        a.recycle()
+
+        hint = customHint ?: "Password"
         endIconMode = END_ICON_CUSTOM
         setEndIconDrawable(R.drawable.ic_visibility_off)
         endIconContentDescription = "Tampilkan Password"
@@ -55,9 +59,7 @@ class PasswordInputLayout @JvmOverloads constructor(
         }
     }
 
-    fun isValid(): Boolean {
-        return validateInput()
-    }
+    fun isValid(): Boolean = validateInput()
 
     private fun validateInput(): Boolean {
         val password = editText?.text?.toString().orEmpty()
@@ -65,7 +67,7 @@ class PasswordInputLayout @JvmOverloads constructor(
         return when {
             password.isEmpty() -> {
                 isErrorEnabled = true
-                error = "Password tidak boleh kosong"
+                error = "Tidak boleh kosong"
                 false
             }
             password.length < 8 -> {

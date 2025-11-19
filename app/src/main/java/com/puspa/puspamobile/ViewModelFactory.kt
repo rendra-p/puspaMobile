@@ -6,7 +6,8 @@ import com.puspa.puspamobile.data.DataRepository
 import com.puspa.puspamobile.data.local.TokenDataStore
 import com.puspa.puspamobile.ui.auth.LoginViewModel
 import com.puspa.puspamobile.ui.auth.RegisterViewModel
-import com.puspa.puspamobile.ui.auth.ResetPasswordViewModel
+import com.puspa.puspamobile.ui.auth.forgotpassword.ForgotPasswordViewModel
+import com.puspa.puspamobile.ui.auth.forgotpassword.ResetPasswordViewModel
 import com.puspa.puspamobile.ui.mainmenu.account.AccountViewModel
 import com.puspa.puspamobile.ui.mainmenu.home.HomeViewModel
 import com.puspa.puspamobile.ui.mainmenu.schedule.ScheduleViewModel
@@ -26,6 +27,9 @@ class ViewModelFactory(
             }
             modelClass.isAssignableFrom(RegisterViewModel::class.java) -> {
                 RegisterViewModel(repository) as T
+            }
+            modelClass.isAssignableFrom(ForgotPasswordViewModel::class.java) -> {
+                ForgotPasswordViewModel(repository) as T
             }
             modelClass.isAssignableFrom(ResetPasswordViewModel::class.java) -> {
                 ResetPasswordViewModel(repository) as T

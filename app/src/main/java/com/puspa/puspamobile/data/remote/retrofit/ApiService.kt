@@ -10,6 +10,7 @@ import com.puspa.puspamobile.data.remote.response.LoginResponse
 import com.puspa.puspamobile.data.remote.response.ProfileResponse
 import com.puspa.puspamobile.data.remote.response.RegisterRequest
 import com.puspa.puspamobile.data.remote.response.RegisterResponse
+import com.puspa.puspamobile.data.remote.response.ResetPasswordRequest
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
 import retrofit2.Response
@@ -19,6 +20,7 @@ import retrofit2.http.Multipart
 import retrofit2.http.POST
 import retrofit2.http.Part
 import retrofit2.http.Path
+import retrofit2.http.Query
 
 interface ApiService {
     @GET("auth/protected")
@@ -36,6 +38,12 @@ interface ApiService {
     @POST("auth/forgot-password")
     suspend fun forgotPassword(
         @Body forgotPasswordRequest: ForgotPasswordRequest
+    ): Response<Void>
+    @POST("auth/reset-password")
+    suspend fun resetPassword(
+        @Query("token") token: String,
+        @Query("email") email: String,
+        @Body resetPasswordRequest: ResetPasswordRequest
     ): Response<Void>
     @GET("my/profile")
     suspend fun getProfile(): Response<ProfileResponse>

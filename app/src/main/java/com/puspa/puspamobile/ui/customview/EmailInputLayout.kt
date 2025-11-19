@@ -27,9 +27,7 @@ class EmailInputLayout @JvmOverloads constructor(
         }
     }
 
-    fun isValid(): Boolean {
-        return validateInput()
-    }
+    fun isValid(): Boolean = validateInput()
 
     private fun validateInput(): Boolean {
         val email = editText?.text?.toString().orEmpty()

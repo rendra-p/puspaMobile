@@ -1,6 +1,5 @@
-package com.puspa.puspamobile.ui.auth
+package com.puspa.puspamobile.ui.auth.forgotpassword
 
-import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
@@ -9,26 +8,24 @@ import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import androidx.lifecycle.ViewModelProvider
-import com.puspa.puspamobile.R
 import com.puspa.puspamobile.data.Injection
 import com.puspa.puspamobile.data.remote.response.ForgotPasswordRequest
-import com.puspa.puspamobile.databinding.ActivityResetPasswordBinding
+import com.puspa.puspamobile.databinding.ActivityForgotPasswordBinding
+import com.puspa.puspamobile.ui.auth.GmailActivity
 
-class ResetPasswordActivity : AppCompatActivity() {
-    private lateinit var binding: ActivityResetPasswordBinding
-    private lateinit var viewModel: ResetPasswordViewModel
+class ForgotPasswordActivity : AppCompatActivity() {
+    private lateinit var binding: ActivityForgotPasswordBinding
+    private lateinit var viewModel: ForgotPasswordViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        binding = ActivityResetPasswordBinding.inflate(layoutInflater)
+        binding = ActivityForgotPasswordBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         val viewModelFactory = Injection.provideViewModelFactory(this)
-        viewModel = ViewModelProvider(this, viewModelFactory)[ResetPasswordViewModel::class.java]
+        viewModel = ViewModelProvider(this, viewModelFactory)[ForgotPasswordViewModel::class.java]
 
         setupImeOption()
         setupAction()
@@ -38,7 +35,7 @@ class ResetPasswordActivity : AppCompatActivity() {
     private fun setupImeOption() {
         binding.emailInputLayout.editText?.setOnEditorActionListener { v, actionId, _ ->
             if (actionId == EditorInfo.IME_ACTION_NEXT) {
-                val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+                val imm = getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager
                 imm.hideSoftInputFromWindow(v.windowToken, 0)
 
                 binding.btnForgotPassword.performClick()
@@ -76,7 +73,7 @@ class ResetPasswordActivity : AppCompatActivity() {
         viewModel.forgotPasswordResult.observe(this) { result ->
             result.onSuccess {
                 Toast.makeText(this, "Email Terkirim!!", Toast.LENGTH_SHORT).show()
-                startActivity(Intent(this@ResetPasswordActivity, GmailActivity::class.java))
+                startActivity(Intent(this@ForgotPasswordActivity, GmailActivity::class.java))
             }
             result.onFailure { exception ->
                 Toast.makeText(this, exception.message, Toast.LENGTH_LONG).show()

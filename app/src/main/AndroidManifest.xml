@@ -6,6 +6,7 @@
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
+        android:name=".Puspa"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
@@ -13,7 +14,6 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:name=".Puspa"
         android:theme="@style/Theme.PuspaMobile">
         <activity
             android:name=".ui.submenu.managechild.AddChildActivity"
@@ -28,8 +28,23 @@
             android:name=".ui.auth.GmailActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.auth.ResetPasswordActivity"
+            android:name=".ui.auth.forgotpassword.ForgotPasswordActivity"
             android:exported="false" />
+        <activity
+            android:name=".ui.auth.forgotpassword.ResetPasswordActivity"
+            android:exported="true" >
+            <intent-filter android:autoVerify="true">
+                <action android:name="android.intent.action.VIEW"/>
+
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+
+                <data
+                    android:scheme="https"
+                    android:host="puspa.sinus.ac.id"
+                    android:pathPrefix="/auth/reset-password" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".ui.auth.RegisterActivity"
             android:exported="false" />
