@@ -4,7 +4,10 @@ import android.app.Activity
 import android.content.Context
 import android.net.Uri
 import android.os.Bundle
+import android.view.KeyEvent
 import android.view.MotionEvent
+import android.view.View
+import android.view.inputmethod.EditorInfo
 import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
@@ -13,6 +16,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
 import com.google.android.material.datepicker.MaterialDatePicker
+import com.google.android.material.textfield.TextInputEditText
 import com.puspa.puspamobile.data.Injection
 import com.puspa.puspamobile.data.remote.response.UpdateProfileRequest
 import com.puspa.puspamobile.databinding.ActivityEditProfileBinding
@@ -48,9 +52,45 @@ class EditProfileActivity : AppCompatActivity() {
         val viewModelFactory = Injection.provideViewModelFactory(this)
         viewModel = ViewModelProvider(this, viewModelFactory)[EditProfileViewModel::class.java]
 
+        setupImeOption()
         setupObservers()
         setupActions()
         viewModel.getProfile()
+    }
+
+    private fun setupImeOption() {
+        fun setNextListener(current: TextInputEditText, next: View) {
+            current.setOnEditorActionListener { v, actionId, event ->
+                if (actionId == EditorInfo.IME_ACTION_NEXT ||
+                    (event != null && event.keyCode == KeyEvent.KEYCODE_ENTER && event.action == KeyEvent.ACTION_DOWN)) {
+                    next.requestFocus()
+                    if (next.id == binding.etBirthDate.id) {
+                        next.performClick()
+                    }
+                    true
+                } else false
+            }
+        }
+        setNextListener(binding.etGuardianName, binding.etRelationshipWithChild)
+        setNextListener(binding.etRelationshipWithChild, binding.etBirthDate)
+        setNextListener(binding.etGuardianPhone, binding.etEmail)
+        setNextListener(binding.etEmail, binding.etGuardianOccupation)
+
+        binding.etGuardianOccupation.setOnEditorActionListener { v, actionId, _ ->
+            if (actionId == EditorInfo.IME_ACTION_DONE) {
+                val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+                imm.hideSoftInputFromWindow(v.windowToken, 0)
+
+                binding.btnSave.performClick()
+                true
+            } else false
+        }
+
+        binding.etBirthDate.setOnFocusChangeListener { v, hasFocus ->
+            if (hasFocus) {
+                v.performClick()
+            }
+        }
     }
 
     private fun setupObservers() {

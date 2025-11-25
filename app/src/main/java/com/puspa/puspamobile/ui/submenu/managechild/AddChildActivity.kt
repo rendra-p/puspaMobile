@@ -2,9 +2,13 @@ package com.puspa.puspamobile.ui.submenu.managechild
 
 import android.app.Activity
 import android.app.DatePickerDialog
+import android.content.Context
 import android.icu.util.Calendar
 import android.os.Bundle
+import android.view.KeyEvent
 import android.view.MotionEvent
+import android.view.View
+import android.view.inputmethod.EditorInfo
 import android.view.inputmethod.InputMethodManager
 import android.widget.ArrayAdapter
 import android.widget.Toast
@@ -14,6 +18,7 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.lifecycle.ViewModelProvider
 import com.google.android.material.datepicker.MaterialDatePicker
+import com.google.android.material.textfield.TextInputEditText
 import com.puspa.puspamobile.R
 import com.puspa.puspamobile.data.Injection
 import com.puspa.puspamobile.data.remote.response.AddChildRequest
@@ -25,7 +30,6 @@ import java.util.Locale
 class AddChildActivity : AppCompatActivity() {
     private lateinit var binding: ActivityAddChildBinding
     private lateinit var viewModel: AddChildViewModel
-    private val calendar = Calendar.getInstance()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,9 +40,47 @@ class AddChildActivity : AppCompatActivity() {
         val viewModelFactory = Injection.provideViewModelFactory(this)
         viewModel = ViewModelProvider(this, viewModelFactory)[AddChildViewModel::class.java]
 
+        setImeOption()
         setInputField()
         setAction()
         setObserver()
+    }
+
+    private fun setImeOption() {
+        fun setNextListener(current: TextInputEditText, next: View) {
+            current.setOnEditorActionListener { v, actionId, event ->
+                if (actionId == EditorInfo.IME_ACTION_NEXT ||
+                    (event != null && event.keyCode == KeyEvent.KEYCODE_ENTER && event.action == KeyEvent.ACTION_DOWN)) {
+
+                    if (next is android.widget.AutoCompleteTextView) {
+                        next.requestFocus()
+                        next.showDropDown()
+                    } else {
+                        next.requestFocus()
+                        if (next.id == binding.etChildBirthDate.id) next.performClick()
+                    }
+                    true
+                } else false
+            }
+        }
+        setNextListener(binding.etChildName, binding.etChildGender)
+
+        binding.etChildGender.setOnEditorActionListener { v, actionId, event ->
+            if (actionId == EditorInfo.IME_ACTION_NEXT ||
+                (event != null && event.keyCode == KeyEvent.KEYCODE_ENTER && event.action == KeyEvent.ACTION_DOWN)) {
+                binding.etChildBirthPlace.requestFocus()
+                true
+            } else false
+        }
+        setNextListener(binding.etChildBirthDate, binding.etChildSchool)
+
+        binding.etChildBirthDate.setOnFocusChangeListener { v, hasFocus ->
+            if (hasFocus) v.performClick()
+        }
+
+        binding.etChildGender.setOnFocusChangeListener { v, hasFocus ->
+            if (hasFocus && v is android.widget.AutoCompleteTextView) v.showDropDown()
+        }
     }
 
     private fun setInputField() {
@@ -95,7 +137,6 @@ class AddChildActivity : AppCompatActivity() {
             if (binding.cbHydrotherapy.isChecked) selectedServices.add("Hydrotherapy")
             if (binding.cbBabySpa.isChecked) selectedServices.add("Baby Spa")
 
-            // Validasi
             if (name.isEmpty() || gender.isEmpty() || birthPlace.isEmpty() ||
                 birthDate.isEmpty() || school.isEmpty() || address.isEmpty() || complaint.isEmpty()
             ) {
@@ -144,5 +185,4 @@ class AddChildActivity : AppCompatActivity() {
         }
         return super.dispatchTouchEvent(ev)
     }
-
 }

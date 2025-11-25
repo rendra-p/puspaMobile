@@ -1,9 +1,12 @@
 package com.puspa.puspamobile.ui.auth.forgotpassword
 
+import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.view.View
+import android.view.inputmethod.EditorInfo
+import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
 import androidx.activity.addCallback
 import androidx.activity.enableEdgeToEdge
@@ -28,8 +31,24 @@ class ResetPasswordActivity : AppCompatActivity() {
         val viewModelFactory = Injection.provideViewModelFactory(this)
         viewModel = ViewModelProvider(this, viewModelFactory)[ResetPasswordViewModel::class.java]
 
+        setupImeOptions()
         setupAction()
         setupObserver()
+    }
+
+    private fun setupImeOptions() {
+        binding.passwordInputLayout.editText?.nextFocusForwardId = binding.confirmPasswordInputLayout.id
+
+        binding.confirmPasswordInputLayout.editText?.setOnEditorActionListener { v, actionId, _ ->
+            if (actionId == EditorInfo.IME_ACTION_DONE) {
+                val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+                imm.hideSoftInputFromWindow(v.windowToken, 0)
+
+                binding.btnResetPassword.performClick()
+                return@setOnEditorActionListener true
+            }
+            return@setOnEditorActionListener false
+        }
     }
 
     private fun setupAction() {
