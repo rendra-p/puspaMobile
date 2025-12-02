@@ -1,5 +1,6 @@
 package com.puspa.puspamobile.ui.submenu.editprofile
 
+import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.Context
 import android.net.Uri
@@ -17,6 +18,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
 import com.google.android.material.datepicker.MaterialDatePicker
 import com.google.android.material.textfield.TextInputEditText
+import com.puspa.puspamobile.R
 import com.puspa.puspamobile.data.Injection
 import com.puspa.puspamobile.data.remote.response.UpdateProfileRequest
 import com.puspa.puspamobile.databinding.ActivityEditProfileBinding
@@ -39,7 +41,10 @@ class EditProfileActivity : AppCompatActivity() {
     ) { uri: Uri? ->
         uri?.let {
             selectedImageUri = it
-            binding.imgProfile.setImageURI(it)
+            Glide.with(this)
+                .load(it)
+                .placeholder(R.drawable.baseline_account_circle_24)
+                .into(binding.imgProfile)
         }
     }
 
@@ -94,6 +99,10 @@ class EditProfileActivity : AppCompatActivity() {
     }
 
     private fun setupObservers() {
+        viewModel.isLoading.observe(this) { isLoading ->
+            binding.btnSave.isEnabled = !isLoading
+            binding.btnSave.text = if (isLoading) "Loading..." else "Simpan Perubahan"
+        }
         viewModel.profileResult.observe(this) { result ->
             result.onSuccess { response ->
                 val data = response.data ?: return@onSuccess
@@ -101,6 +110,8 @@ class EditProfileActivity : AppCompatActivity() {
                 val imageUrl = "https://puspa.sinus.ac.id" + data.profilePicture
                 Glide.with(this)
                     .load(imageUrl)
+                    .placeholder(R.drawable.baseline_account_circle_24)
+                    .error(R.drawable.baseline_account_circle_24)
                     .into(binding.imgProfile)
                 binding.apply {
                     etGuardianName.setText(data.guardianName ?: "")

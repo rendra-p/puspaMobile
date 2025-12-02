@@ -64,6 +64,8 @@ class HomeFragment : Fragment() {
                     val imageUrl = "https://puspa.sinus.ac.id" + profileData.profilePicture
                     Glide.with(this)
                         .load(imageUrl)
+                        .placeholder(R.drawable.baseline_account_circle_24)
+                        .error(R.drawable.baseline_account_circle_24)
                         .into(binding.imgProfile)
                     binding.apply {
                         tvHallo.text = getString(R.string.home_greeting,profileData.guardianName)

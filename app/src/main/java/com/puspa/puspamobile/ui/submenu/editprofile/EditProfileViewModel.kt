@@ -19,35 +19,47 @@ class EditProfileViewModel (
     private val _updateProfileResult = MutableLiveData<Result<Void?>>()
     val updateProfileResult: LiveData<Result<Void?>> = _updateProfileResult
 
+    private val _isLoading = MutableLiveData<Boolean>()
+    val isLoading: LiveData<Boolean> = _isLoading
+
     fun getProfile() {
+        _isLoading.value = true
         viewModelScope.launch {
             try {
                 val result = repository.getProfile()
                 _profileResult.value = result
             } catch (e: Exception) {
                 _profileResult.value = Result.failure(e)
+            } finally {
+                _isLoading.value = false
             }
         }
     }
 
     fun updateProfile(guardianId: String, updateProfileRequest: UpdateProfileRequest) {
+        _isLoading.value = true
         viewModelScope.launch {
             try {
                 val result = repository.updateProfile(guardianId, updateProfileRequest)
                 _updateProfileResult.value = result
             } catch (e: Exception) {
                 _updateProfileResult.value = Result.failure(e)
+            } finally {
+                _isLoading.value = false
             }
         }
     }
 
     fun updateProfileWithImage(guardianId: String, updateProfileRequest: UpdateProfileRequest, imageFile: File) {
+        _isLoading.value = true
         viewModelScope.launch {
             try {
                 val result = repository.updateProfileWithImage(guardianId, updateProfileRequest, imageFile)
                 _updateProfileResult.value = result
             } catch (e: Exception) {
                 _updateProfileResult.value = Result.failure(e)
+            } finally {
+                _isLoading.value = false
             }
         }
     }

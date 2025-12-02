@@ -165,6 +165,10 @@ class AddChildActivity : AppCompatActivity() {
     }
 
     private fun setObserver() {
+        viewModel.isLoading.observe(this) { isLoading ->
+            binding.btnSave.isEnabled = !isLoading
+            binding.btnSave.text = if (isLoading) "Loading..." else "Simpan Data Anak"
+        }
         viewModel.addChildResult.observe(this) { result ->
             result.onSuccess {
                 Toast.makeText(this, "Data anak berhasil ditambahkan", Toast.LENGTH_SHORT).show()

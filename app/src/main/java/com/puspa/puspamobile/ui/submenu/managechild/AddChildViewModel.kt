@@ -14,13 +14,19 @@ class AddChildViewModel(
     private val _addChildResult = MutableLiveData<Result<Void?>>()
     val addChildResult: LiveData<Result<Void?>> = _addChildResult
 
+    private val _isLoading = MutableLiveData<Boolean>()
+    val isLoading: LiveData<Boolean> = _isLoading
+
     fun addChild(addChildRequest: AddChildRequest) {
+        _isLoading.value = true
         viewModelScope.launch {
             try {
                 val result = repository.addChild(addChildRequest)
                 _addChildResult.value = result
             } catch (e: Exception) {
                 _addChildResult.value = Result.failure(e)
+            } finally {
+                _isLoading.value = false
             }
         }
     }

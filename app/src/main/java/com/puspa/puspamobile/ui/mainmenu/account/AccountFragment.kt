@@ -18,6 +18,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.textfield.TextInputLayout
+import com.puspa.puspamobile.R
 import com.puspa.puspamobile.data.Injection
 import com.puspa.puspamobile.data.remote.response.ChangePasswordRequest
 import com.puspa.puspamobile.databinding.FragmentAccountBinding
@@ -80,6 +81,8 @@ class AccountFragment : Fragment() {
                     val imageUrl = "https://puspa.sinus.ac.id" + profileData.profilePicture
                     Glide.with(this)
                         .load(imageUrl)
+                        .placeholder(R.drawable.baseline_account_circle_24)
+                        .error(R.drawable.baseline_account_circle_24)
                         .into(binding.imgProfile)
                     binding.apply {
                         tvName.text = profileData.guardianName
