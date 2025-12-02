@@ -19,7 +19,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:layout_marginTop="64dp"
-        app:srcCompat="@drawable/picture_error_connection" />
+        app:srcCompat="@drawable/picture_error_connection"
+        tools:ignore="ContentDescription" />
 
     <TextView
         android:id="@+id/textDisplayNointernet"

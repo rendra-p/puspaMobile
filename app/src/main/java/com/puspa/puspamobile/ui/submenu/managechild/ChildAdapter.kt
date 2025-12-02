@@ -36,6 +36,7 @@ class ChildAdapter(
 
     override fun getItemCount(): Int = childList.size
 
+    @SuppressLint("NotifyDataSetChanged")
     fun updateData(newList: List<ChildData?>?) {
         childList = newList?.filterNotNull() ?: emptyList()
         notifyDataSetChanged()

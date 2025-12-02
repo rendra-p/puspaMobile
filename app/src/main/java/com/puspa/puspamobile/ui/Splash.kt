@@ -4,14 +4,10 @@ import android.animation.ObjectAnimator
 import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
-import android.os.Handler
-import android.os.Looper
 import android.view.Window
 import android.view.animation.LinearInterpolator
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.WindowCompat
-import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.WindowInsetsControllerCompat
 import androidx.lifecycle.lifecycleScope
 import com.puspa.puspamobile.MainActivity
@@ -107,7 +103,7 @@ class Splash : AppCompatActivity() {
     private fun startProgressAnimation() {
         ObjectAnimator.ofInt(binding.progressBar, "progress", 0, 100).apply {
             this.duration = 2000L
-            interpolator = android.view.animation.LinearInterpolator()
+            interpolator = LinearInterpolator()
             start()
         }
     }

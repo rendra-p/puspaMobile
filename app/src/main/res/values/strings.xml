@@ -10,15 +10,6 @@
     <string name="display_onboarding">Selamat Datang di Puspa</string>
     <string name="body_onboarding">Kami sangat senang bisa menjadi bagian tumbuh kembang anak anda.</string>
 
-    <string name="default_hint">Enter text</string>
-    <string name="toggle_password">Lihat password</string>
-    <string name="error_required">Ini tidak boleh kosong</string>
-    <string name="error_username_min_length">Nama minimal 3 karakter</string>
-    <string name="error_email_invalid">Format email salah</string>
-    <string name="error_password_min_length">Password minimal 8 karakter</string>
-    <string name="error_password_uppercase">Password harus terdapat huruf kapital</string>
-    <string name="error_password_digit">Password harus terdapat angka</string>
-    <string name="error_password_symbol">Password harus terdapat simbol (!@#$%^*)</string>
     <string name="home_greeting">Hallo, %1$s!</string>
     <string name="atas_nama_assesments">a.n. %1$s</string>
 

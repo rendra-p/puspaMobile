@@ -5,9 +5,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
 import androidx.navigation.NavOptions
 import androidx.navigation.fragment.NavHostFragment
-import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.setupActionBarWithNavController
-import com.ismaeldivita.chipnavigation.ChipNavigationBar
 import com.puspa.puspamobile.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {

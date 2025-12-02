@@ -1,9 +1,5 @@
 package com.puspa.puspamobile.ui.submenu.managechild
 
-import android.app.Activity
-import android.app.DatePickerDialog
-import android.content.Context
-import android.icu.util.Calendar
 import android.os.Bundle
 import android.view.KeyEvent
 import android.view.MotionEvent
@@ -14,12 +10,9 @@ import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import androidx.lifecycle.ViewModelProvider
 import com.google.android.material.datepicker.MaterialDatePicker
 import com.google.android.material.textfield.TextInputEditText
-import com.puspa.puspamobile.R
 import com.puspa.puspamobile.data.Injection
 import com.puspa.puspamobile.data.remote.response.AddChildRequest
 import com.puspa.puspamobile.databinding.ActivityAddChildBinding
@@ -172,7 +165,7 @@ class AddChildActivity : AppCompatActivity() {
         viewModel.addChildResult.observe(this) { result ->
             result.onSuccess {
                 Toast.makeText(this, "Data anak berhasil ditambahkan", Toast.LENGTH_SHORT).show()
-                setResult(Activity.RESULT_OK)
+                setResult(RESULT_OK)
                 finish()
             }
             result.onFailure { e ->

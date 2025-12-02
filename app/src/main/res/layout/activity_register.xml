@@ -18,12 +18,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="50dp"
-            android:layout_marginLeft="30dp"
+            android:layout_marginStart="30dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/baseline_arrow_back_24"
             android:background="@null"
-            app:tint="@color/onGradient"/>
+            app:tint="@color/onGradient"
+            tools:ignore="ContentDescription" />
 
         <TextView
             android:id="@+id/textView"

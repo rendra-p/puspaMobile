@@ -2,7 +2,7 @@ package com.puspa.puspamobile.data
 
 import com.puspa.puspamobile.data.remote.ApiErrorHandler
 import com.puspa.puspamobile.data.remote.response.AddChildRequest
-import com.puspa.puspamobile.data.remote.response.AssesmentsResponse
+import com.puspa.puspamobile.data.remote.response.AssessmentsResponse
 import com.puspa.puspamobile.data.remote.response.ChangePasswordRequest
 import com.puspa.puspamobile.data.remote.response.ChildResponse
 import com.puspa.puspamobile.data.remote.response.ForgotPasswordRequest
@@ -143,9 +143,9 @@ class DataRepository(private val apiService: ApiService) {
             Result.failure(e)
         }
     }
-    suspend fun getAssesments (): Result<AssesmentsResponse> {
+    suspend fun getAssesments (): Result<AssessmentsResponse> {
         return try {
-            val response = apiService.getAssesments()
+            val response = apiService.getAssessments()
             if (response.isSuccessful) {
                 Result.success(response.body()!!)
             } else {

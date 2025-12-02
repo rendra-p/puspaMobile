@@ -15,7 +15,8 @@
         android:src="@drawable/logo_puspa"
         app:layout_constraintWidth_percent="0.3"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="ContentDescription" />
 
     <LinearLayout
         android:id="@+id/btn_logout"
@@ -26,12 +27,14 @@
         android:orientation="vertical"
         app:layout_constraintWidth_percent="0.15"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="UseCompoundDrawables">
 
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:src="@drawable/outline_logout_24" />
+            android:src="@drawable/outline_logout_24"
+            tools:ignore="ContentDescription" />
 
         <TextView
             android:layout_width="match_parent"
@@ -39,7 +42,8 @@
             android:text="Keluar"
             android:fontFamily="@font/playpensans_light"
             android:textSize="9sp"
-            android:gravity="center"/>
+            android:gravity="center"
+            tools:ignore="SmallSp" />
     </LinearLayout>
 
     <LinearLayout
@@ -49,12 +53,14 @@
         android:orientation="vertical"
         app:layout_constraintEnd_toStartOf="@id/btn_logout"
         app:layout_constraintTop_toTopOf="@+id/btn_logout"
-        app:layout_constraintWidth_percent="0.15">
+        app:layout_constraintWidth_percent="0.15"
+        tools:ignore="UseCompoundDrawables" >
 
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:src="@drawable/outline_help_24" />
+            android:src="@drawable/outline_help_24"
+            tools:ignore="ContentDescription" />
 
         <TextView
             android:layout_width="match_parent"
@@ -62,7 +68,8 @@
             android:fontFamily="@font/playpensans_light"
             android:gravity="center"
             android:text="Bantuan"
-            android:textSize="9sp" />
+            android:textSize="9sp"
+            tools:ignore="SmallSp" />
     </LinearLayout>
 
     <LinearLayout
@@ -72,12 +79,14 @@
         android:orientation="vertical"
         app:layout_constraintEnd_toStartOf="@id/btn_help"
         app:layout_constraintTop_toTopOf="@+id/btn_help"
-        app:layout_constraintWidth_percent="0.15">
+        app:layout_constraintWidth_percent="0.15"
+        tools:ignore="UseCompoundDrawables" >
 
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:src="@drawable/outline_notifications_24" />
+            android:src="@drawable/outline_notifications_24"
+            tools:ignore="ContentDescription" />
 
         <TextView
             android:layout_width="match_parent"
@@ -85,7 +94,8 @@
             android:fontFamily="@font/playpensans_light"
             android:gravity="center"
             android:text="Notifikasi"
-            android:textSize="9sp" />
+            android:textSize="9sp"
+            tools:ignore="SmallSp" />
     </LinearLayout>
 
     <FrameLayout
@@ -226,7 +236,8 @@
                     android:layout_height="40dp"
                     android:layout_margin="8dp"
                     android:src="@drawable/outline_child_care_24"
-                    app:tint="@color/primary" />
+                    app:tint="@color/primary"
+                    tools:ignore="ContentDescription" />
             </com.google.android.material.card.MaterialCardView>
             <TextView
                 android:layout_width="match_parent"
@@ -257,7 +268,8 @@
                     android:layout_height="40dp"
                     android:layout_margin="8dp"
                     android:src="@drawable/outline_calendar_month_24"
-                    app:tint="@color/primary" />
+                    app:tint="@color/primary"
+                    tools:ignore="ContentDescription" />
             </com.google.android.material.card.MaterialCardView>
             <TextView
                 android:layout_width="match_parent"
@@ -287,7 +299,8 @@
                     android:layout_height="40dp"
                     android:layout_margin="8dp"
                     android:src="@drawable/outline_search_insights_24"
-                    app:tint="@color/primary" />
+                    app:tint="@color/primary"
+                    tools:ignore="ContentDescription" />
             </com.google.android.material.card.MaterialCardView>
             <TextView
                 android:layout_width="match_parent"
@@ -317,7 +330,8 @@
                     android:layout_height="40dp"
                     android:layout_margin="8dp"
                     android:src="@drawable/outline_document_search_24"
-                    app:tint="@color/primary" />
+                    app:tint="@color/primary"
+                    tools:ignore="ContentDescription" />
             </com.google.android.material.card.MaterialCardView>
             <TextView
                 android:layout_width="match_parent"
@@ -347,7 +361,8 @@
                     android:layout_height="40dp"
                     android:layout_margin="8dp"
                     android:src="@drawable/outline_money_bag_24"
-                    app:tint="@color/primary" />
+                    app:tint="@color/primary"
+                    tools:ignore="ContentDescription" />
             </com.google.android.material.card.MaterialCardView>
             <TextView
                 android:layout_width="match_parent"
@@ -377,7 +392,8 @@
                     android:layout_height="40dp"
                     android:layout_margin="8dp"
                     android:src="@drawable/outline_brightness_empty_24"
-                    app:tint="@color/primary" />
+                    app:tint="@color/primary"
+                    tools:ignore="ContentDescription" />
             </com.google.android.material.card.MaterialCardView>
             <TextView
                 android:layout_width="match_parent"
@@ -407,7 +423,8 @@
                     android:layout_height="40dp"
                     android:layout_margin="8dp"
                     android:src="@drawable/outline_brightness_empty_24"
-                    app:tint="@color/primary" />
+                    app:tint="@color/primary"
+                    tools:ignore="ContentDescription" />
             </com.google.android.material.card.MaterialCardView>
             <TextView
                 android:layout_width="match_parent"
@@ -437,7 +454,8 @@
                     android:layout_height="40dp"
                     android:layout_margin="8dp"
                     android:src="@drawable/outline_brightness_empty_24"
-                    app:tint="@color/primary" />
+                    app:tint="@color/primary"
+                    tools:ignore="ContentDescription" />
             </com.google.android.material.card.MaterialCardView>
             <TextView
                 android:layout_width="match_parent"

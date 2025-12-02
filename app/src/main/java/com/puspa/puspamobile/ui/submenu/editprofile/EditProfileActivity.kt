@@ -1,7 +1,5 @@
 package com.puspa.puspamobile.ui.submenu.editprofile
 
-import android.annotation.SuppressLint
-import android.app.Activity
 import android.content.Context
 import android.net.Uri
 import android.os.Bundle
@@ -83,7 +81,7 @@ class EditProfileActivity : AppCompatActivity() {
 
         binding.etGuardianOccupation.setOnEditorActionListener { v, actionId, _ ->
             if (actionId == EditorInfo.IME_ACTION_DONE) {
-                val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+                val imm = getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager
                 imm.hideSoftInputFromWindow(v.windowToken, 0)
 
                 binding.btnSave.performClick()
@@ -129,7 +127,7 @@ class EditProfileActivity : AppCompatActivity() {
         viewModel.updateProfileResult.observe(this) { result ->
             result.onSuccess { response ->
                 Toast.makeText(this, "Profil berhasil diperbarui", Toast.LENGTH_SHORT).show()
-                setResult(Activity.RESULT_OK)
+                setResult(RESULT_OK)
                 finish()
             }.onFailure { e ->
                 Toast.makeText(this, e.message, Toast.LENGTH_SHORT).show()

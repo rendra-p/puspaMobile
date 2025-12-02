@@ -16,7 +16,8 @@
         android:background="@null"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/baseline_arrow_back_24" />
+        app:srcCompat="@drawable/baseline_arrow_back_24"
+        tools:ignore="ContentDescription" />
 
     <LinearLayout
         android:id="@+id/linearLayout5"
@@ -45,7 +46,8 @@
             android:layout_width="32dp"
             android:layout_height="32dp"
             app:srcCompat="@drawable/outline_add_circle_24"
-            app:tint="@color/primary" />
+            app:tint="@color/primary"
+            tools:ignore="ContentDescription" />
     </LinearLayout>
 
     <FrameLayout

@@ -5,22 +5,22 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.puspa.puspamobile.data.DataRepository
-import com.puspa.puspamobile.data.remote.response.AssesmentsResponse
+import com.puspa.puspamobile.data.remote.response.AssessmentsResponse
 import kotlinx.coroutines.launch
 
 class ScheduleViewModel(
     private val repository: DataRepository
 ) : ViewModel() {
-    private val _assesmentsResult = MutableLiveData<Result<AssesmentsResponse>>()
-    val assesmenResult: LiveData<Result<AssesmentsResponse>> = _assesmentsResult
+    private val _assessmentsResult = MutableLiveData<Result<AssessmentsResponse>>()
+    val assessmentResult: LiveData<Result<AssessmentsResponse>> = _assessmentsResult
 
-    fun getAssesments() {
+    fun getAssessments() {
         viewModelScope.launch {
             try {
                 val result = repository.getAssesments()
-                _assesmentsResult.value = result
+                _assessmentsResult.value = result
             } catch (e: Exception) {
-                _assesmentsResult.value = Result.failure(e)
+                _assessmentsResult.value = Result.failure(e)
             }
         }
     }

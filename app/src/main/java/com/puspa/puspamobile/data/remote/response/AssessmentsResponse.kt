@@ -5,10 +5,10 @@ import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
 
 @Parcelize
-data class AssesmentsResponse(
+data class AssessmentsResponse(
 
 	@field:SerializedName("data")
-	val data: List<AssesmentsData?>? = null,
+	val data: List<AssessmentsData?>? = null,
 
 	@field:SerializedName("success")
 	val success: Boolean? = null,
@@ -18,7 +18,7 @@ data class AssesmentsResponse(
 ) : Parcelable
 
 @Parcelize
-data class AssesmentsData(
+data class AssessmentsData(
 
 	@field:SerializedName("child_gender")
 	val childGender: String? = null,

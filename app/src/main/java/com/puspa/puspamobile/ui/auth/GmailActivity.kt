@@ -1,15 +1,13 @@
 package com.puspa.puspamobile.ui.auth
 
+import android.annotation.SuppressLint
 import android.content.Intent
-import android.net.Uri
 import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
-import com.puspa.puspamobile.R
 import com.puspa.puspamobile.databinding.ActivityGmailBinding
+import androidx.core.net.toUri
 
 class GmailActivity : AppCompatActivity() {
     private lateinit var binding: ActivityGmailBinding
@@ -27,6 +25,7 @@ class GmailActivity : AppCompatActivity() {
         }
     }
 
+    @SuppressLint("QueryPermissionsNeeded")
     private fun openEmailApp() {
         val intent = Intent(Intent.CATEGORY_APP_EMAIL).apply {
             addCategory(Intent.CATEGORY_APP_EMAIL)
@@ -39,9 +38,10 @@ class GmailActivity : AppCompatActivity() {
         }
     }
 
+    @SuppressLint("QueryPermissionsNeeded")
     private fun tryOpenAlternative() {
         val alternativeIntent = Intent(Intent.ACTION_SENDTO).apply {
-            data = Uri.parse("mailto:")
+            data = "mailto:".toUri()
         }
 
         if (alternativeIntent.resolveActivity(packageManager) != null) {

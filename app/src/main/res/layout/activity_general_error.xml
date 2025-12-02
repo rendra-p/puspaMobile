@@ -24,7 +24,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@id/guidelineImageError"
-        app:srcCompat="@drawable/picture_error_general" />
+        app:srcCompat="@drawable/picture_error_general"
+        tools:ignore="ContentDescription" />
 
     <TextView
         android:id="@+id/textDisplayGeneralError"

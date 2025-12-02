@@ -1,6 +1,5 @@
 package com.puspa.puspamobile.ui.mainmenu.schedule
 
-import androidx.fragment.app.viewModels
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -37,15 +36,15 @@ class ScheduleFragment : Fragment() {
     }
 
     private fun setObserver() {
-        viewModel.getAssesments()
-        viewModel.assesmenResult.observe(viewLifecycleOwner) { result ->
+        viewModel.getAssessments()
+        viewModel.assessmentResult.observe(viewLifecycleOwner) { result ->
             result.onSuccess { response ->
-                response.data?.let { assesmentsData ->
-                    if (assesmentsData.isEmpty()) {
+                response.data?.let { assessmentsData ->
+                    if (assessmentsData.isEmpty()) {
                         binding.frameAssesments.visibility = View.GONE
                         binding.tvNoAssesments.visibility = View.VISIBLE
                     } else {
-                        assesmentsData.firstOrNull()?.let { data ->
+                        assessmentsData.firstOrNull()?.let { data ->
                             binding.apply {
                                 tvAtasNama.text = getString(R.string.atas_nama_assesments, data.childName)
                                 tvSchedule.text = data.scheduledDate

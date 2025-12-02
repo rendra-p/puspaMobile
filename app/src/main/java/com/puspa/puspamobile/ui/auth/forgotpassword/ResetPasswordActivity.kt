@@ -16,7 +16,6 @@ import com.puspa.puspamobile.data.Injection
 import com.puspa.puspamobile.data.remote.response.ResetPasswordRequest
 import com.puspa.puspamobile.databinding.ActivityResetPasswordBinding
 import com.puspa.puspamobile.ui.auth.BoardingActivity
-import com.puspa.puspamobile.ui.auth.GmailActivity
 
 class ResetPasswordActivity : AppCompatActivity() {
     private lateinit var binding: ActivityResetPasswordBinding
@@ -41,7 +40,7 @@ class ResetPasswordActivity : AppCompatActivity() {
 
         binding.confirmPasswordInputLayout.editText?.setOnEditorActionListener { v, actionId, _ ->
             if (actionId == EditorInfo.IME_ACTION_DONE) {
-                val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+                val imm = getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager
                 imm.hideSoftInputFromWindow(v.windowToken, 0)
 
                 binding.btnResetPassword.performClick()

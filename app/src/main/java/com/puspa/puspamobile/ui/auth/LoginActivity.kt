@@ -15,7 +15,6 @@ import com.puspa.puspamobile.data.Injection
 import com.puspa.puspamobile.data.remote.response.LoginRequest
 import com.puspa.puspamobile.databinding.ActivityLoginBinding
 import com.puspa.puspamobile.ui.auth.forgotpassword.ForgotPasswordActivity
-import com.puspa.puspamobile.ui.auth.forgotpassword.ResetPasswordActivity
 
 class LoginActivity : AppCompatActivity() {
     private lateinit var binding: ActivityLoginBinding
@@ -40,7 +39,7 @@ class LoginActivity : AppCompatActivity() {
 
         binding.passwordInputLayout.editText?.setOnEditorActionListener { v, actionId, _ ->
             if (actionId == EditorInfo.IME_ACTION_DONE) {
-                val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+                val imm = getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager
                 imm.hideSoftInputFromWindow(v.windowToken, 0)
 
                 binding.btnMasukLogin.performClick()
