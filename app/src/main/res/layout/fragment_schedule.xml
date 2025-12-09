@@ -40,7 +40,7 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/playpensans_light"
             android:gravity="center"
-            android:text="Bantuan"
+            android:text="@string/txt_bantuan"
             android:textSize="9sp"
             tools:ignore="SmallSp" />
     </LinearLayout>
@@ -50,7 +50,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="38dp"
-        android:text="Jadwal Assesmen"
+        android:text="@string/title_jadwal_assesmen"
         android:textAppearance="@style/Playpen.Label"
         android:textColor="@color/black"
         app:layout_constraintStart_toStartOf="@+id/imageView3"
@@ -71,7 +71,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="20dp"
-            android:text="Tidak Ada Jadwal Assesmen"
+            android:text="@string/txt_tidak_ada_jadwal_assesmen"
             android:textAppearance="@style/Playpen.Label"
             android:visibility="gone"/>
 
@@ -97,7 +97,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Assesmen"
+                        android:text="@string/txt_assesmen"
                         android:textAppearance="@style/Playpen.Label"
                         android:textColor="@color/black" />
 
@@ -123,8 +123,7 @@
                         <TextView
                             android:id="@+id/tv_schedule"
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="22/01/1234" />
+                            android:layout_height="wrap_content" />
                     </LinearLayout>
                 </LinearLayout>
 
@@ -136,7 +135,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Terjadwal"
+                    android:text="@string/txt_terjadwal"
                     android:textAppearance="@style/Playpen.Body"
                     android:textColor="@color/grey" />
             </LinearLayout>
@@ -148,7 +147,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:text="Jadwal Terapi Yang Akan Datang"
+        android:text="@string/title_jadwal_terapi_yang_akan_datang"
         android:textAppearance="@style/Playpen.Label"
         android:textColor="@color/black"
         app:layout_constraintStart_toStartOf="@+id/textView10"

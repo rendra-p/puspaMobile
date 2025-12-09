@@ -26,7 +26,6 @@
                 android:id="@+id/tv_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Name"
                 android:textAppearance="@style/Playpen.Label" />
 
             <TextView
@@ -34,7 +33,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
-                android:text="(%1$s)"
+                android:text="@string/placehold_gender"
                 android:textAppearance="@style/Playpen.Body"
                 android:textColor="@color/grey" />
         </LinearLayout>
@@ -52,13 +51,13 @@
                 android:id="@+id/tv_birth_date"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Tanggal Lahir: %1$s"
+                android:text="@string/placehold_tanggal_lahir"
                 android:textAppearance="@style/Playpen.Body"/>
             <TextView
                 android:id="@+id/tv_age"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Usia: %1$s"
+                android:text="@string/placehold_usia"
                 android:textAppearance="@style/Playpen.Body"/>
         </LinearLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>

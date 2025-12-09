@@ -37,7 +37,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="40dp"
-            android:hint="Nama Anak">
+            android:hint="@string/hint_nama_anak">
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/etChildName"
                 android:layout_width="match_parent"
@@ -49,7 +49,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            android:hint="Jenis Kelamin"
+            android:hint="@string/hint_jenis_kelamin"
             app:endIconMode="dropdown_menu">
             <AutoCompleteTextView
                 android:id="@+id/etChildGender"
@@ -65,7 +65,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            android:hint="Tempat Lahir">
+            android:hint="@string/hint_tempat_lahir">
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/etChildBirthPlace"
                 android:layout_width="match_parent"
@@ -76,7 +76,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            android:hint="Tanggal Lahir">
+            android:hint="@string/hint_">
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/etChildBirthDate"
                 android:layout_width="match_parent"
@@ -90,7 +90,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            android:hint="Sekolah Anak">
+            android:hint="@string/hint_sekolah_anak">
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/etChildSchool"
                 android:layout_width="match_parent"
@@ -101,7 +101,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            android:hint="Alamat Anak">
+            android:hint="@string/hint_alamat_anak">
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/etChildAddress"
                 android:layout_width="match_parent"
@@ -114,7 +114,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            android:hint="Keluhan Anak">
+            android:hint="@string/hint_keluhan_anak">
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/etChildComplaint"
                 android:layout_width="match_parent"
@@ -126,7 +126,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Pilih Layanan (2 prioritas):"
+            android:text="@string/hint_pilih_layanan_2_prioritas"
             android:textStyle="bold"
             android:layout_marginTop="28dp" />
 
@@ -141,74 +141,74 @@
                 android:id="@+id/cbAsesmenTumbuhKembang"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Asesmen Tumbuh Kembang" />
+                android:text="@string/layanan_asesmen_tumbuh_kembang" />
 
             <com.google.android.material.checkbox.MaterialCheckBox
                 android:id="@+id/cbAsesmenTerpadu"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Asesmen Terpadu" />
+                android:text="@string/layanan_asesmen_terpadu" />
 
             <com.google.android.material.checkbox.MaterialCheckBox
                 android:id="@+id/cbKonsultasiDokter"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Konsultasi Dokter" />
+                android:text="@string/layanan_konsultasi_dokter" />
 
             <com.google.android.material.checkbox.MaterialCheckBox
                 android:id="@+id/cbKonsultasiPsikolog"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Konsultasi Psikolog" />
+                android:text="@string/layanan_konsultasi_psikolog" />
 
             <com.google.android.material.checkbox.MaterialCheckBox
                 android:id="@+id/cbKonsultasiKeluarga"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Konsultasi Keluarga" />
+                android:text="@string/layanan_konsultasi_keluarga" />
 
             <com.google.android.material.checkbox.MaterialCheckBox
                 android:id="@+id/cbTestPsikolog"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Test Psikolog" />
+                android:text="@string/layanan_test_psikolog" />
 
             <com.google.android.material.checkbox.MaterialCheckBox
                 android:id="@+id/cbLayananMinatBakat"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Layanan Minat Bakat" />
+                android:text="@string/layanan_minat_bakat" />
 
             <com.google.android.material.checkbox.MaterialCheckBox
                 android:id="@+id/cbDaycare"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Daycare" />
+                android:text="@string/layanan_daycare" />
 
             <com.google.android.material.checkbox.MaterialCheckBox
                 android:id="@+id/cbHomeCare"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Home Care" />
+                android:text="@string/layanan_home_care" />
 
             <com.google.android.material.checkbox.MaterialCheckBox
                 android:id="@+id/cbHydrotherapy"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Hydrotherapy" />
+                android:text="@string/layanan_hydrotherapy" />
 
             <com.google.android.material.checkbox.MaterialCheckBox
                 android:id="@+id/cbBabySpa"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Baby Spa" />
+                android:text="@string/layanan_baby_spa" />
         </LinearLayout>
 
         <Button
             android:id="@+id/btnSave"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Simpan Data Anak"
+            android:text="@string/label_simpan_data_anak"
             android:layout_marginTop="36dp" />
     </LinearLayout>
 </ScrollView>

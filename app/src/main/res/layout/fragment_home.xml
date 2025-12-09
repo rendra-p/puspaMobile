@@ -39,7 +39,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Keluar"
+            android:text="@string/txt_keluar"
             android:fontFamily="@font/playpensans_light"
             android:textSize="9sp"
             android:gravity="center"
@@ -67,7 +67,7 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/playpensans_light"
             android:gravity="center"
-            android:text="Bantuan"
+            android:text="@string/txt_bantuan"
             android:textSize="9sp"
             tools:ignore="SmallSp" />
     </LinearLayout>
@@ -93,7 +93,7 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/playpensans_light"
             android:gravity="center"
-            android:text="Notifikasi"
+            android:text="@string/txt_notifikasi"
             android:textSize="9sp"
             tools:ignore="SmallSp" />
     </LinearLayout>
@@ -194,7 +194,6 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Jadwal Hari Ini"
                 android:textAppearance="@style/Playpen.Label" />
         </LinearLayout>
     </com.google.android.material.card.MaterialCardView>
@@ -242,7 +241,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:text="Anak"
+                android:text="@string/label_anak"
                 android:textAppearance="@style/Playpen.Body"
                 android:gravity="center"/>
         </LinearLayout>
@@ -274,7 +273,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:text="Jadwal"
+                android:text="@string/label_jadwal"
                 android:textAppearance="@style/Playpen.Body"
                 android:gravity="center"/>
         </LinearLayout>
@@ -305,7 +304,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:text="Comming Soon"
+                android:text="@string/label_comming_soon"
                 android:textAppearance="@style/Playpen.Body"
                 android:gravity="center"/>
         </LinearLayout>
@@ -336,7 +335,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:text="Comming Soon"
+                android:text="@string/label_comming_soon"
                 android:textAppearance="@style/Playpen.Body"
                 android:gravity="center"/>
         </LinearLayout>
@@ -367,7 +366,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:text="Comming Soon"
+                android:text="@string/label_comming_soon"
                 android:textAppearance="@style/Playpen.Body"
                 android:gravity="center"/>
         </LinearLayout>
@@ -398,7 +397,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:text="Comming Soon"
+                android:text="@string/label_comming_soon"
                 android:textAppearance="@style/Playpen.Body"
                 android:gravity="center"/>
         </LinearLayout>
@@ -429,7 +428,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:text="Comming Soon"
+                android:text="@string/label_comming_soon"
                 android:textAppearance="@style/Playpen.Body"
                 android:gravity="center"/>
         </LinearLayout>
@@ -460,7 +459,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:text="Comming Soon"
+                android:text="@string/label_comming_soon"
                 android:textAppearance="@style/Playpen.Body"
                 android:gravity="center"/>
         </LinearLayout>

@@ -1,5 +1,7 @@
 <resources>
     <string name="app_name">Puspa Mobile</string>
+
+    <!-- Error Page -->
     <string name="display_no_internet">Tidak Ada Koneksi internet</string>
     <string name="body_no_internet">Silahkan periksa koneksi internet anda sebelum mencoba lagi.</string>
     <string name="button_no_internet">Coba Lagi</string>
@@ -7,10 +9,101 @@
     <string name="body_general_error">Maaf atas ketidaknyamanannya, terdapat gangguan sistem. Coba lagi nanti</string>
     <string name="button_general_error">Kembali</string>
 
+    <string name="atas_nama_assesments">a.n. %1$s</string>
+
+    <!-- Reusable -->
+    <string name="txt_masuk">Masuk</string>
+    <string name="txt_daftar">Daftar</string>
+    <string name="txt_keluar">Keluar</string>
+    <string name="txt_bantuan">Bantuan</string>
+    <string name="txt_notifikasi">Notifikasi</string>
+
+    <!-- Onboarding Page -->
     <string name="display_onboarding">Selamat Datang di Puspa</string>
     <string name="body_onboarding">Kami sangat senang bisa menjadi bagian tumbuh kembang anak anda.</string>
 
+    <!-- Login Page -->
+    <string name="welcome_login_1">Selamat Datang Kembali</string>
+    <string name="welcome_login_2">Semoga bahagia dan sehat selalu.</string>
+    <string name="txt_forgot_password">Lupa Password?</string>
+    <string name="txt_belum_punya_akun">Belum punya akun?</string>
+
+    <!-- Register Page -->
+    <string name="welcome_register_1">Selamat Datang</string>
+    <string name="welcome_register_2">Silahkan isi informasi dibawah.</string>
+    <string name="txt_sudah_punya_akun">Sudah punya akun?</string>
+
+    <!-- Forgot Password Page -->
+    <string name="title_forgot_password">Reset Password</string>
+    <string name="body_forgot_password">Isikan alamat email yang anda gunakan saat membuat akun.</string>
+    <string name="label_next">Lanjutkan</string>
+
+    <!-- Gmail Page -->
+    <string name="title_gmail">Silahkan cek Email Anda</string>
+    <string name="body_gmail">Kami sudah mengirim konfirmasi ke alamat email Puspa@puspa.com. Silahkan ikuti instruksinya.</string>
+    <string name="txt_tidak_dapat_email">Tidak dapat email?</string>
+    <string name="txt_kirim_ulang">Kirim Ulang</string>
+    <string name="label_open_email">Buka Email</string>
+
+    <!-- Reset Password Page -->
+    <string name="title_reset_password">Buat Password Baru</string>
+    <string name="body_reset_password">Silahkan buat kata sandi baru yang lebih aman dari sebelumnya.</string>
+    <string name="hint_konfirmasi_password">Konfirmasi Password</string>
+    <string name="password_description">Minimal 8 karakter dengan huruf kapital, angka, dan simbol.</string>
+
+    <!-- Home Page -->
     <string name="home_greeting">Hallo, %1$s!</string>
-    <string name="atas_nama_assesments">a.n. %1$s</string>
+    <string name="label_anak">Anak</string>
+    <string name="label_jadwal">Jadwal</string>
+    <string name="label_comming_soon">Coming Soon</string>
+
+    <!-- Add Child Page -->
+    <string name="hint_nama_anak">Nama Anak</string>
+    <string name="hint_jenis_kelamin">Jenis Kelamin</string>
+    <string name="hint_tempat_lahir">Tempat Lahir</string>
+    <string name="hint_">Tanggal Lahir</string>
+    <string name="hint_sekolah_anak">Sekolah Anak</string>
+    <string name="hint_alamat_anak">Alamat Anak</string>
+    <string name="hint_keluhan_anak">Keluhan Anak</string>
+    <string name="hint_pilih_layanan_2_prioritas">Pilih Layanan (2 prioritas):</string>
+    <string name="layanan_asesmen_tumbuh_kembang">Asesmen Tumbuh Kembang</string>
+    <string name="layanan_asesmen_terpadu">Asesmen Terpadu</string>
+    <string name="layanan_konsultasi_dokter">Konsultasi Dokter</string>
+    <string name="layanan_konsultasi_psikolog">Konsultasi Psikolog</string>
+    <string name="layanan_konsultasi_keluarga">Konsultasi Keluarga</string>
+    <string name="layanan_test_psikolog">Test Psikolog</string>
+    <string name="layanan_minat_bakat">Layanan Minat Bakat</string>
+    <string name="layanan_daycare">Daycare</string>
+    <string name="layanan_home_care">Home Care</string>
+    <string name="layanan_hydrotherapy">Hydrotherapy</string>
+    <string name="layanan_baby_spa">Baby Spa</string>
+    <string name="label_simpan_data_anak">Simpan Data Anak</string>
+
+    <!-- Item Child -->
+    <string name="placehold_gender">(%1$s)</string>
+    <string name="placehold_tanggal_lahir">Tanggal Lahir: %1$s</string>
+    <string name="placehold_usia">Usia: %1$s</string>
+
+    <!-- Schedule Page -->
+    <string name="title_jadwal_assesmen">Jadwal Assesmen</string>
+    <string name="txt_tidak_ada_jadwal_assesmen">Tidak Ada Jadwal Assesmen</string>
+    <string name="txt_assesmen">Assesmen</string>
+    <string name="txt_terjadwal">Terjadwal</string>
+    <string name="title_jadwal_terapi_yang_akan_datang">Jadwal Terapi Yang Akan Datang</string>
+
+    <!-- Account Page -->
+    <string name="title_account">Akun Ku</string>
+    <string name="label_perbarui_profile">Perbarui Profile</string>
+    <string name="label_ubah_password">Ubah Password</string>
+
+    <!-- Edit Profile Page -->
+    <string name="label_pilih_foto_profil">Pilih Foto Profil</string>
+    <string name="hint_nama_wali">Nama Wali</string>
+    <string name="hint_hubungan_dengan_anak">Hubungan dengan Anak</string>
+    <string name="hint_tanggal_lahir">Tanggal Lahir</string>
+    <string name="hint_nomor_telepon">Nomor Telepon</string>
+    <string name="hint_email">Email</string>
+    <string name="hint_pekerjaan">Pekerjaan</string>
+    <string name="label_simpan_perubahan">Simpan Perubahan</string>
 
 </resources>

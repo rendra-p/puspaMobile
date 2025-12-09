@@ -47,13 +47,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
-            android:text="Pilih Foto Profil" />
+            android:text="@string/label_pilih_foto_profil" />
 
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="40dp"
-            android:hint="Nama Wali">
+            android:hint="@string/hint_nama_wali">
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/etGuardianName"
                 android:layout_width="match_parent"
@@ -64,7 +64,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            android:hint="Hubungan dengan Anak">
+            android:hint="@string/hint_hubungan_dengan_anak">
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/etRelationshipWithChild"
                 android:layout_width="match_parent"
@@ -75,7 +75,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            android:hint="Tanggal Lahir">
+            android:hint="@string/hint_tanggal_lahir">
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/etBirthDate"
                 android:layout_width="match_parent"
@@ -89,7 +89,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            android:hint="Nomor Telepon">
+            android:hint="@string/hint_nomor_telepon">
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/etGuardianPhone"
                 android:layout_width="match_parent"
@@ -101,7 +101,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            android:hint="Email">
+            android:hint="@string/hint_email">
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/etEmail"
                 android:layout_width="match_parent"
@@ -113,7 +113,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            android:hint="Pekerjaan">
+            android:hint="@string/hint_pekerjaan">
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/etGuardianOccupation"
                 android:layout_width="match_parent"
@@ -124,7 +124,7 @@
             android:id="@+id/btnSave"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Simpan Perubahan"
+            android:text="@string/label_simpan_perubahan"
             android:layout_marginTop="36dp"
             android:layout_marginBottom="21dp"/>
 
