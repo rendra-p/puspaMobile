@@ -143,7 +143,7 @@ class DataRepository(private val apiService: ApiService) {
             Result.failure(e)
         }
     }
-    suspend fun getAssesments (): Result<AssessmentsResponse> {
+    suspend fun getAssessments (): Result<AssessmentsResponse> {
         return try {
             val response = apiService.getAssessments()
             if (response.isSuccessful) {

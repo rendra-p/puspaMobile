@@ -17,7 +17,7 @@ class ScheduleViewModel(
     fun getAssessments() {
         viewModelScope.launch {
             try {
-                val result = repository.getAssesments()
+                val result = repository.getAssessments()
                 _assessmentsResult.value = result
             } catch (e: Exception) {
                 _assessmentsResult.value = Result.failure(e)

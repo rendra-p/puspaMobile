@@ -27,11 +27,8 @@ class GmailActivity : AppCompatActivity() {
 
     @SuppressLint("QueryPermissionsNeeded")
     private fun openEmailApp() {
-        val intent = Intent(Intent.CATEGORY_APP_EMAIL).apply {
-            addCategory(Intent.CATEGORY_APP_EMAIL)
-            addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-        }
-        if (intent.resolveActivity(packageManager) != null) {
+        val intent = packageManager.getLaunchIntentForPackage("com.google.android.gm")
+        if (intent != null) {
             startActivity(intent)
         } else {
             tryOpenAlternative()
