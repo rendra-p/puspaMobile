@@ -1,5 +1,6 @@
-package com.puspa.puspamobile.ui.submenu.managechild
+package com.puspa.puspamobile.ui.submenu.managechild.action
 
+import android.R
 import android.os.Bundle
 import android.view.KeyEvent
 import android.view.MotionEvent
@@ -7,6 +8,7 @@ import android.view.View
 import android.view.inputmethod.EditorInfo
 import android.view.inputmethod.InputMethodManager
 import android.widget.ArrayAdapter
+import android.widget.AutoCompleteTextView
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -45,7 +47,7 @@ class AddChildActivity : AppCompatActivity() {
                 if (actionId == EditorInfo.IME_ACTION_NEXT ||
                     (event != null && event.keyCode == KeyEvent.KEYCODE_ENTER && event.action == KeyEvent.ACTION_DOWN)) {
 
-                    if (next is android.widget.AutoCompleteTextView) {
+                    if (next is AutoCompleteTextView) {
                         next.requestFocus()
                         next.showDropDown()
                     } else {
@@ -72,13 +74,13 @@ class AddChildActivity : AppCompatActivity() {
         }
 
         binding.etChildGender.setOnFocusChangeListener { v, hasFocus ->
-            if (hasFocus && v is android.widget.AutoCompleteTextView) v.showDropDown()
+            if (hasFocus && v is AutoCompleteTextView) v.showDropDown()
         }
     }
 
     private fun setInputField() {
         val genderOptions = listOf("laki-laki", "perempuan")
-        val adapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, genderOptions)
+        val adapter = ArrayAdapter(this, R.layout.simple_list_item_1, genderOptions)
         binding.etChildGender.setAdapter(adapter)
     }
 

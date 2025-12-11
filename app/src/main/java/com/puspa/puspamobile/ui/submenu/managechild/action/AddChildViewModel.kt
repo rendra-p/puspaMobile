@@ -1,4 +1,4 @@
-package com.puspa.puspamobile.ui.submenu.managechild
+package com.puspa.puspamobile.ui.submenu.managechild.action
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

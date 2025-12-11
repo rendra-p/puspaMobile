@@ -13,7 +13,8 @@ import com.puspa.puspamobile.ui.mainmenu.home.HomeViewModel
 import com.puspa.puspamobile.ui.mainmenu.schedule.ScheduleViewModel
 import com.puspa.puspamobile.ui.submenu.managechild.ChildViewModel
 import com.puspa.puspamobile.ui.submenu.editprofile.EditProfileViewModel
-import com.puspa.puspamobile.ui.submenu.managechild.AddChildViewModel
+import com.puspa.puspamobile.ui.submenu.managechild.action.AddChildViewModel
+import com.puspa.puspamobile.ui.submenu.managechild.action.UpdateChildViewModel
 
 @Suppress("UNCHECKED_CAST")
 class ViewModelFactory(
@@ -45,6 +46,9 @@ class ViewModelFactory(
             }
             modelClass.isAssignableFrom(ChildViewModel::class.java) -> {
                 ChildViewModel(repository) as T
+            }
+            modelClass.isAssignableFrom(UpdateChildViewModel::class.java) -> {
+                UpdateChildViewModel(repository) as T
             }
             modelClass.isAssignableFrom(AddChildViewModel::class.java) -> {
                 AddChildViewModel(repository) as T

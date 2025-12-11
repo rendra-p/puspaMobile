@@ -4,6 +4,7 @@ import com.puspa.puspamobile.data.remote.ApiErrorHandler
 import com.puspa.puspamobile.data.remote.response.AddChildRequest
 import com.puspa.puspamobile.data.remote.response.AssessmentsResponse
 import com.puspa.puspamobile.data.remote.response.ChangePasswordRequest
+import com.puspa.puspamobile.data.remote.response.ChildDetailResponse
 import com.puspa.puspamobile.data.remote.response.ChildResponse
 import com.puspa.puspamobile.data.remote.response.ForgotPasswordRequest
 import com.puspa.puspamobile.data.remote.response.LoginRequest
@@ -12,6 +13,7 @@ import com.puspa.puspamobile.data.remote.response.ProfileResponse
 import com.puspa.puspamobile.data.remote.response.RegisterRequest
 import com.puspa.puspamobile.data.remote.response.RegisterResponse
 import com.puspa.puspamobile.data.remote.response.ResetPasswordRequest
+import com.puspa.puspamobile.data.remote.response.UpdateChildRequest
 import com.puspa.puspamobile.data.remote.response.UpdateProfileRequest
 import com.puspa.puspamobile.data.remote.retrofit.ApiService
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
@@ -122,6 +124,32 @@ class DataRepository(private val apiService: ApiService) {
             val response = apiService.getChildren()
             if (response.isSuccessful) {
                 Result.success(response.body()!!)
+            } else {
+                val errorMessage = ApiErrorHandler.getErrorMessage(response)
+                Result.failure(Exception(errorMessage))
+            }
+        } catch (e: Exception) {
+            Result.failure(e)
+        }
+    }
+    suspend fun getChildDetail (childId: String): Result<ChildDetailResponse> {
+        return try {
+            val response = apiService.getChildrenDetail(childId)
+            if (response.isSuccessful) {
+                Result.success(response.body()!!)
+            } else {
+                val errorMessage = ApiErrorHandler.getErrorMessage(response)
+                Result.failure(Exception(errorMessage))
+            }
+        } catch (e: Exception) {
+            Result.failure(e)
+        }
+    }
+    suspend fun updateChild (childId: String, updateChildRequest: UpdateChildRequest): Result<Void?> {
+        return try {
+            val response = apiService.updateChild(childId, updateChildRequest)
+            if (response.isSuccessful) {
+                Result.success(response.body())
             } else {
                 val errorMessage = ApiErrorHandler.getErrorMessage(response)
                 Result.failure(Exception(errorMessage))

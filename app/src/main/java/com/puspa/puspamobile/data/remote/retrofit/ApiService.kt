@@ -3,6 +3,7 @@ package com.puspa.puspamobile.data.remote.retrofit
 import com.puspa.puspamobile.data.remote.response.AddChildRequest
 import com.puspa.puspamobile.data.remote.response.AssessmentsResponse
 import com.puspa.puspamobile.data.remote.response.ChangePasswordRequest
+import com.puspa.puspamobile.data.remote.response.ChildDetailResponse
 import com.puspa.puspamobile.data.remote.response.ChildResponse
 import com.puspa.puspamobile.data.remote.response.ForgotPasswordRequest
 import com.puspa.puspamobile.data.remote.response.LoginRequest
@@ -11,6 +12,7 @@ import com.puspa.puspamobile.data.remote.response.ProfileResponse
 import com.puspa.puspamobile.data.remote.response.RegisterRequest
 import com.puspa.puspamobile.data.remote.response.RegisterResponse
 import com.puspa.puspamobile.data.remote.response.ResetPasswordRequest
+import com.puspa.puspamobile.data.remote.response.UpdateChildRequest
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
 import retrofit2.Response
@@ -49,6 +51,15 @@ interface ApiService {
     suspend fun getProfile(): Response<ProfileResponse>
     @GET("my/children")
     suspend fun getChildren(): Response<ChildResponse>
+    @GET("my/children/{child_id}")
+    suspend fun getChildrenDetail(
+        @Path("child_id") childId: String
+    ): Response<ChildDetailResponse>
+    @POST("my/children/{child_id}")
+    suspend fun updateChild(
+        @Path("child_id") childId: String,
+        @Body updateChildRequest: UpdateChildRequest
+    ): Response<Void>
     @POST("my/children")
     suspend fun addChild(
         @Body addChildRequest: AddChildRequest

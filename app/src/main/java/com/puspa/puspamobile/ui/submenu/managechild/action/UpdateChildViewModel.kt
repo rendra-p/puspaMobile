@@ -1,4 +1,4 @@
-package com.puspa.puspamobile.ui.submenu.managechild
+package com.puspa.puspamobile.ui.submenu.managechild.action
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -6,14 +6,14 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.puspa.puspamobile.data.DataRepository
 import com.puspa.puspamobile.data.remote.response.ChildDetailResponse
-import com.puspa.puspamobile.data.remote.response.ChildResponse
+import com.puspa.puspamobile.data.remote.response.UpdateChildRequest
 import kotlinx.coroutines.launch
 
-class ChildViewModel(
+class UpdateChildViewModel(
     private val repository: DataRepository
 ) : ViewModel() {
-    private val _childResult = MutableLiveData<Result<ChildResponse>>()
-    val childResult: LiveData<Result<ChildResponse>> = _childResult
+    private val _updateChildResult = MutableLiveData<Result<Void?>>()
+    val updateChildResult: LiveData<Result<Void?>> = _updateChildResult
 
     private val _childDetailResult = MutableLiveData<Result<ChildDetailResponse>>()
     val childDetailResult: LiveData<Result<ChildDetailResponse>> = _childDetailResult
@@ -21,13 +21,16 @@ class ChildViewModel(
     private val _isLoading = MutableLiveData<Boolean>()
     val isLoading: LiveData<Boolean> = _isLoading
 
-    fun getChild() {
+    fun updateChild(childId: String, updateChildRequest: UpdateChildRequest){
+        _isLoading.value = true
         viewModelScope.launch {
             try {
-                val result = repository.getChild()
-                _childResult.value = result
+                val result = repository.updateChild(childId, updateChildRequest)
+                _updateChildResult.value = result
             } catch (e: Exception) {
-                _childResult.value = Result.failure(e)
+                _updateChildResult.value = Result.failure(e)
+            } finally {
+                _isLoading.value = false
             }
         }
     }

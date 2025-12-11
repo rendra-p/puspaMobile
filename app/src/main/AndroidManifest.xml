@@ -15,7 +15,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.PuspaMobile">
         <activity
-            android:name=".ui.submenu.managechild.AddChildActivity"
+            android:name=".ui.submenu.managechild.action.UpdateChildActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.submenu.managechild.action.AddChildActivity"
             android:exported="false" />
         <activity
             android:name=".ui.submenu.managechild.ChildActivity"
@@ -31,17 +34,17 @@
             android:exported="false" />
         <activity
             android:name=".ui.auth.forgotpassword.ResetPasswordActivity"
-            android:exported="true" >
+            android:exported="true">
             <intent-filter android:autoVerify="true">
-                <action android:name="android.intent.action.VIEW"/>
+                <action android:name="android.intent.action.VIEW" />
 
-                <category android:name="android.intent.category.DEFAULT"/>
-                <category android:name="android.intent.category.BROWSABLE"/>
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
 
                 <data
-                    android:scheme="https"
                     android:host="puspa.sinus.ac.id"
-                    android:pathPrefix="/auth/reset-password" />
+                    android:pathPrefix="/auth/reset-password"
+                    android:scheme="https" />
             </intent-filter>
         </activity>
         <activity

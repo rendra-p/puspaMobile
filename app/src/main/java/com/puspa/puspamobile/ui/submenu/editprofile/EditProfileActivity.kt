@@ -101,6 +101,7 @@ class EditProfileActivity : AppCompatActivity() {
             binding.btnSave.isEnabled = !isLoading
             binding.btnSave.text = if (isLoading) "Loading..." else "Simpan Perubahan"
         }
+
         viewModel.profileResult.observe(this) { result ->
             result.onSuccess { response ->
                 val data = response.data ?: return@onSuccess

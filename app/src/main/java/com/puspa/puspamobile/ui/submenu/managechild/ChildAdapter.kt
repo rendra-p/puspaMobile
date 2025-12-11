@@ -8,7 +8,9 @@ import com.puspa.puspamobile.data.remote.response.ChildData
 import com.puspa.puspamobile.databinding.ItemChildBinding
 
 class ChildAdapter(
-    private var childList: List<ChildData> = emptyList()
+    private var childList: List<ChildData> = emptyList(),
+    private val onItemClick: (ChildData) -> Unit,
+    private val onEditClick: (ChildData) -> Unit
 ) : RecyclerView.Adapter<ChildAdapter.ChildViewHolder>() {
 
     inner class ChildViewHolder(private val binding: ItemChildBinding) :
@@ -21,6 +23,14 @@ class ChildAdapter(
                 tvGender.text = "(${child.childGender ?: "-"})"
                 tvBirthDate.text = "Tanggal Lahir: ${child.childBirthDate ?: "-"}"
                 tvAge.text = "Usia: ${child.childAge ?: "-"}"
+
+                root.setOnClickListener {
+                    onItemClick(child)
+                }
+
+                btnImgEdit.setOnClickListener {
+                    onEditClick(child)
+                }
             }
         }
     }

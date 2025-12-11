@@ -1,6 +1,7 @@
 package com.puspa.puspamobile.data.remote.response
 
 import com.google.gson.annotations.SerializedName
+import retrofit2.http.PUT
 
 data class ForgotPasswordRequest(
 
@@ -82,3 +83,32 @@ data class AddChildRequest(
 	@SerializedName("child_service_choice")
 	val childServiceChoice: String
 )
+
+data class UpdateChildRequest(
+
+	@SerializedName("child_name")
+	val childName: String? = null,
+
+	@SerializedName("child_birth_place")
+	val childBirthPlace: String? = null,
+
+	@SerializedName("child_gender")
+	val childGender: String? = null,
+
+	@SerializedName("child_birth_date")
+	val childBirthDate: String? = null,
+
+	@SerializedName("child_religion")
+	val childReligion: String? = null,
+
+	@SerializedName("child_school")
+	val childSchool: String? = null,
+
+	@SerializedName("child_address")
+	val childAddress: String? = null,
+
+
+	@SerializedName("_method")
+	val method: String = "PUT",
+
+	)
