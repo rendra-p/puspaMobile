@@ -279,6 +279,7 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/btn_report"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
@@ -297,14 +298,14 @@
                     android:layout_width="40dp"
                     android:layout_height="40dp"
                     android:layout_margin="8dp"
-                    android:src="@drawable/outline_search_insights_24"
+                    android:src="@drawable/outline_document_search_24"
                     app:tint="@color/primary"
                     tools:ignore="ContentDescription" />
             </com.google.android.material.card.MaterialCardView>
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:text="@string/label_comming_soon"
+                android:text="@string/label_laporan"
                 android:textAppearance="@style/Playpen.Body"
                 android:gravity="center"/>
         </LinearLayout>
@@ -328,7 +329,7 @@
                     android:layout_width="40dp"
                     android:layout_height="40dp"
                     android:layout_margin="8dp"
-                    android:src="@drawable/outline_document_search_24"
+                    android:src="@drawable/outline_search_insights_24"
                     app:tint="@color/primary"
                     tools:ignore="ContentDescription" />
             </com.google.android.material.card.MaterialCardView>

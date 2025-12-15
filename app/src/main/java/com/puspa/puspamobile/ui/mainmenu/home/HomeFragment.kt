@@ -15,6 +15,7 @@ import com.puspa.puspamobile.data.Injection
 import com.puspa.puspamobile.databinding.FragmentHomeBinding
 import com.puspa.puspamobile.ui.auth.BoardingActivity
 import com.puspa.puspamobile.ui.submenu.managechild.ChildActivity
+import com.puspa.puspamobile.ui.submenu.report.ReportActivity
 
 class HomeFragment : Fragment() {
     private var _binding: FragmentHomeBinding? = null
@@ -51,6 +52,9 @@ class HomeFragment : Fragment() {
         }
         binding.btnSchedule.setOnClickListener {
             findNavController().navigate(R.id.navigation_jadwal)
+        }
+        binding.btnReport.setOnClickListener {
+            startActivity(Intent(requireContext(), ReportActivity::class.java))
         }
     }
 

@@ -9,7 +9,7 @@
     <string name="body_general_error">Maaf atas ketidaknyamanannya, terdapat gangguan sistem. Coba lagi nanti</string>
     <string name="button_general_error">Kembali</string>
 
-    <string name="atas_nama_assesments">a.n. %1$s</string>
+    <string name="atas_nama_assessments">a.n. %1$s</string>
 
     <!-- Reusable -->
     <string name="txt_masuk">Masuk</string>
@@ -55,6 +55,7 @@
     <string name="home_greeting">Hallo, %1$s!</string>
     <string name="label_anak">Anak</string>
     <string name="label_jadwal">Jadwal</string>
+    <string name="label_laporan">Laporan</string>
     <string name="label_comming_soon">Coming Soon</string>
 
     <!-- Add Child Page -->
@@ -85,9 +86,9 @@
     <string name="placehold_usia">Usia: %1$s</string>
 
     <!-- Schedule Page -->
-    <string name="title_jadwal_assesmen">Jadwal Assesmen</string>
-    <string name="txt_tidak_ada_jadwal_assesmen">Tidak Ada Jadwal Assesmen</string>
-    <string name="txt_assesmen">Assesmen</string>
+    <string name="title_jadwal_assessmen">Jadwal Assessmen</string>
+    <string name="txt_tidak_ada_jadwal_assessmen">Tidak Ada Jadwal Assessmen</string>
+    <string name="txt_assessmen">Assessmen</string>
     <string name="txt_terjadwal">Terjadwal</string>
     <string name="title_jadwal_terapi_yang_akan_datang">Jadwal Terapi Yang Akan Datang</string>
 
@@ -105,5 +106,6 @@
     <string name="hint_email">Email</string>
     <string name="hint_pekerjaan">Pekerjaan</string>
     <string name="label_simpan_perubahan">Simpan Perubahan</string>
+
 
 </resources>

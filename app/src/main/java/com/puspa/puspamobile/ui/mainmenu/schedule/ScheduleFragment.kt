@@ -46,8 +46,9 @@ class ScheduleFragment : Fragment() {
                     } else {
                         assessmentsData.firstOrNull()?.let { data ->
                             binding.apply {
-                                tvAtasNama.text = getString(R.string.atas_nama_assesments, data.childName)
+                                tvAtasNama.text = getString(R.string.atas_nama_assessments, data.childName)
                                 tvSchedule.text = data.scheduledDate
+                                tvStatus.text = data.status
                             }
                         }
                     }

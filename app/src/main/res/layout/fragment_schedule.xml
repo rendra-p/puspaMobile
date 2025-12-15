@@ -50,7 +50,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="38dp"
-        android:text="@string/title_jadwal_assesmen"
+        android:text="@string/title_jadwal_assessmen"
         android:textAppearance="@style/Playpen.Label"
         android:textColor="@color/black"
         app:layout_constraintStart_toStartOf="@+id/imageView3"
@@ -71,7 +71,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="20dp"
-            android:text="@string/txt_tidak_ada_jadwal_assesmen"
+            android:text="@string/txt_tidak_ada_jadwal_assessmen"
             android:textAppearance="@style/Playpen.Label"
             android:visibility="gone"/>
 
@@ -97,7 +97,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/txt_assesmen"
+                        android:text="@string/txt_assessmen"
                         android:textAppearance="@style/Playpen.Label"
                         android:textColor="@color/black" />
 
@@ -105,7 +105,7 @@
                         android:id="@+id/tv_atas_nama"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/atas_nama_assesments"/>
+                        android:text="@string/atas_nama_assessments"/>
 
                     <LinearLayout
                         android:layout_width="wrap_content"
@@ -133,6 +133,7 @@
                     android:layout_weight="1" />
 
                 <TextView
+                    android:id="@+id/tv_status"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/txt_terjadwal"
