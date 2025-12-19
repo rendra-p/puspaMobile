@@ -144,6 +144,18 @@ class DataRepository(private val apiService: ApiService) {
         } catch (e: Exception) {
             Result.failure(e)
         }
+    }suspend fun deleteChild (childId: String): Result<Void?> {
+        return try {
+            val response = apiService.deleteChild(childId)
+            if (response.isSuccessful) {
+                Result.success(response.body())
+            } else {
+                val errorMessage = ApiErrorHandler.getErrorMessage(response)
+                Result.failure(Exception(errorMessage))
+            }
+        } catch (e: Exception) {
+            Result.failure(e)
+        }
     }
     suspend fun updateChild (childId: String, updateChildRequest: UpdateChildRequest): Result<Void?> {
         return try {

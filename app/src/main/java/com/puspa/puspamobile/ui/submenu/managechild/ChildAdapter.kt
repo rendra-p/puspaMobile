@@ -10,7 +10,8 @@ import com.puspa.puspamobile.databinding.ItemChildBinding
 class ChildAdapter(
     private var childList: List<ChildData> = emptyList(),
     private val onItemClick: (ChildData) -> Unit,
-    private val onEditClick: (ChildData) -> Unit
+    private val onEditClick: (ChildData) -> Unit,
+    private val onDeleteClick: (ChildData) -> Unit
 ) : RecyclerView.Adapter<ChildAdapter.ChildViewHolder>() {
 
     inner class ChildViewHolder(private val binding: ItemChildBinding) :
@@ -30,6 +31,10 @@ class ChildAdapter(
 
                 btnImgEdit.setOnClickListener {
                     onEditClick(child)
+                }
+
+                btnImgDelete.setOnClickListener {
+                    onDeleteClick(child)
                 }
             }
         }

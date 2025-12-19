@@ -8,10 +8,13 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import com.puspa.puspamobile.R
 import com.puspa.puspamobile.data.Injection
 import com.puspa.puspamobile.data.remote.response.ChildDetailData
 import com.puspa.puspamobile.databinding.ActivityChildBinding
@@ -60,21 +63,42 @@ class ChildActivity : AppCompatActivity() {
         viewmodel.getChild()
         childAdapter = ChildAdapter(
             onItemClick = { child ->
-                if (!child.childId.isNullOrBlank()) {
-                    viewmodel.getChildDetail(child.childId)
-                } else {
+                if (child.childId.isNullOrBlank()) {
                     Toast.makeText(this, "ID anak tidak ditemukan", Toast.LENGTH_SHORT).show()
+                } else {
+                    viewmodel.getChildDetail(child.childId)
                 }
             },
             onEditClick = { child ->
-                if (child.childId == null) {
+                if (child.childId.isNullOrBlank()) {
                     Toast.makeText(this, "ID anak tidak ditemukan", Toast.LENGTH_SHORT).show()
+                } else {
+                    val intent = Intent(this, UpdateChildActivity::class.java).apply {
+                        putExtra(UpdateChildActivity.EXTRA_CHILD_ID, child.childId)
+                    }
+                    childLauncher.launch(intent)
                 }
+            },
+            onDeleteClick = { child ->
+                if (child.childId.isNullOrBlank()) {
+                    Toast.makeText(this, "ID anak tidak ditemukan", Toast.LENGTH_SHORT).show()
+                } else {
+                    val dialog = MaterialAlertDialogBuilder(this)
+                        .setTitle("Hapus Data Anak")
+                        .setMessage("Apakah kamu yakin ingin menghapus data anak ini?")
+                        .setNegativeButton("Batal", null)
+                        .setPositiveButton("Hapus") { _, _ ->
+                            viewmodel.deleteChild(child.childId!!)
+                        }
+                        .create()
 
-                val intent = Intent(this, UpdateChildActivity::class.java).apply {
-                    putExtra(UpdateChildActivity.EXTRA_CHILD_ID, child.childId)
+                    dialog.setOnShowListener {
+                        dialog.getButton(AlertDialog.BUTTON_POSITIVE)
+                            .setTextColor(ContextCompat.getColor(this, R.color.onRedDanger))
+                    }
+
+                    dialog.show()
                 }
-                childLauncher.launch(intent)
             }
         )
         binding.recyclerView.apply {
@@ -112,6 +136,16 @@ class ChildActivity : AppCompatActivity() {
                 Toast.makeText(this, exception.message ?: "Terjadi kesalahan saat memuat detail anak", Toast.LENGTH_SHORT).show()
             }
         }
+
+        viewmodel.childDeleteResult.observe(this) { result ->
+            result.onSuccess {
+                Toast.makeText(this, "Data anak berhasil dihapus", Toast.LENGTH_SHORT).show()
+                viewmodel.getChild()
+            }
+            result.onFailure { exception ->
+                Toast.makeText(this, exception.message ?: "Gagal menghapus data anak", Toast.LENGTH_SHORT).show()
+            }
+        }
     }
 
     private fun showChildDetailDialog(detail: ChildDetailData) {
@@ -138,5 +172,4 @@ class ChildActivity : AppCompatActivity() {
             .setPositiveButton("OK", null)
             .show()
     }
-
 }
