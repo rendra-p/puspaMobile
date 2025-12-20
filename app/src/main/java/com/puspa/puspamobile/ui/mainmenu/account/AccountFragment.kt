@@ -32,6 +32,7 @@ class AccountFragment : Fragment() {
 
     private lateinit var viewModel: AccountViewModel
 
+    // Menangkap response dari EditProfile untuk refresh data
     private val editProfileLauncher = registerForActivityResult(
         ActivityResultContracts.StartActivityForResult()
     ) { result ->
@@ -78,6 +79,7 @@ class AccountFragment : Fragment() {
         viewModel.profileResult.observe(viewLifecycleOwner) { result ->
             result.onSuccess { response ->
                 response.data?.let { profileData ->
+                    // Ganti url ke base url API terbaru
                     val imageUrl = "https://puspa.sinus.ac.id" + profileData.profilePicture
                     Glide.with(this)
                         .load(imageUrl)
@@ -135,7 +137,7 @@ class AccountFragment : Fragment() {
             setPadding(padding, padding, padding, padding)
         }
 
-        // Input untuk Password Saat Ini
+        // Input untuk password saat ini
         val currentPasswordInput = EditText(context).apply {
             hint = "Password Saat Ini"
             inputType = InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_PASSWORD
@@ -144,7 +146,7 @@ class AccountFragment : Fragment() {
             addView(currentPasswordInput)
         }
 
-        // Input untuk Password Baru
+        // Input untuk password baru
         val newPasswordInput = EditText(context).apply {
             hint = "Password Baru"
             inputType = InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_PASSWORD
@@ -153,7 +155,7 @@ class AccountFragment : Fragment() {
             addView(newPasswordInput)
         }
 
-        // Input untuk Konfirmasi Password Baru
+        // Input untuk konfirmasi password baru
         val confirmPasswordInput = EditText(context).apply {
             hint = "Konfirmasi Password Baru"
             inputType = InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_PASSWORD
@@ -162,6 +164,7 @@ class AccountFragment : Fragment() {
             addView(confirmPasswordInput)
         }
 
+        // Cek apakah isi field valid
         val validateNewPassword = {
             val password = newPasswordInput.text.toString()
             when {
@@ -201,6 +204,7 @@ class AccountFragment : Fragment() {
         linearLayout.addView(newPasswordLayout)
         linearLayout.addView(confirmPasswordLayout)
 
+        // Menampilkan dialog ubah password
         MaterialAlertDialogBuilder(context)
             .setTitle("Ubah Password")
             .setView(linearLayout)

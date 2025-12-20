@@ -106,6 +106,7 @@ class EditProfileActivity : AppCompatActivity() {
             result.onSuccess { response ->
                 val data = response.data ?: return@onSuccess
                 guardianId = data.guardianId.toString()
+                // Ganti url ke base url API terbaru
                 val imageUrl = "https://puspa.sinus.ac.id" + data.profilePicture
                 Glide.with(this)
                     .load(imageUrl)
@@ -203,6 +204,7 @@ class EditProfileActivity : AppCompatActivity() {
         return tempFile
     }
 
+    // Menutup keyboard dan menghapus fokus saat user menyentuh area layar mana pun
     override fun dispatchTouchEvent(ev: MotionEvent): Boolean {
         if (currentFocus != null) {
             val imm = getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager

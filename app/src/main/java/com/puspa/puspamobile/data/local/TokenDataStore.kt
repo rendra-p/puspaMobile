@@ -18,6 +18,7 @@ class TokenDataStore private constructor(private val context: Context) {
         private var INSTANCE: TokenDataStore? = null
         private val TOKEN_KEY = stringPreferencesKey("token")
 
+        // Ambil Token di DataStore
         fun getInstance(context: Context): TokenDataStore {
             return INSTANCE ?: synchronized(this) {
                 INSTANCE ?: TokenDataStore(context).also { INSTANCE = it }

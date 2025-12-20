@@ -11,6 +11,7 @@ open class BaseInputLayout @JvmOverloads constructor(
     defStyleAttr: Int = 0
 ) : TextInputLayout(context, attrs, defStyleAttr) {
 
+    // Set appearance text field
     init {
         boxBackgroundMode = BOX_BACKGROUND_OUTLINE
         setBoxCornerRadii(16F,16F,16F,16F)

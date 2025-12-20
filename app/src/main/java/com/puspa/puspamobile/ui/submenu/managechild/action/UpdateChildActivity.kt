@@ -36,6 +36,7 @@ class UpdateChildActivity : AppCompatActivity() {
         val viewModelFactory = Injection.provideViewModelFactory(this)
         viewModel = ViewModelProvider(this, viewModelFactory)[UpdateChildViewModel::class.java]
 
+        // Mengambil childId dari ChildAdapter
         childId = intent.getStringExtra(EXTRA_CHILD_ID).toString()
 
         setupImeOption()
@@ -226,6 +227,7 @@ class UpdateChildActivity : AppCompatActivity() {
         }
     }
 
+    // Menutup keyboard dan menghapus fokus saat user menyentuh area layar mana pun
     override fun dispatchTouchEvent(ev: MotionEvent): Boolean {
         if (currentFocus != null) {
             val imm = getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager

@@ -1,7 +1,6 @@
 package com.puspa.puspamobile.data.remote.response
 
 import com.google.gson.annotations.SerializedName
-import retrofit2.http.PUT
 
 data class ForgotPasswordRequest(
 

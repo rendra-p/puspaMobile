@@ -176,6 +176,7 @@ class AddChildActivity : AppCompatActivity() {
         }
     }
 
+    // Menutup keyboard dan menghapus fokus saat user menyentuh area layar mana pun
     override fun dispatchTouchEvent(ev: MotionEvent): Boolean {
         if (currentFocus != null) {
             val imm = getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager

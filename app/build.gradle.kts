@@ -17,6 +17,7 @@ android {
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
 
+        // Ganti base url API yang terbaru
         buildConfigField("String", "API_URL", "\"https://puspa.sinus.ac.id/api/v1/\"")
     }
 

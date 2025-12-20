@@ -269,6 +269,7 @@ class DataRepository(private val apiService: ApiService) {
         }
     }
 
+    // Converter
     fun String.asPlain() = this.toRequestBody("text/plain".toMediaTypeOrNull())
 
     companion object {

@@ -63,6 +63,7 @@ class HomeFragment : Fragment() {
         viewModel.profileResult.observe(viewLifecycleOwner) { result ->
             result.onSuccess { response ->
                 response.data?.let { profileData ->
+                    // Ganti url ke base url API terbaru
                     val imageUrl = "https://puspa.sinus.ac.id" + profileData.profilePicture
                     Glide.with(this)
                         .load(imageUrl)

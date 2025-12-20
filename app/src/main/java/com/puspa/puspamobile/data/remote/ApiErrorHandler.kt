@@ -4,6 +4,7 @@ import org.json.JSONObject
 import retrofit2.Response
 
 object ApiErrorHandler {
+    // Mengambil error message dari response API
     fun getErrorMessage(response: Response<*>): String {
         val errorBody = try {
             response.errorBody()?.string()

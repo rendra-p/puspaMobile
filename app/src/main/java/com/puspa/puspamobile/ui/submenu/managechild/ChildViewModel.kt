@@ -18,8 +18,8 @@ class ChildViewModel(
     private val _childDetailResult = MutableLiveData<Result<ChildDetailResponse>>()
     val childDetailResult: LiveData<Result<ChildDetailResponse>> = _childDetailResult
 
-    private val _childDeleteResult = MutableLiveData<Result<Void?>>()
-    val childDeleteResult: LiveData<Result<Void?>> = _childDeleteResult
+    private val _deleteChildResult = MutableLiveData<Result<Void?>>()
+    val deleteChildResult: LiveData<Result<Void?>> = _deleteChildResult
 
     private val _isLoading = MutableLiveData<Boolean>()
     val isLoading: LiveData<Boolean> = _isLoading
@@ -54,9 +54,9 @@ class ChildViewModel(
         viewModelScope.launch {
             try {
                 val result = repository.deleteChild(childId)
-                _childDeleteResult.value = result
+                _deleteChildResult.value = result
             } catch (e: Exception) {
-                _childDeleteResult.value = Result.failure(e)
+                _deleteChildResult.value = Result.failure(e)
             } finally {
                 _isLoading.value = false
             }

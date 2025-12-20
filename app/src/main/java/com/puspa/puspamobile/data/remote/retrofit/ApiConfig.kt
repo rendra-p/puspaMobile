@@ -1,6 +1,5 @@
 package com.puspa.puspamobile.data.remote.retrofit
 
-import android.util.Log
 import com.puspa.puspamobile.BuildConfig
 import com.puspa.puspamobile.data.local.TokenDataStore
 import kotlinx.coroutines.flow.first
@@ -18,7 +17,6 @@ object ApiConfig {
         val authInterceptor = Interceptor { chain ->
             val originalRequest = chain.request()
             val token = runBlocking { tokenDataStore.token.first() }
-            Log.d("AuthInterceptor", "Token: $token")
             val authRequest = originalRequest.newBuilder()
                 .addHeader("Authorization", "Bearer $token")
                 .build()

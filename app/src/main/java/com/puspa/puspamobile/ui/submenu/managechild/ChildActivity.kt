@@ -26,6 +26,7 @@ class ChildActivity : AppCompatActivity() {
     private lateinit var viewmodel: ChildViewModel
     private lateinit var childAdapter: ChildAdapter
 
+    // Menangkap response dari AddChild dan UpdateChild untuk refresh data
     private val childLauncher = registerForActivityResult(
         ActivityResultContracts.StartActivityForResult()
     ) { result ->
@@ -88,7 +89,7 @@ class ChildActivity : AppCompatActivity() {
                         .setMessage("Apakah kamu yakin ingin menghapus data anak ini?")
                         .setNegativeButton("Batal", null)
                         .setPositiveButton("Hapus") { _, _ ->
-                            viewmodel.deleteChild(child.childId!!)
+                            viewmodel.deleteChild(child.childId)
                         }
                         .create()
 
@@ -137,7 +138,7 @@ class ChildActivity : AppCompatActivity() {
             }
         }
 
-        viewmodel.childDeleteResult.observe(this) { result ->
+        viewmodel.deleteChildResult.observe(this) { result ->
             result.onSuccess {
                 Toast.makeText(this, "Data anak berhasil dihapus", Toast.LENGTH_SHORT).show()
                 viewmodel.getChild()

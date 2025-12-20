@@ -23,6 +23,7 @@ class ViewModelFactory(
     private val tokenDataStore: TokenDataStore? = null
 ): ViewModelProvider.Factory {
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
+        // Assign viewmodel ke viewmodelfactory agar terhubung ke injection
         return when {
             modelClass.isAssignableFrom(LoginViewModel::class.java) -> {
                 LoginViewModel(repository, tokenDataStore!!) as T

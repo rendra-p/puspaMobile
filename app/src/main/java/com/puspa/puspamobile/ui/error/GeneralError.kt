@@ -16,6 +16,7 @@ class GeneralError : AppCompatActivity() {
         binding = ActivityGeneralErrorBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        // Set tampilan semi fullscreen
         window.apply {
             statusBarColor = Color.TRANSPARENT
             navigationBarColor = Color.TRANSPARENT

@@ -17,12 +17,14 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
         supportActionBar?.hide()
 
+        // Ambil NavController dari NavHostFragment
         val navHostFragment = supportFragmentManager
             .findFragmentById(R.id.nav_host_fragment_activity_main) as NavHostFragment
         navController = navHostFragment.navController
 
         val chipNavigationBar = binding.bottomMenu
 
+        // Set fragment awal hanya saat pertama kali activity dibuat
         if (savedInstanceState == null) {
             val navOptions = NavOptions.Builder()
                 .setLaunchSingleTop(true)
@@ -32,6 +34,7 @@ class MainActivity : AppCompatActivity() {
             navController.navigate(R.id.navigation_home, null, navOptions)
         }
 
+        // Sinkronkan item bottom menu saat navigasi berpindah
         navController.addOnDestinationChangedListener { _, destination, _ ->
             when (destination.id) {
                 R.id.navigation_home -> chipNavigationBar.setItemSelected(R.id.menu_home, true)
@@ -40,12 +43,14 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
+        // NavOptions yang digunakan saat klik menu
         val navOptionsForTap = NavOptions.Builder()
             .setLaunchSingleTop(true)
             .setRestoreState(true)
             .setPopUpTo(navController.graph.startDestinationId, false)
             .build()
 
+        // Navigasi saat item bottom menu diklik
         chipNavigationBar.setOnItemSelectedListener { id ->
             val currentDestination = navController.currentDestination?.id
             when (id) {
@@ -64,6 +69,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    // Handle tombol back di ActionBar
     override fun onSupportNavigateUp(): Boolean {
         return navController.navigateUp() || super.onSupportNavigateUp()
     }

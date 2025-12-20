@@ -1,8 +1,11 @@
 package com.puspa.puspamobile.ui.error
 
 import android.content.Intent
+import android.graphics.Color
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.WindowCompat
+import androidx.core.view.WindowInsetsControllerCompat
 import com.puspa.puspamobile.databinding.ActivityNoInternetBinding
 import com.puspa.puspamobile.ui.Splash
 
@@ -13,6 +16,17 @@ class NoInternet : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityNoInternetBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        // Set tampilan semi fullscreen
+        window.apply {
+            statusBarColor = Color.TRANSPARENT
+            navigationBarColor = Color.TRANSPARENT
+            WindowCompat.setDecorFitsSystemWindows(window, false)
+            WindowInsetsControllerCompat(window, window.decorView).apply {
+                isAppearanceLightStatusBars = true
+                isAppearanceLightNavigationBars = true
+            }
+        }
 
         binding.btnNoInternet.setOnClickListener {
             val intent = Intent(this, Splash::class.java).apply {
