@@ -1,5 +1,8 @@
 <resources>
     <string name="app_name">Puspa Mobile</string>
+    <string name="txt_home">Home</string>
+    <string name="txt_jadwal">Jadwal</string>
+    <string name="txt_akun">Akun</string>
 
     <!-- Error Page -->
     <string name="display_no_internet">Tidak Ada Koneksi internet</string>
@@ -8,8 +11,6 @@
     <string name="display_general_error">Terjadi Kesalahan</string>
     <string name="body_general_error">Maaf atas ketidaknyamanannya, terdapat gangguan sistem. Coba lagi nanti</string>
     <string name="button_general_error">Kembali</string>
-
-    <string name="atas_nama_assessments">a.n. %1$s</string>
 
     <!-- Reusable -->
     <string name="txt_masuk">Masuk</string>
@@ -80,12 +81,22 @@
     <string name="layanan_baby_spa">Baby Spa</string>
     <string name="label_simpan_data_anak">Simpan Data Anak</string>
 
+    <!-- Update Child Page -->
+    <string name="hint_update_nama_anak">Nama Anak</string>
+    <string name="hint_update_tempat_lahir_anak">Tempat Lahir Anak</string>
+    <string name="hint_update_jenis_kelamin_anak">Jenis Kelamin Anak</string>
+    <string name="hint_update_tanggal_lahir_anak">Tanggal Lahir Anak</string>
+    <string name="hint_update_agama_anak">Agama Anak</string>
+    <string name="hint_update_sekolah_anak">Sekolah Anak</string>
+    <string name="hint_update_alamat_anak">Alamat Anak</string>
+
     <!-- Item Child -->
     <string name="placehold_gender">(%1$s)</string>
     <string name="placehold_tanggal_lahir">Tanggal Lahir: %1$s</string>
     <string name="placehold_usia">Usia: %1$s</string>
 
     <!-- Schedule Page -->
+    <string name="atas_nama_assessments">a.n. %1$s</string>
     <string name="title_jadwal_assessmen">Jadwal Assessmen</string>
     <string name="txt_tidak_ada_jadwal_assessmen">Tidak Ada Jadwal Assessmen</string>
     <string name="txt_assessmen">Assessmen</string>
@@ -106,6 +117,11 @@
     <string name="hint_email">Email</string>
     <string name="hint_pekerjaan">Pekerjaan</string>
     <string name="label_simpan_perubahan">Simpan Perubahan</string>
+
+    <!-- Report Page -->
+    <string name="txt_laporan_assessments">Laporan Assessments</string>
+    <string name="txt_laporan_terapi">Laporan Terapi</string>
+    <string name="txt_file_belum_tersedia">File Belum Tersedia</string>
 
 
 </resources>

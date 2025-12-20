@@ -37,7 +37,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="50dp"
-            android:hint="Nama Anak">
+            android:hint="@string/hint_update_nama_anak">
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/etChildName"
                 android:layout_width="match_parent"
@@ -48,7 +48,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            android:hint="Tempat Lahir Anak">
+            android:hint="@string/hint_update_tempat_lahir_anak">
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/etChildBirthPlace"
                 android:layout_width="match_parent"
@@ -60,7 +60,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            android:hint="Jenis Kelamin Anak"
+            android:hint="@string/hint_update_jenis_kelamin_anak"
             app:endIconMode="dropdown_menu">
             <AutoCompleteTextView
                 android:id="@+id/etChildGender"
@@ -76,7 +76,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            android:hint="Tanggal Lahir Anak">
+            android:hint="@string/hint_update_tanggal_lahir_anak">
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/etChildBirthDate"
                 android:layout_width="match_parent"
@@ -87,7 +87,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            android:hint="Agama Anak">
+            android:hint="@string/hint_update_agama_anak">
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/etChildReligion"
                 android:layout_width="match_parent"
@@ -98,7 +98,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            android:hint="Sekolah Anak">
+            android:hint="@string/hint_update_sekolah_anak">
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/etChildSchool"
                 android:layout_width="match_parent"
@@ -109,7 +109,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            android:hint="Alamat Anak">
+            android:hint="@string/hint_update_alamat_anak">
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/etChildAddress"
                 android:layout_width="match_parent"

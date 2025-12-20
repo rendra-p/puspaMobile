@@ -4,7 +4,7 @@
     <item
         android:id="@+id/menu_home"
         android:icon="@drawable/outline_home_24"
-        android:title="Home"
+        android:title="@string/txt_home"
         app:cnb_iconColor="@color/onPrimary"
         app:cnb_textColor="@color/onPrimary"
         app:cnb_backgroundColor="@color/primary"/>
@@ -12,7 +12,7 @@
     <item
         android:id="@+id/menu_jadwal"
         android:icon="@drawable/outline_calendar_month_24"
-        android:title="Jadwal"
+        android:title="@string/txt_jadwal"
         app:cnb_iconColor="@color/onPrimary"
         app:cnb_textColor="@color/onPrimary"
         app:cnb_backgroundColor="@color/primary"/>
@@ -20,7 +20,7 @@
     <item
         android:id="@+id/menu_akun"
         android:icon="@drawable/outline_person_24"
-        android:title="Akun"
+        android:title="@string/txt_akun"
         app:cnb_iconColor="@color/onPrimary"
         app:cnb_textColor="@color/onPrimary"
         app:cnb_backgroundColor="@color/primary"/>

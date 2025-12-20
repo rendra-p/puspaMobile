@@ -1,6 +1,5 @@
 package com.puspa.puspamobile.ui.auth.forgotpassword
 
-import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
