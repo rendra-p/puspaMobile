@@ -15,20 +15,24 @@ import android.widget.LinearLayout
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.lifecycleScope
 import com.bumptech.glide.Glide
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.textfield.TextInputLayout
 import com.puspa.puspamobile.R
 import com.puspa.puspamobile.data.Injection
+import com.puspa.puspamobile.data.local.TokenDataStore
 import com.puspa.puspamobile.data.remote.response.ChangePasswordRequest
 import com.puspa.puspamobile.databinding.FragmentAccountBinding
 import com.puspa.puspamobile.ui.auth.BoardingActivity
 import com.puspa.puspamobile.ui.submenu.editprofile.EditProfileActivity
+import kotlinx.coroutines.launch
 
 class AccountFragment : Fragment() {
 
     private var _binding: FragmentAccountBinding? = null
     private val binding get() = _binding!!
+    private lateinit var tokenDataStore: TokenDataStore
 
     private lateinit var viewModel: AccountViewModel
 
@@ -71,7 +75,14 @@ class AccountFragment : Fragment() {
             showChangePasswordDialog()
         }
         binding.btnLogout.setOnClickListener {
-            viewModel.logoutUser()
+            lifecycleScope.launch {
+                viewModel.logoutUser()
+                tokenDataStore.clearToken()
+
+                val intent = Intent(requireContext(), BoardingActivity::class.java)
+                intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                startActivity(intent)
+            }
         }
     }
 
