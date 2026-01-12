@@ -71,7 +71,7 @@ interface ApiService {
     ): Response<Void>
     @GET("my/assessments")
     suspend fun getAssessments(): Response<AssessmentsResponse>
-    @POST("my/update-password")
+    @POST("profile/update-password")
     suspend fun changePassword(
         @Body changePasswordRequest: ChangePasswordRequest
     ): Response<Void>
