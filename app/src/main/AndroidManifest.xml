@@ -49,7 +49,7 @@
 
                 <!-- Ganti host dengan domain web terbaru-->
                 <data
-                    android:host="puspa.sinus.ac.id"
+                    android:host="puspa-web-app.vercel.app"
                     android:pathPrefix="/auth/reset-password"
                     android:scheme="https" />
             </intent-filter>
