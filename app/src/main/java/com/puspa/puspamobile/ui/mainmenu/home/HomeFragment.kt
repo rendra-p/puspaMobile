@@ -56,6 +56,9 @@ class HomeFragment : Fragment() {
         binding.btnReport.setOnClickListener {
             startActivity(Intent(requireContext(), ReportActivity::class.java))
         }
+        binding.btnTmp.setOnClickListener {
+            findNavController().navigate(R.id.navigation_akun)
+        }
     }
 
     private fun setObserver() {

@@ -49,7 +49,7 @@
 
                 <!-- Ganti host dengan domain web terbaru-->
                 <data
-                    android:host="puspa-web-app.vercel.app"
+                    android:host="puspa.aliefarfn.com"
                     android:pathPrefix="/auth/reset-password"
                     android:scheme="https" />
             </intent-filter>
