@@ -22,6 +22,9 @@ open class BaseInputLayout @JvmOverloads constructor(
         post {
             editText?.apply {
                 isSingleLine = true
+                setTextColor(
+                    resources.getColorStateList(R.color.onGradient, context.theme)
+                )
             }
         }
     }

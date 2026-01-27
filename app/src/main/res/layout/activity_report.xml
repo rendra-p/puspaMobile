@@ -45,6 +45,16 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recycleview_terapi"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:visibility="gone"/>
+
+        <!-- Ini hanya pesan sementara karena sistem laporan terapi belum tersedia -->
+        <!-- Hapus textView di bawah dan visibility recycle view kalau sistem sudah ada -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:text="Laporan Terapi Belum Tersedia"
+            android:gravity="center"/>
     </LinearLayout>
 </ScrollView>
